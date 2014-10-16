@@ -1,6 +1,10 @@
 <?php
 	session_start();
+
 	
+=======
+	include("../inc/top.php");
+
 	include("db.php");
 	include("../functions.php");
 
@@ -56,6 +60,7 @@
 
 
 
+
 <?php include("../inc/top.php");?>
 	<body>
 		<div id="wrapper">
@@ -68,6 +73,19 @@
 			<input type="text" name="search" value="Search">
 			
 		</nav>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Films</title>
+	<meta name="description" content="PHP: Hypertext Preprocessor">
+	<link href="css/style.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+	<body>
+
 		<div id="mainregister">
 			<div id="contentregister" id="form_sign">
 				<form method="POST" action="login.php" id="form_sign" method="POST" novalidate>
@@ -91,12 +109,20 @@
 			</div>
 			<div class="cnx">
 				<a  id="forgotten"href="password_reset_1.php" title="Forgot your password ?">Forgot your password ?</a>
+
 			</div>
 		</div>
 		<div id="copy">
 			<p>Site design/ logo &copy; <?php echo date("Y"); ?> staque corporation; user  contributions licensed under <a href=""> ccby-sa 3.0</a>
 		</div>		
 	</div>
+=======
+				<a id="btn3" href="index.php">Retour accueil</a>
+		</div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script src="js/app.js"></script>
+
 
 	<body>
 </html>
