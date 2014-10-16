@@ -48,5 +48,132 @@ table {
 }
 
 /* fin du reset */
+/****************************************************************************
+*********************navigation************************************
+********************************************************************/
+#head{
+	background-color: #000;
+	color:#fff;
+	width: 100%;
+	height: 60px;
+	
 
+}
+#head h1{
+	display:inline-block;
+	margin-left: 36%;
+	margin-top: 10px;
+	font-weight: bold;
+	float: left;
+	font-size: 40px
+}
+.login button{
+	margin-left: 2%;
+	margin-top: 20px;
+	display:inline-block;
+	float:left;
+	background-color: #e61d2b;
+	border-radius: 5px 5px 5px 5px;
+	padding: 5px;
+}
+.signup{
+	margin-left: 2%;
+	margin-top: 20px;
+}
+#head input{
+	margin-left: 24%;
+	margin-top: 20px;
+	border-radius: 5px 5px 5px 5px;
+	padding:5px;
 
+}
+/****************************************************************************
+*********************contenu principal************************************
+********************************************************************/
+
+.mainContent{
+	width: 700px;
+	height: 500px;
+	border: 4px solid #000;
+	margin-left: 25%;
+}
+.mainContent button{
+	margin-left: 2%;
+	margin-top: 20px;
+	display:inline-block;
+	float:left;
+	background-color: #e61d2b;
+	border-radius: 5px 5px 5px 5px;
+	padding: 5px;
+
+}
+
+/****************************************************************************
+*********************footer************************************
+********************************************************************/
+
+#foot{
+	width: 708px;
+	height: 270px;
+	border-top: 7px solid #000;
+	margin-left: 25%;
+	margin-top: 10px;
+	background-color: rgb(119, 119, 119);
+	position:relative;
+}
+#copy{
+	position:absolute;
+    bottom:0px;
+	background-color: rgb(119, 119, 119);
+}
+.topfoot{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.topfoot a{
+	text-decoration: none;
+	color:#fff;
+	text-transform:capitalize;
+}
+#foot h3{
+	font-weight:bold;
+	color:#ccc;
+	margin-bottom: 10px;
+	margin-left: 38%;
+	text-decoration: underline;
+}
+.leftfoot{
+	width: 226px;
+	float: left;
+	margin-left: 168px;
+	margin-bottom: 10px;
+}
+.rightoot{
+	width:348px;
+	float:right;
+	margin-right:30px;
+	margin-bottom: 10px;
+}
+.leftfoot a{	
+	float:left;
+	clear:both;
+	text-decoration: none;
+	color:#fff;
+	text-transform:capitalize;
+	line-height:27px;
+
+}
+.rightfoot a{	
+	text-align: left;
+	text-decoration: none;
+	color:#fff;
+	text-transform:capitalize;
+	line-height:27px;
+}
+#copy p{
+	color:#fff;
+	text-transform:capitalize;
+}
+#copy a{
+	text-decoration: none;
+}
