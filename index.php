@@ -1,8 +1,23 @@
+
 <?php
 
 	session_start();
 	include("db.php");
 	include("inc/functions.php");
+
+	//notre requête sql 
+	$sql="SELECT * 
+		  FROM questions";
+
+	//envoie la requête au serveur MySQL (statement) 3 prepare
+	$stmt=$dbh->prepare($sql);
+
+	//exécute la requête 4 execute
+	$stmt->execute();
+
+	//récupère les résultats
+	$recueils=$stmt->fetchAll();
+	//print_r($results);
 
 ?>
 <?php include("inc/top.php"); ?>
