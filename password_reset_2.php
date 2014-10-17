@@ -3,7 +3,7 @@
 	session_start();
 
 	include("db.php");
-	include("functions.php");
+	include("inc/functions.php");
 
 	$email = "";
 	if (!empty($_GET['email'])){
@@ -31,7 +31,7 @@
 
 	//déclaration des variables du formulaire
 	$password 		= "";
-	$password_bis  	= "";
+	$password_bis 	= "";
 
 	$errors = array();
 
@@ -41,22 +41,22 @@
 		$password 		= $_POST["password"];
 		$email 		= $_POST["email"];
 		$token 		= $_POST["token"];
-		$password_bis  	= $_POST['password_bis '];
+		$password_bis 	= $_POST['password_bis'];
 
 
 		//password
-		if (empty($password)){
-			$errors[] = "Please choose a password !";
-		}
-		elseif (empty($password_bis)){
-			$errors[] = "Please confirm your password !";
-		}
-		elseif ($password_bis != $password){
-			$errors[] = "Your passwords do not match !";
-		}
-		elseif (strlen($password) < 7){
-			$errors[] = "Your password should have at least 7 characters !";
-		}
+        if (empty($password)){
+            $errors[] = "Choisissez un Mot de passe !";
+        }
+        elseif (empty($password_bis)){
+            $errors[] = "Merci de confirmer votre mot de passe !";
+        }
+        elseif ($password_bis != $password){
+            $errors[] = "Les deux mots de passe ne correspondent pas !";
+        }
+        elseif (strlen($password) < 7){
+            $errors[] = "Votre mot de passe doit contebnir au moins 7 caractères !";
+        }
 
 		if (empty($errors)){
 			
@@ -89,54 +89,36 @@
 		}
 	}
 
-	
+	include("inc/top.php");
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<meta charset="utf-8">
-	<title>Films</title>
-	<meta name="description" content="PHP: Hypertext Preprocessor">
-	<link href="css/style.css" type="text/css" rel="stylesheet" />
+<div class="container">
+<form name="yo" action="password_reset_2.php?<?php echo $_SERVER['QUERY_STRING']; ?>" id="password_reset_2" method="POST" novalidate>
 
-</head>
+	<!-- peut servir pour détecter facilement QUEL formulaire a été soumis -->
+	<input type="hidden" name="form_name" value="password_reset_2" />
+	<input type="hidden" name="token" value="<?= $token ?>" />
+	<input type="hidden" name="email" value="<?= $email ?>" />
 
-	<body>
-		<div id="mainregister">
-			<div id="contentregister">
-				<form method="POST" action="password_reset_2.php?<?php echo $_SERVER['QUERY_STRING']; ?>" method="POST" novalidate>
-					<input type="hidden" name="forn_name" value="password_reset_1" />
-					<!-- peut servir pour détecter facilement QUEL formulaire a été soumis -->
-					<input type="hidden" name="forn_name" value="password_reset_2" />
-					<input type="hidden" name="token" value="<?= $token ?>" />
-					<input type="hidden" name="email" value="<?= $email ?>" />
-					<h3>Nouveau mot de passe<h3>
-					<label for="passwod">New password: 
-						<input type="password" name="password" value=""/>
-					</label><br/>
-					<label for="password_bis">confirmer: 
-						<input type="text" name="$password_bis " value=""/>
-					</label><br/>
-					<?php 
-						if (!empty($errors)){
-							echo '<ul class="errors">';
-							foreach($errors as $error){
-								echo '<li>'.$error.'</li>';
-							}
-							echo '</ul>';
-						}
-					?>
-					<input type="submit" value="Save">
-				</form>
-			</div>
-			<div class="cnx">
-				<a  id="forgotten2"href="login.php" title="Login">Login</a>
-				<a id="btn3" href="index.php">Retour accueil</a>
+	<h3>FORGOT YOUR PASSWORD ?</h3>
 
-		</div>
-		</div>
-		<script src="js/jquery.js"></script>
-		<script src="js/app.js"></script>
-
-	<body>
-</html>
+	<div class="field_container">
+		<label for="password">Nouveau Mot de passe</label>
+		<input type="password" id="password" name="password" value="" />
+	</div>
+	<div class="field_container">
+		<label for="password_bis">Confirmez</label>
+		<input type="password" id="password_bis" name="password_bis" value="" />
+	</div>
+	<?php 
+		if (!empty($errors)){
+			echo '<ul class="errors">';
+			foreach($errors as $error){
+				echo '<li>'.$error.'</li>';
+			}
+			echo '</ul>';
+		}
+	?>
+	<input type="submit" value="SAVE !" class="submit"/>
+</form>
+</div>
+<?php 	include("inc/bottom.php"); ?>
