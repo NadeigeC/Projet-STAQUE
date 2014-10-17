@@ -50,7 +50,7 @@
 		<main class="mainContent">
 			<div class="topcontent">
 				<a href="questions.php"><button>Questions</button></a>
-				<a href="askquestions.php"><button>Ask Question</button></a>
+				<a href="questions.php"><button>Ask Question</button></a>
 				<!--<a href="logout.php"><button>Déconnexion</button></a>-->
 				
 			</div>

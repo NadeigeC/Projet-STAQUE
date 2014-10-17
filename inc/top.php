@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="fr" class="<?php echo $page; ?>">
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<title>Base</title>
@@ -14,7 +14,7 @@
 		
 		<?php	
 			if (userIsLogged()){
-			echo "Yo " . $_SESSION['user']['username'] . "!"; ?>
+			echo "Bonjour " . $_SESSION['user']['username'] . "!"; ?>
 			<a href="logout.php"><button>Déconnexion</button></a>
 		<?php 	}
 		else {
