@@ -7,8 +7,10 @@
 
 	//notre requête sql 
 	$sql="SELECT * 
-		  FROM questions";
-
+		  FROM questions
+		  LEFT JOIN users on users.id=questions.id_user
+		  ";
+ 	
 	//envoie la requête au serveur MySQL (statement) 3 prepare
 	$stmt=$dbh->prepare($sql);
 
@@ -16,8 +18,30 @@
 	$stmt->execute();
 
 	//récupère les résultats
-	$recueils=$stmt->fetchAll();
+	$questions=$stmt->fetchAll();
 	//print_r($results);
+	//notre requête sql 
+	$sql="SELECT vote_type
+		  FROM votes
+		  LEFT JOIN users on users.id=votes.id_user
+
+		
+		  ";
+ 	
+	//envoie la requête au serveur MySQL (statement) 3 prepare
+	$stmt=$dbh->prepare($sql);
+
+	//exécute la requête 4 execute
+	$stmt->execute();
+
+	//récupère les résultats
+	$votes=$stmt->fetchAll();
+	//print_r($results);
+
+	
+
+	
+
 
 ?>
 <?php include("inc/top.php"); ?>
@@ -31,24 +55,32 @@
 				
 			</div>
 			<div class="maindetail">
+				<?php 
+					foreach($questions as $question): 
+					
+					?>
 			 	<div class="vote">
-			 		<a>0</a>
-			 		<a>votes</a>
+			 
 			 	</div>
+			 	
 			 	<div class="questions">
-				 	<a href=""> Applications of localStorage
+				 	
+				 	<a href=""> <?php echo $question['title']; ?>
 				 	</a>
 			 		<div id="tag">
-				 		<p>Html5</p>
-				 		<p>local-storage</p>
-				 		<p>session-storage</p>
+				 		<p><?php echo $question['keyword1']; ?></p>
+				 		<p><?php echo $question['keyword2']; ?></p>
+				 		<p><?php echo $question['keyword3']; ?></p>
 				 		<div id="identification">
-					 		<a href="">asked</a>
-					 		<a href="">name</a>
-					 		<a href="">score</a>
+					 		<a>asked by</a>
+					 		<a href=""><?php echo $question['username']; ?></a>
+					 		
 				 		</div>
+						
 			 		</div>
+			 		
 			 	</div>
+ 				<?php endforeach; ?>
 			</div>
 		</main>
 		<footer>
