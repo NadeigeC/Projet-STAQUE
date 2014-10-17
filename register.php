@@ -7,10 +7,16 @@
 	include("inc/functions.php");
 
 	//déclaration des variables du formulaire
-	$email 			= "";
-	$username 		= "";
-	$password 		= "";
-	$password_bis   ="";
+	$email = "";
+    $username = "";
+    $password = "";
+    $password_bis = "";
+    $country = "";
+    $name = "";
+    $job = "";
+    $language = "";
+    $externallink = "";
+    $avatar = "";
 
 	$errors = array();
 
@@ -19,10 +25,16 @@
 		//on écrase les valeurs définies ci-dessus, tout en se protegeant
 		//pas de strip tags sur la password par contre (si la personne veut mettre des balises dans son pw, c'est son affaire, et on le hache anyway)
 		
-		$email 			= strip_tags($_POST['email']);
-		$username 		= strip_tags($_POST['username']);
-		$password 		= $_POST['password'];
-		$password_bis	= $_POST['password_bis'];
+		$email          = strip_tags($_POST['email']);
+        $username       = strip_tags($_POST['username']);
+        $name            = strip_tags($_POST['name']);
+        $password       = $_POST['password'];
+        $password_bis   = $_POST['password_bis'];
+        $country       = $_POST['country'];
+        $job       = $_POST['job'];
+        $language       = $_POST['language'];
+        $externallink       = $_POST['externallink'];
+        $avatar = $_POST['avatar'];
 
 		//validation
 
