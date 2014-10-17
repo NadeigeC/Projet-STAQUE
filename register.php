@@ -87,17 +87,24 @@
 			$token = randomString();
 
 			//sql d'insertion de l'user
-			$sql = "INSERT INTO users (email, username, password, salt, token, dateRegistered, dateModified) 
-				VALUES (:email, :username, :password, :salt, :token, NOW(), NOW())";
+			$sql = "INSERT INTO users(name, avatar, email, username, password, salt, token, dateRegistered, dateModified, job, country, language, externallink)
+                    VALUES (:name, :email, :username, :password, :salt, :token, NOW(), NOW()), :job, :country, :language, :externallink";
 
-			$stmt = $dbh->prepare($sql);
-			$stmt->bindValue(":email", $email);
-			$stmt->bindValue(":username", $username);
-			$stmt->bindValue(":password", $hashedPassword);
-			$stmt->bindValue(":salt", $salt);
-			$stmt->bindValue(":token", $token);
+                    $stmt = $dbh->prepare($sql);
+                    $stmt->bindValue(":name", $email);
+                    $stmt->bindValue(":avatar", $avatar);
+                    $stmt->bindValue(":email", $email);
+                    $stmt->bindValue(":username", $username);
+                    $stmt->bindValue(":password", $hashedPassword);
+                    $stmt->bindValue(":salt", $salt);
+                    $stmt->bindValue(":token", $token);
+                    $stmt->bindValue(":job", $job);
+                    $stmt->bindValue(":country", $country);
+                    $stmt->bindValue(":language", $language);
+                    $stmt->bindValue(":externallink", $externallink);
 
-			$stmt->execute();
+                    $stmt->execute();
+                    header("Location: index.php");
 							
 		}		
 	
