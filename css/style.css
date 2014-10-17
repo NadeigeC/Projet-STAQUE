@@ -48,7 +48,7 @@ table {
 }
 
 /* fin du reset */
-/****************************************************************************
+/*************************************************
 *********************navigation************************************
 ********************************************************************/
 #head{
@@ -77,9 +77,14 @@ table {
 	border-radius: 5px 5px 5px 5px;
 	padding: 5px;
 }
-.signup{
-	margin-left: 2%;
+.signup button{
+	margin-left: 1%;
 	margin-top: 20px;
+	display:inline-block;
+	float:left;
+	background-color: #e61d2b;
+	border-radius: 5px 5px 5px 5px;
+	padding: 5px;
 }
 #head input{
 	margin-left: 24%;
@@ -89,9 +94,13 @@ table {
 
 }
 /****************************************************************************
-*********************contenu principal************************************
+**********contenuprincipal************************************
 ********************************************************************/
-
+.topcontent{
+	float: left;
+	width: 700px;
+	height: 100px;
+}
 .mainContent{
 	width: 700px;
 	height: 500px;
@@ -108,7 +117,71 @@ table {
 	padding: 5px;
 
 }
+.maindetail{
+	clear:both;
+	float:left;
+	width: 700px;
+	height: 90px;
+}
+.vote{
+	width: 50px;
+	height: 70px;
+	float: left;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding-top: 20px;
+}
+.vote a{
+	display: inline-block;
+	float: left;
+	clear: both;
+	line-height: 20px;
+	margin-left: 11px;
+	color:#555;
+	text-align:center;
+	font-weight: bold;
+}
+.questions{
+	float: left;
+	width: 600px;
+	height: 80px;
+	padding-top: 10px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+.questions a{
+	text-decoration: none;
+	color: #6495ED;
+	font-weight: bold;
+	margin-left: 35px;
 
+
+}
+#tag {
+	margin-top: 25px;
+	margin-left: 30px;
+}
+#tag p{
+	border: 1px solid #ccc;
+	color: #3e6d8e;
+	font-weight: bold;
+	display: inline-block;
+	float: left;
+	margin-left: 9px;
+	padding: 4px;
+	background-color: #e0eaf1;
+}
+#tag p:visited{
+	color:#4a6b82 ;
+}
+#identification{
+	float: right;
+	padding-top: 10px;
+}
+#identification a{
+	margin-left:5px;
+
+}
 /****************************************************************************
 *********************footer************************************
 ********************************************************************/
@@ -130,6 +203,7 @@ table {
 .topfoot{
 	margin-top:10px;
 	margin-bottom:10px;
+	margin-left: 30px;
 }
 .topfoot a{
 	text-decoration: none;
@@ -174,6 +248,7 @@ table {
 #copy p{
 	color:#fff;
 	text-transform:capitalize;
+	margin-left: 45px;
 }
 #copy a{
 	text-decoration: none;

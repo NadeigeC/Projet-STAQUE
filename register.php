@@ -2,9 +2,9 @@
 
 
 	session_start();
-	include("../inc/top.php");
+	
 	include("db.php");
-	include("../functions.php");
+	include("inc/functions.php");
 
 	//déclaration des variables du formulaire
 	$email 			= "";
@@ -90,56 +90,12 @@
 		}		
 	
 	}
-			
+	include("inc/top.php");		
 		
 ?>
+<?php include("inc/register_form.php") ;?>
 
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<meta charset="utf-8">
-	<title>Films</title>
-	<meta name="description" content="PHP: Hypertext Preprocessor">
-	<link href="css/style.css" type="text/css" rel="stylesheet" />
-
-</head>
-
-	<body>
-		<div id="mainregister" >
-			<div id="contentregister" >
-				<form method="POST"  action="register.php" id="form_sign"novalidate>
-					<label for="pseudo">Pseudo: 
-						<input type="text" name="username" value="<?php echo $username;?>">
-					</label><br/>
-					<label for="email">Email: 
-						<input type="email" name="email" value="<?php echo $email;?>">
-					</label><br/>
-					<label for="password">Password: 
-						<input type="password" name="password" value="<?php echo $password; ?>">
-					</label><br/>
-					<label for="password_bis">Confirmed password: 
-						<input type="password" name="password_bis" value="<?php echo $password_bis; ?>">
-					</label><br/>
-					<?php 
-						if (!empty($errors)){
-							echo '<ul class="errors">';
-							foreach($errors as $error){
-								echo '<li>'.$error.'</li>';
-							}
-							echo '</ul>';
-						}
-					?>
-					<input type="submit" value="Enregister">
-					
-				</form>
-			</div>
-			<div class="cnx">
-				<a id="btn3" href="index.php">Retour accueil</a>
-				<h3>Vous avez déjà un compte ?</h3>
-				<a  id="btn4"href="login.php">Se connecter</a>
-		</div>
-		</div>
 		<script src="js/jquery.js"></script>
 		<script src="js/app.js"></script>
 
