@@ -1,29 +1,48 @@
 
+<?php
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<title>Base</title>
 	<meta name="description" content="">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<div id="wrapper">
 
 		<nav id="head">
+			<div id="connexion">
 		
-		<?php	
-			if (userIsLogged()){
-			echo "Bonjour " . $_SESSION['user']['username'] . "!"; ?>
-			<a href="logout.php"><button>Déconnexion</button></a>
-		<?php 	}
-		else {
-		?>
-			<a class="login" href="login.php"><button>Log In</button></a>
-			<a class="signup"href="register.php"><button>Sign up</button></a>
-		<?php } ?>
+				<?php	
+					if (userIsLogged()){
+					echo "Bonjour " . $_SESSION['user']['username'] . " !"; ?> |
+					<a href="logout.php">DECONNEXION</a>
+				<?php 	}
+				else {
+				?>
+					<a class="login" href="login.php">CONNEXION</a> |
+					<a class="signup"href="register.php">NOUVEAU COMPTE</a>
+				<?php } ?>
+			</div>
 			
-			<h1>Stackoverflone</h1>
-			<input type="text" name="search" value="Search">
+			<h1><a href="index.php"> <span><?php echo "< ";?></span>STAQUE <span> <?php echo "; ?>";?> </span> </a></h1>
+			<input type="text" name="search" value="Search" placeholder="Recherche" id="search">
 			
 		</nav>
+
+
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ -->
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->

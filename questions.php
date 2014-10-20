@@ -1,40 +1,96 @@
-
 <?php
-	session_start();
-
-	include("db.php");
-	include("inc/functions.php");
-	include("inc/top.php");
 
 
-	$title = "";
-	$contenu = "";
-	
-	$errors = array();
+  session_start();
+  include("db.php");
+  include("inc/functions.php");
 
-	if (!empty($_POST)){
+$sql="SELECT *
+          FROM questions
+          LEFT JOIN users on users.id=questions.id_user
+          ORDER BY dateCreated DESC
+          LIMIT 15";
 
-		$title 		= $_POST['title'];
-		$contenu 	= $_POST['contenu'];
+    //envoie la requête au serveur MySQL (statement) 3 prepare
+    $stmt=$dbh->prepare($sql);
+
+    //exécute la requête 4 execute
+    $stmt->execute();
+
+    //récupère les résultats
+    $questions=$stmt->fetchAll();
+    //print_r($results);
+
+?>
 
 
-		if (empty($title)){
-            $errors[] = "Vous devez entrer un titre !";
-        }
-        
-        if (empty($contenu)){
-            $errors[] = "Vous devez renter un contenu pour valider le formulaire !";
-        }
+<?php include("inc/top.php"); ?>
 
-		$sql = "INSERT INTO questions(title, contenu)
-                    VALUES (:title, :contenu)";
+<main class="mainContentQuestions">
+<div class="maindetail">
+        <?php
+          foreach($questions as $question):
 
-                    $stmt = $dbh->prepare($sql);
-                    $stmt->bindValue(":title", $title);
-                    $stmt->bindValue(":contenu", $contenu);
-                    $stmt->execute();
-					header("Location: index.php");
+          ?>
+        <div class="vote">
 
-}
-	
-include("askquestions.php") ;?>
+        </div>
+
+        <div class="questions">
+
+          <a href=""> <?php echo $question['title']; ?>
+          </a>
+          <div id="tag">
+            <p class="keyword">
+              <?php echo $question['keyword1']; ?>
+            </p>
+
+              <?php
+              if($question['keyword2'] == " "){ ?>
+              <p style="display:none"></p> <?php }
+              else { ?>
+              <p class="keyword"> <?php echo $question['keyword2']; ?></p>
+              <?php } ?>
+
+
+              <?php
+              if($question['keyword3'] == " "){ ?>
+              <p style="display:none"></p> <?php }
+              else { ?>
+              <p class="keyword"><?php echo $question['keyword3']; ?></p>
+              <?php } ?>
+
+
+              <?php
+              if($question['keyword4'] == " "){ ?>
+              <p style="display:none"></p> <?php }
+              else { ?>
+              <p class="keyword"><?php echo $question['keyword4']; ?></p>
+              <?php } ?>
+
+
+              <?php
+              if($question['keyword5'] == " "){ ?>
+              <p style="display:none"></p> <?php }
+              else { ?>
+              <p class="keyword"><?php echo $question['keyword5']; ?></p>
+              <?php } ?>
+
+
+
+            <div id="identification">
+              <a>asked by</a>
+              <a href=""><?php echo $question['username']; ?></a>
+
+            </div>
+
+          </div>
+
+        </div>
+        <?php endforeach; ?>
+      </div>
+      </main>
+
+
+
+      <?php include("inc/bottom.php"); ?>

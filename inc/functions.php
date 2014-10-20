@@ -62,4 +62,30 @@
 		}
 		return false;
 	}
+
+
+	function insertKeyword(){
+		global $dbh;
+
+		$sql = "SELECT * 
+		  FROM questions
+		  LEFT JOIN tags on tags.keyword=questions.keyword1
+		  LEFT JOIN tags on tags.keyword=questions.keyword2
+		  LEFT JOIN tags on tags.keyword=questions.keyword3
+		  LEFT JOIN tags on tags.keyword=questions.keyword4
+		  LEFT JOIN tags on tags.keyword=questions.keyword1
+		  ";
+
+		$stmt = $dbh->prepare($sql);
+
+		$keywords=$stmt->fetchAll();
+		echo '<pre>';
+ 		print_r($keywords);
+ 		echo '</pre>';
+		return $keywords;
+
+
+	}
+
+
 ?>

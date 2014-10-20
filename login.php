@@ -59,21 +59,5 @@
 
 <?php include("inc/top.php");
 	  include("inc/login_form.php");
-?>
+		include("inc/bottom.php"); ?>
 
-
-	
-		<div id="copy">
-			<p>Site design/ logo &copy; <?php echo date("Y"); ?> staque corporation; user  contributions licensed under <a href=""> ccby-sa 3.0</a>
-		</div>		
-	</div>
-
-				<a id="btn3" href="index.php">Retour accueil</a>
-		</div>
-		</div>
-		<script src="js/jquery.js"></script>
-		<script src="js/app.js"></script>
-
-
-	<body>
-</html>

@@ -1,10 +1,46 @@
-<?php
-
+<?php	
 
 	session_start();
 	
 	include("db.php");
 	include("inc/functions.php");
+
+	// echo '<pre>';
+ 	// print_r($_FILES);
+ 	// echo '</pre>';
+
+if (!empty($_FILES)){
+
+        $accepted = array("image/jpeg", "image/jpg", "image/gif", "image/png");
+
+        $tmp_name = $_FILES['image']['tmp_name'];
+
+        $parts = explode(".", $_FILES['image']['name']);
+        $extension = end($parts);
+        $filename = uniqid() . "." . $extension;
+        $destination = "uploads/" . $filename;
+
+        // Retourne le type mime
+        $finfo = finfo_open(FILEINFO_MIME_TYPE); 
+        $mime = finfo_file($finfo, $tmp_name);
+        finfo_close($finfo);
+
+        //mime type accepté ici ???
+        if (in_array($mime, $accepted)){
+            move_uploaded_file($tmp_name, $destination);
+
+            //manipulation de l'image
+            //avec SimpleImage
+            require("SimpleImage.php");
+
+            $img = new abeautifulsite\SimpleImage($destination);
+            $img->thumbnail(300,300)->save("uploads/avatar/" . $filename);
+            // $img->desaturate()->blur()->sketch()->save("uploads/blackandwhite/" . $filename);
+            }
+
+        }
+
+
 
 	//déclaration des variables du formulaire
 	$email = "";
@@ -18,7 +54,9 @@
     $externallink = "";
     $avatar = "";
 
-	$errors = array();
+    include("inc/top.php");	
+
+	
 
 	//formulaire soumis ?
 	if (!empty($_POST)){
@@ -27,15 +65,16 @@
 		
 		$email          = strip_tags($_POST['email']);
         $username       = strip_tags($_POST['username']);
-        $name            = strip_tags($_POST['name']);
+        $name           = strip_tags($_POST['name']);
         $password       = $_POST['password'];
         $password_bis   = $_POST['password_bis'];
-        $country       = $_POST['country'];
-        $job       = $_POST['job'];
+        $country       	= $_POST['country'];
+        $job       		= $_POST['job'];
         $language       = $_POST['language'];
-        $externallink       = $_POST['externallink'];
-        $avatar = $_POST['avatar'];
-
+        $externallink   = $_POST['externallink'];
+        $avatar 		= $_FILES['image']['name'];
+		
+		$errors = array();
 		//validation
 
 		//email
@@ -88,7 +127,7 @@
 
 			//sql d'insertion de l'user
 			$sql = "INSERT INTO users(name, avatar, email, username, password, salt, token, dateRegistered, dateModified, job, country, language, externallink)
-                    VALUES (:name, :email, :username, :password, :salt, :token, NOW(), NOW()), :job, :country, :language, :externallink";
+                    VALUES (:name, :avatar, :email, :username, :password, :salt, :token, NOW(), NOW(), :job, :country, :language, :externallink)";
 
                     $stmt = $dbh->prepare($sql);
                     $stmt->bindValue(":name", $email);
@@ -104,19 +143,15 @@
                     $stmt->bindValue(":externallink", $externallink);
 
                     $stmt->execute();
-                    header("Location: index.php");
+                    header("Location: login.php");
+
 							
 		}		
 	
 	}
-	include("inc/top.php");		
+	
 		
 ?>
 <?php include("inc/register_form.php") ;?>
 
-
-		<script src="js/jquery.js"></script>
-		<script src="js/app.js"></script>
-
-	<body>
-</html>
+<?php include("inc/bottom.php"); ?>

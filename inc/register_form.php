@@ -1,4 +1,7 @@
 
+
+<div class="mainContent">
+
 <form action="register.php" method="POST" id="register_form">
 
                 <h3>CREATION DU COMPTE UTILISATEUR</h3>
@@ -38,7 +41,7 @@
                 </div>
                 <div class="field_container">
                         <label for="avatar">Photo</label>
-                        <input type="file" name="avatar" id="avatar" value="<?php echo $avatar; ?>" />
+                        <input type="file" name="image" id="image" value="<?php echo $avatar; ?>" />
                 </div>
                 <div class="field_container">
                         <label for="language">Langues</label>
@@ -62,9 +65,14 @@
 
 
     ?>
-    <input type="submit" value="SAVE !" class="submit"/>
+    <div class="field_container">
+        <label for="sauvegarde"></label>
+        <input type="submit" value="SAUVEGARDER !" class="submit" id="sauvegarde"/>
+    </div>
 
 </form>
+</div>
+
 
 
 
