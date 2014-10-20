@@ -39,4 +39,23 @@
 
 </div>
 
+
+<div class="right-content">
+
+
+<h1> Nouveautées sur Staque.fr</h1>
+
+<img src="img/staque.png"/>
+
+<ul>
+
+    <li> Chaque membre peut <span style="em">poster</span> de nouvelles questions, <span style="em">proposer</span> une réponse aux questions existantes et <span style="em">commenter</span> à leur tour les réponses déjà données!</li>
+
+    <li> Désormais les membres enregistrés peuvent <span style="em">voter</span> pour les réponses postées!</li>
+
+
+
+
+</div>
+
 <?php include("inc/bottom.php"); ?>
