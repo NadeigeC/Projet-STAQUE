@@ -64,7 +64,7 @@ $sql = "SELECT COUNT(*) FROM questions";
 
         <div class="questions">
 
-          <a href=""> <?php echo $question['title']; ?>
+          <a href="questionsDetail.php?id=<?php echo $question['id']; ?>"> <?php echo $question['title']; ?>
           </a>
                   <div id="tag">
             <p class="keyword">
