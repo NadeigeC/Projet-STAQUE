@@ -141,7 +141,7 @@ $stmt=$dbh->prepare($sql);
 				}
 				else{
 				 ?>
-					<img src="uploads/avatar/<?php echo $users['avatar'];?>"/>
+					<img src="uploads/avatar/<?php echo $users['avatar'];?>" height="250" width="200"/>
 		<?php } ?>
 			
  			 </div></br>
