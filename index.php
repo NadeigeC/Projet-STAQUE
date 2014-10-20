@@ -99,7 +99,7 @@
 
 				 		<div id="identification">
 					 		<a>asked by</a>
-					 		<a href=""><?php echo $question['username']; ?></a>
+					 		<a href="profile.php"><?php echo $question['username']; ?></a>
 
 				 		</div>
 
