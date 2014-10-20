@@ -7,11 +7,11 @@ $id=$_SESSION['user']['id'];
 
 include("db.php");
 include("inc/functions.php");
-include("inc/top.php"); 
+include("inc/top.php");
 
 
 
-$sql="SELECT * 
+$sql="SELECT *
 	  FROM users
 	  WHERE id= :id";
 
@@ -19,18 +19,12 @@ $sql="SELECT *
 $stmt=$dbh->prepare($sql);
 
 	//exécute la requête 4 execute
-	
+
 	$stmt ->bindValue(":id", $id);
 	$stmt->execute();
 
 	//récupère les résultats
 	$users=$stmt->fetch();
-	
-
-
-
-
-
 
 ?>
 
@@ -41,7 +35,7 @@ $stmt=$dbh->prepare($sql);
  		<h1> Mon Profil </h1>
  		<a href="edit.php">Editer mon profil</a>
  		</div>
-		
+
 
 		<div class="info">
 
@@ -57,7 +51,7 @@ $stmt=$dbh->prepare($sql);
 			</label></br>
 
 
- 			<label for="pseudo"> PSEUDO: 
+ 			<label for="pseudo"> PSEUDO:
 
  			<?php if($users['username']==""){
 				echo $users['username']=" NON RENSEIGNE";
@@ -132,8 +126,6 @@ $stmt=$dbh->prepare($sql);
 			</label></br>
 
 
-
-			
 			<div id="profile-image">
 
 				<?php if(empty ($users['avatar'])){ ?>
@@ -143,7 +135,7 @@ $stmt=$dbh->prepare($sql);
 				 ?>
 					<img src="uploads/avatar/<?php echo $users['avatar'];?>" height="250" width="200"/>
 		<?php } ?>
-			
+
  			 </div></br>
 
 			</div>

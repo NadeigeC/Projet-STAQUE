@@ -5,11 +5,6 @@
 	include("db.php");
 	include("inc/functions.php");
 
-	$question['keyword2'] = "";
-	$question['keyword3'] = "";
-	$question['keyword4'] = "";
-	$question['keyword5'] = "";
-
 	//notre requête sql
 	$sql="SELECT *
 		  FROM questions
@@ -45,14 +40,6 @@
 ?>
 <?php include("inc/top.php"); ?>
 
-	<!-- <div id="join">
-    <h3> Pourquoi s'incrire sur Staque.fr?</h3>
-
-     <p> Devenir membre sur Staque, c'est la possibilité de pouvoir échanger avec la communauté. De poser de nouvelles questions, de répondre aux différents sujets et de commenter les réponses déja données. </p>
-
-     <p> La création d'un compte sur Staque est totalement gratuite! Rejoignez dès maintenant  la première plateforme francophone dédiée au développement web!</p>
-	</div> -->
-
 		<main class="mainContent">
 
 			<div class="topcontent">
@@ -61,8 +48,6 @@
 				<?php if (userIslogged()){ ?>
 				| <a href="askquestions.php">ASK QUESTION</a>
 				<?php } ?>
-
-
 
 			</div>
 			<div class="maindetail">
@@ -76,28 +61,40 @@
 
 			 	<div class="questions">
 
-				 	<a href=""> <?php echo $question['title']; ?>
+				 	<a href="questionsdetail.php"> <?php echo $question['title']; ?>
 				 	</a>
-			 		<div id="tag">
-			 			<p class="keyword">
-			 				<?php echo $question['keyword1']; ?>
-			 			</p>
+		           <div id="tag">
+            <p class="keyword">
+              <a href="questionsByKeyword.php?keyword=<?php echo $question['keyword1']; ?>" id="key1" title="Mot-clef 1"><?php echo $question['keyword1']; ?></a>
+            </p>
 
-								<?php if(!empty($question['keyword2'])){ ?>
-				 			<p class="keyword"> <?php echo $question['keyword2']; ?></p>
-				 			<?php }?>
+                <?php if(!empty($question['keyword2'])){ ?>
+              <p class="keyword">
+              <a href="questionsByKeyword.php?keyword=<?php echo $question['keyword2']; ?>" id="key2" title="Mot-clef 2"><?php echo $question['keyword2']; ?>
+                </a>
+              </p>
+              <?php }?>
 
-								<?php if(!empty($question['keyword3'])){ ?>
-				 			<p class="keyword"><?php echo $question['keyword3']; ?></p>
-								<?php }?>
+                <?php if(!empty($question['keyword3'])){ ?>
+              <p class="keyword">
+                <a href="questionsByKeyword.php?keyword=<?php echo $question['keyword3']; ?>" id="key3" title="Mot-clef 3"><?php echo $question['keyword3']; ?>
+                </a>
+              </p>
+                <?php }?>
 
-								<?php if(!empty($question['keyword4'])){ ?>
-				 			<p class="keyword"><?php echo $question['keyword4']; ?></p>
-								<?php }?>
+                <?php if(!empty($question['keyword4'])){ ?>
+              <p class="keyword">
+                <a href="questionsByKeyword.php?keyword=<?php echo $question['keyword4']; ?>" id="key4" title="Mot-clef 4"><?php echo $question['keyword4']; ?>
+                </a>
+              </p>
+                <?php }?>
 
-								<?php if(!empty($question['keyword5'])){ ?>
-				 			<p class="keyword"><?php echo $question['keyword5']; ?></p>
-								<?php }?>
+                <?php if(!empty($question['keyword5'])){ ?>
+              <p class="keyword">
+                <a href="questionsByKeyword.php?keyword=<?php echo $question['keyword1']; ?>" id="key5" title="Mot-clef 5"><?php echo $question['keyword5']; ?>
+                </a>
+              </p>
+                <?php }?>
 
 
 				 		<div id="identification">

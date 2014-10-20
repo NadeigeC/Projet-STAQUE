@@ -1,7 +1,16 @@
 <?php
+
   session_start();
   include("db.php");
   include("inc/functions.php");
+  include("inc/top.php");
+
+
+  $key = "";
+  if (!empty($_GET['keyword'])){
+    $key = $_GET['keyword'];
+  }
+
 
   $numPerPage = 6;
   $page = 1;
@@ -20,11 +29,17 @@
 $sql="SELECT *
           FROM questions
           LEFT JOIN users on users.id=questions.id_user
+          WHERE keyword1 = :keyword
+          OR keyword2 = :keyword
+          OR keyword3 = :keyword
+          OR keyword4 = :keyword
+          OR keyword5 = :keyword
           ORDER BY dateCreated DESC
           LIMIT :offset, $numPerPage";
 
     $stmt=$dbh->prepare($sql);
     $stmt->bindValue(":offset", ($page-1)*$numPerPage, PDO::PARAM_INT);
+    $stmt->bindValue(":keyword", $key);
     $stmt->execute();
     $questions=$stmt->fetchAll();
 
@@ -36,8 +51,6 @@ $sql = "SELECT COUNT(*) FROM questions";
     $totalPages = ceil($totalNumber / $numPerPage); //arrondi par le haut
 
 ?>
-
-<?php include("inc/top.php"); ?>
 
 <main class="mainContentQuestions">
 <div class="maindetail">
@@ -53,7 +66,7 @@ $sql = "SELECT COUNT(*) FROM questions";
 
           <a href=""> <?php echo $question['title']; ?>
           </a>
-          <div id="tag">
+                  <div id="tag">
             <p class="keyword">
               <a href="questionsByKeyword.php?keyword=<?php echo $question['keyword1']; ?>" id="key1" title="Mot-clef 1"><?php echo $question['keyword1']; ?></a>
             </p>
@@ -101,45 +114,26 @@ $sql = "SELECT COUNT(*) FROM questions";
 
 <div id="pagination">
                       <?php if($page >= 2){ ?>
-                            <a href="questions.php?page=<?php echo strtolower($direction); ?>&page=<?php echo $page - 1 ?>">Page précédente</a>
+                            <a href="questionsByKeyword.php?page=<?php echo strtolower($direction); ?>&<?php echo $_SERVER['QUERY_STRING']; ?>&page=<?php echo $page - 1 ?>">Page précédente</a>
                       <?php } ?>
 
-                                    <a href="questions.php?dir=<?php echo strtolower($direction); ?>&page=1"><<</a>
+                                    <a href="questionsByKeyword.php?dir=<?php echo strtolower($direction); ?>&<?php echo $_SERVER['QUERY_STRING']; ?>&page=1"><<</a>
                       <?php
-                          for($i= ($page-5); $i < ($page+5); $i++){
+                          for($i= ($page-2); $i < ($page+2); $i++){
                             if($i <1 || $i > $totalPages){continue;}
-                          echo '<a href="questions.php?dir=' .strtolower($direction) . '&page=' . $i .'">' .$i . '</a>';
+                          echo '<a href="questionsByKeyword.php?dir=' .strtolower($direction) . '&page=' . $i .'">' .$i . '</a>';
 
                         }
                         ?>
-                            <a href="questions.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $totalPages; ?>">>></a>
+                            <a href="questionsByKeyword.php?dir=<?php echo strtolower($direction); ?>&<?php echo $_SERVER['QUERY_STRING']; ?>&page=<?php echo $totalPages; ?>">>></a>
 
                       <?php if($page < $totalPages){ ?>
-                            <a href="questions.php?page=<?php echo strtolower($direction); ?>&page=<?php echo $page + 1 ?>">Page suivante</a>
+                            <a href="questionsByKeyword.php?page=<?php echo strtolower($direction); ?>&<?php echo $_SERVER['QUERY_STRING']; ?>&page=<?php echo $page + 1 ?>">Page suivante</a>
                       <?php } ?>
                       </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </main>
-
 
 
       <?php include("inc/bottom.php"); ?>
