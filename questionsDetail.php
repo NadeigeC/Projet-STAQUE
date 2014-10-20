@@ -6,6 +6,9 @@
     include("inc/functions.php");
     include("inc/top.php");
 
+
+    
+
 $id = "";
 if (!empty($_GET['id'])){
     $id = $_GET['id'];
@@ -28,10 +31,12 @@ $sql="SELECT *
 <div class="maindetail">
 
         <div id="questionDetail">
-            <h3><?php echo $question['title']; ?></h3>
+            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['id']; ?></h3>  
 
-            <?php echo $question['$contenu']; ?>
-
+            <div id="contenu">
+            <pre><?php echo $question['contenu']; ?></pre>
+            <div>
+<div id="tag">
             <p class="keyword">
               <?php echo $question['keyword1']; ?>
             </p>
@@ -62,28 +67,18 @@ $sql="SELECT *
                 <?php echo $question['keyword1']; ?>
                 </a>
               </p>
-                <?php }?>
+            <?php }?>
+
+          </div>  
 
         </div>
+      </div>
+
+      
+        
+<?php include("repondre.php") ?>
 
 
-
-<form action="repondre.php" method="POST">
-
-        <?php
-                if (!empty($errors)){
-                    echo '<ul class="errors">';
-                    foreach($errors as $error){
-                        echo '<li>'.$error.'</li>';
-                    }
-                    echo '</ul>';
-                }
-        ?>
-        <div class="field_container">
-            <label for="quest"></label>
-            <input type="submit" value="POSTER LA QUESTION !" id="quest">
-        </div>
-</form>
 </div>
 </main>
 
