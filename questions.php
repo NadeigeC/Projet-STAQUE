@@ -1,28 +1,45 @@
 <?php
-
-
   session_start();
   include("db.php");
   include("inc/functions.php");
+
+  $numPerPage = 15;
+  $page = 1;
+
+  if (!empty($_GET['page'])){
+        $page = $_GET['page'];
+      }
+
+  $offset = ($page-1)*$numPerPage;
+
+  $direction = "ASC";
+  if (!empty($_GET['dir'])){
+    if ($_GET['dir'] === "desc"){
+      $direction = "DESC";
 
 $sql="SELECT *
           FROM questions
           LEFT JOIN users on users.id=questions.id_user
           ORDER BY dateCreated DESC
-          LIMIT 15";
+          LIMIT :offset, $numPerPage";
 
-    //envoie la requête au serveur MySQL (statement) 3 prepare
     $stmt=$dbh->prepare($sql);
-
-    //exécute la requête 4 execute
+    $stmt->bindValue(":offset", ($page-1)*$numPerPage, PDO::PARAM_INT);
     $stmt->execute();
-
-    //récupère les résultats
     $questions=$stmt->fetchAll();
-    //print_r($results);
+
+
+$sql = "SELECT COUNT(*) FROM questions";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $totalNumber = $stmt->fetchColumn();
+    $totalPages = ceil($totalNumber / $numPerPage); //arrondi par le haut
+
+
+    }
+  }
 
 ?>
-
 
 <?php include("inc/top.php"); ?>
 
@@ -89,6 +106,41 @@ $sql="SELECT *
         </div>
         <?php endforeach; ?>
       </div>
+
+
+<?php
+    for($i= ($page-5); $i < ($page+5); $i++){
+      if($i <1 || $i > $totalPages){continue;}
+    echo '<a href="questions.php?dir=' .strtolower($direction) . '&page=' . $i .'">' .$i . '</a>';
+
+  }
+  ?>
+
+      <a href="questions.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $totalPages; ?>">>></a>
+
+<?php if($page >= 2){ ?>
+      <a href="questions.php?page=<?php echo strtolower($direction); ?>&page=<?php echo $page - 1 ?>">Page précédente</a>
+<?php } ?>
+
+<?php if($page < $totalPages){ ?>
+      <a href="questions.php?page=<?php echo strtolower($direction); ?>&page=<?php echo $page + 1 ?>">Page suivante</a>
+<?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </main>
 
 

@@ -10,9 +10,6 @@
 	$question['keyword4'] = "";
 	$question['keyword5'] = "";
 
-
-
-
 	//notre requête sql
 	$sql="SELECT *
 		  FROM questions
