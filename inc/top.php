@@ -24,7 +24,8 @@
 
 				<?php
 					if (userIsLogged()){
-					echo "Bonjour " . $_SESSION['user']['username'] . " !"; ?> |
+					echo "Bonjour " .'<a href="profile.php">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
+					<a href="profile.php"></a> |
 					<a href="logout.php">DECONNEXION</a>
 				<?php 	}
 				else {
