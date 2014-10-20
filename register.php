@@ -8,7 +8,18 @@
  	// print_r($_FILES);
  	// echo '</pre>';
 
+ 	$imageUpload=1;
+
 if (!empty($_FILES)){
+	
+	if($_FILES['image']['error']==4){
+		$imageUpload=0;
+	}
+
+
+	if ($imageUpload==1){
+
+
 
         $accepted = array("image/jpeg", "image/jpg", "image/gif", "image/png");
 
@@ -38,6 +49,7 @@ if (!empty($_FILES)){
             }
         }
 
+	}
 
 	//déclaration des variables du formulaire
 	$email = "";
@@ -69,7 +81,10 @@ if (!empty($_FILES)){
         $job       		= $_POST['job'];
         $language       = $_POST['language'];
         $externallink   = $_POST['externallink'];
-        $avatar 		= $filename;
+
+        if ($imageUpload==1){
+        $avatar = $filename;
+    		}
 
 		$errors = array();
 		//validation

@@ -86,9 +86,9 @@
 <img src="img/staque.png"/>
 
 <ul>
-    <li> Devenir membre sur Staque, c'est la possibilité de pouvoir échanger avec la communauté. De poser de nouvelles questions, de répondre aux différents sujets et de commenter les réponses déja données.</li>
+    <li> Devenir membre sur Staque, c'est la possibilité de pouvoir <span style="em">échanger</span> avec la communauté. De poser de nouvelles questions, de<span style="em"> répondre</span> aux différents sujets et de <span style="em">commenter</span> les réponses déja données.</li>
 
-    <li>La création d'un compte sur Staque est totalement gratuite! Rejoignez dès maintenant la première plateforme francophone dédiée au développement web!</li>
+    <li>La <span style="em">création</span> d'un compte sur Staque est totalement gratuite! <span style="em">Rejoignez</span> dès maintenant la première plateforme francophone dédiée au développement web!</li>
 </ul>
 
 
