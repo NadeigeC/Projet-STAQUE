@@ -236,7 +236,9 @@ form h3{
 	width: 1000px;
 	height: 600px;
 	border: 3px solid #888;
-	margin:50px auto;
+	position:relative;
+	/*margin:50px auto; test a remettre si pb !! */
+	margin:100px;/* modif jeremy pour placer cadre avantages inscription staque*/
 }
 
 .mainContentQuestions{
@@ -417,6 +419,8 @@ h1{
 	font-weight: 700;
 	text-align: center;
 	color:#3e6d8e;
+	margin-bottom: 20px;
+	margin-top:50px;
 
 }
 
@@ -444,9 +448,47 @@ padding-left: 10%;
 
 
 
-
-position: absolute;
-right: 25%;
-top: 25%;
+position:absolute;
+right: 10%;
+top: 33%;
 }
 
+
+/****************************************************************************
+**********BRIEF AVANTAGE INSCRIPTION**************************
+********************************************************************/
+
+.right-content{
+
+
+border: 3px solid #888;
+height: 600px;
+width: 400px;
+top: 20.5%;
+left: 73%;
+position: absolute;
+
+}
+
+.right-content h1{
+
+	font-size:22px;
+	color:black;
+}
+
+.right-content li{
+
+margin-bottom: 5%;
+margin-left: 3%;
+margin-right: 3%;
+text-align: justify;
+
+}
+
+.right-content img{
+
+	margin-top:20px;
+	margin-left:50px;
+	margin-bottom:50px;
+	
+}

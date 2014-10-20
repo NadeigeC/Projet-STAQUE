@@ -69,7 +69,7 @@ if (!empty($_FILES)){
         $job       		= $_POST['job'];
         $language       = $_POST['language'];
         $externallink   = $_POST['externallink'];
-        $avatar 		= $_FILES['image']['name'];
+        $avatar 		= $filename;
 
 		$errors = array();
 		//validation

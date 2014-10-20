@@ -70,7 +70,28 @@
         <input type="submit" value="SAUVEGARDER !" class="submit" id="sauvegarde"/>
     </div>
 
+
 </form>
+
+
+</div>
+
+
+
+<div class="right-content">
+
+
+<h1> Pourquoi s'inscrire sur Staque.fr? </h1>
+
+<img src="img/staque.png"/>
+
+<ul>
+    <li> Devenir membre sur Staque, c'est la possibilité de pouvoir échanger avec la communauté. De poser de nouvelles questions, de répondre aux différents sujets et de commenter les réponses déja données.</li>
+
+    <li>La création d'un compte sur Staque est totalement gratuite! Rejoignez dès maintenant la première plateforme francophone dédiée au développement web!</li>
+</ul>
+
+
 </div>
 
 
