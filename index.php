@@ -83,37 +83,21 @@
 			 				<?php echo $question['keyword1']; ?>
 			 			</p>
 
-				 			<?php
-				 			if($question['keyword2'] == " "){ ?>
-				 			<p style="display:none"></p> <?php }
-				 			else { ?>
+								<?php if(!empty($question['keyword2'])){ ?>
 				 			<p class="keyword"> <?php echo $question['keyword2']; ?></p>
-				 		 	<?php } ?>
+				 			<?php }?>
 
-
-				 			<?php
-				 			if($question['keyword3'] == " "){ ?>
-				 			<p style="display:none"></p> <?php }
-				 			else { ?>
+								<?php if(!empty($question['keyword3'])){ ?>
 				 			<p class="keyword"><?php echo $question['keyword3']; ?></p>
-				 			<?php } ?>
+								<?php }?>
 
-
-				 			<?php
-				 			if($question['keyword4'] == " "){ ?>
-				 			<p style="display:none"></p> <?php }
-				 			else { ?>
+								<?php if(!empty($question['keyword4'])){ ?>
 				 			<p class="keyword"><?php echo $question['keyword4']; ?></p>
-				 			<?php } ?>
+								<?php }?>
 
-
-				 			<?php
-				 			if($question['keyword5'] == " "){ ?>
-				 			<p style="display:none"></p> <?php }
-				 			else { ?>
+								<?php if(!empty($question['keyword5'])){ ?>
 				 			<p class="keyword"><?php echo $question['keyword5']; ?></p>
-				 			<?php } ?>
-
+								<?php }?>
 
 
 				 		<div id="identification">

@@ -21,8 +21,8 @@
 
 		<nav id="head">
 			<div id="connexion">
-		
-				<?php	
+
+				<?php
 					if (userIsLogged()){
 					echo "Bonjour " . $_SESSION['user']['username'] . " !"; ?> |
 					<a href="logout.php">DECONNEXION</a>
@@ -33,10 +33,10 @@
 					<a class="signup"href="register.php">NOUVEAU COMPTE</a>
 				<?php } ?>
 			</div>
-			
-			<h1><a href="index.php"> <span><?php echo "< ";?></span>STAQUE <span> <?php echo "; ?>";?> </span> </a></h1>
+
+			<h1><a href="index.php"> <span>&lt;?= </span>STAQUE <span> <?php echo "; ?>";?> </span> </a></h1>
 			<input type="text" name="search" value="Search" placeholder="Recherche" id="search">
-			
+
 		</nav>
 
 

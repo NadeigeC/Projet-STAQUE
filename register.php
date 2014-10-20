@@ -1,7 +1,6 @@
-<?php	
-
+<?php
 	session_start();
-	
+
 	include("db.php");
 	include("inc/functions.php");
 
@@ -21,7 +20,7 @@ if (!empty($_FILES)){
         $destination = "uploads/" . $filename;
 
         // Retourne le type mime
-        $finfo = finfo_open(FILEINFO_MIME_TYPE); 
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $mime = finfo_file($finfo, $tmp_name);
         finfo_close($finfo);
 
@@ -37,9 +36,7 @@ if (!empty($_FILES)){
             $img->thumbnail(300,300)->save("uploads/avatar/" . $filename);
             // $img->desaturate()->blur()->sketch()->save("uploads/blackandwhite/" . $filename);
             }
-
         }
-
 
 
 	//déclaration des variables du formulaire
@@ -54,15 +51,15 @@ if (!empty($_FILES)){
     $externallink = "";
     $avatar = "";
 
-    include("inc/top.php");	
+    include("inc/top.php");
 
-	
+
 
 	//formulaire soumis ?
 	if (!empty($_POST)){
 		//on écrase les valeurs définies ci-dessus, tout en se protegeant
 		//pas de strip tags sur la password par contre (si la personne veut mettre des balises dans son pw, c'est son affaire, et on le hache anyway)
-		
+
 		$email          = strip_tags($_POST['email']);
         $username       = strip_tags($_POST['username']);
         $name           = strip_tags($_POST['name']);
@@ -73,7 +70,7 @@ if (!empty($_FILES)){
         $language       = $_POST['language'];
         $externallink   = $_POST['externallink'];
         $avatar 		= $_FILES['image']['name'];
-		
+
 		$errors = array();
 		//validation
 
@@ -145,12 +142,12 @@ if (!empty($_FILES)){
                     $stmt->execute();
                     header("Location: login.php");
 
-							
-		}		
-	
+
+		}
+
 	}
-	
-		
+
+
 ?>
 <?php include("inc/register_form.php") ;?>
 

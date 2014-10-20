@@ -1,26 +1,26 @@
 
-<form action="askquestions.php" id="askQuestions" method="POST" enctype="multipart/form-data" >
+<form action="askquestions.php" id="askQuestions" method="POST" >
 
             <h3>POSEZ VOTRE QUESTION</h3>
 
 
         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 
-                
+
         <div class="field_container">
         <label for="title">TITRE</label>
         	<input type="text" value="<?php echo $title; ?>" placeholder="Entrez le titre de la question" name="title" id="title">
-        
+
         </div>
 
         <div class="field_container">
         <label for="contenu">VOTRE CONTENU</label>
         	<textarea value="<?php echo $contenu; ?>" id="contenu" cols="87" rows="10" name="contenu">
          	</textarea>
-        
+
         </div>
 
-        
+
             <div class="field_container" class="keywords">
                 <label for="keyword1">MOT-CLEF 1</label>
                     <input type="text" id="keyword1" name="keyword1" value="<?php echo $keyword1; ?>">
@@ -46,7 +46,7 @@
                               <option value="">Mot-clef 3</option>
                               <option value=""><?php  $keyword3; ?></option>
                 </select> -->
-            
+
             </div>
 
             <div class="field_container" class="keywords">
@@ -56,7 +56,7 @@
                               <option value="">Mot-clef 4</option>
                               <option value=""><?php insertKeyword($keyword4); ?></option>
                 </select> -->
-            
+
             </div>
 
             <div class="field_container" class="keywords">
@@ -66,9 +66,9 @@
                               <option value="">Mot-clef 5</option>
                               <option value=""><?php echo $keyword5; ?></option>
                 </select> -->
-            
+
             </div>
-        
+
 
         <?php
                 if (!empty($errors)){
@@ -83,9 +83,8 @@
             <label for="quest"></label>
             <input type="submit" value="POSTER LA QUESTION !" id="quest">
         </div>
- 
+
 
 </form>
 
 
-        

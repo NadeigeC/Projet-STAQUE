@@ -2,7 +2,7 @@
 
 <div class="mainContent">
 
-<form action="register.php" method="POST" id="register_form">
+<form action="register.php" method="POST" id="register_form" enctype="multipart/form-data" >
 
                 <h3>CREATION DU COMPTE UTILISATEUR</h3>
 
@@ -53,7 +53,7 @@
                 </div>
                 </div>
 
-                
+
     <?php
         if (!empty($errors)){
             echo '<ul class="errors">';

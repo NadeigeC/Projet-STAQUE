@@ -3,7 +3,7 @@
   include("db.php");
   include("inc/functions.php");
 
-  $numPerPage = 15;
+  $numPerPage = 6;
   $page = 1;
 
   if (!empty($_GET['page'])){
@@ -15,8 +15,8 @@
   $direction = "ASC";
   if (!empty($_GET['dir'])){
     if ($_GET['dir'] === "desc"){
-      $direction = "DESC";
-
+      $direction = "DESC";}
+}
 $sql="SELECT *
           FROM questions
           LEFT JOIN users on users.id=questions.id_user
@@ -34,10 +34,6 @@ $sql = "SELECT COUNT(*) FROM questions";
     $stmt->execute();
     $totalNumber = $stmt->fetchColumn();
     $totalPages = ceil($totalNumber / $numPerPage); //arrondi par le haut
-
-
-    }
-  }
 
 ?>
 
@@ -62,37 +58,21 @@ $sql = "SELECT COUNT(*) FROM questions";
               <?php echo $question['keyword1']; ?>
             </p>
 
-              <?php
-              if($question['keyword2'] == " "){ ?>
-              <p style="display:none"></p> <?php }
-              else { ?>
+                <?php if(!empty($question['keyword2'])){ ?>
               <p class="keyword"> <?php echo $question['keyword2']; ?></p>
-              <?php } ?>
+              <?php }?>
 
-
-              <?php
-              if($question['keyword3'] == " "){ ?>
-              <p style="display:none"></p> <?php }
-              else { ?>
+                <?php if(!empty($question['keyword3'])){ ?>
               <p class="keyword"><?php echo $question['keyword3']; ?></p>
-              <?php } ?>
+                <?php }?>
 
-
-              <?php
-              if($question['keyword4'] == " "){ ?>
-              <p style="display:none"></p> <?php }
-              else { ?>
+                <?php if(!empty($question['keyword4'])){ ?>
               <p class="keyword"><?php echo $question['keyword4']; ?></p>
-              <?php } ?>
+                <?php }?>
 
-
-              <?php
-              if($question['keyword5'] == " "){ ?>
-              <p style="display:none"></p> <?php }
-              else { ?>
+                <?php if(!empty($question['keyword5'])){ ?>
               <p class="keyword"><?php echo $question['keyword5']; ?></p>
-              <?php } ?>
-
+                <?php }?>
 
 
             <div id="identification">
@@ -105,26 +85,31 @@ $sql = "SELECT COUNT(*) FROM questions";
 
         </div>
         <?php endforeach; ?>
-      </div>
 
 
-<?php
-    for($i= ($page-5); $i < ($page+5); $i++){
-      if($i <1 || $i > $totalPages){continue;}
-    echo '<a href="questions.php?dir=' .strtolower($direction) . '&page=' . $i .'">' .$i . '</a>';
+<div id="pagination">
+                      <?php if($page >= 2){ ?>
+                            <a href="questions.php?page=<?php echo strtolower($direction); ?>&page=<?php echo $page - 1 ?>">Page précédente</a>
+                      <?php } ?>
 
-  }
-  ?>
+                                    <a href="questions.php?dir=<?php echo strtolower($direction); ?>&page=1"><<</a>
+                      <?php
+                          for($i= ($page-5); $i < ($page+5); $i++){
+                            if($i <1 || $i > $totalPages){continue;}
+                          echo '<a href="questions.php?dir=' .strtolower($direction) . '&page=' . $i .'">' .$i . '</a>';
 
-      <a href="questions.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $totalPages; ?>">>></a>
+                        }
+                        ?>
+                            <a href="questions.php?dir=<?php echo strtolower($direction); ?>&page=<?php echo $totalPages; ?>">>></a>
 
-<?php if($page >= 2){ ?>
-      <a href="questions.php?page=<?php echo strtolower($direction); ?>&page=<?php echo $page - 1 ?>">Page précédente</a>
-<?php } ?>
+                      <?php if($page < $totalPages){ ?>
+                            <a href="questions.php?page=<?php echo strtolower($direction); ?>&page=<?php echo $page + 1 ?>">Page suivante</a>
+                      <?php } ?>
+                      </div>
+</div>
 
-<?php if($page < $totalPages){ ?>
-      <a href="questions.php?page=<?php echo strtolower($direction); ?>&page=<?php echo $page + 1 ?>">Page suivante</a>
-<?php } ?>
+
+
 
 
 
