@@ -58,13 +58,13 @@ body{
 
 h1 a{
 	font-family: 'Play', sans-serif;
-	font-size: 2em;
+	font-size: 1.5em;
 	text-decoration: none;
 	color: #fff;
 }
 h1:hover a{
 	font-family: 'Play', sans-serif;
-	font-size: 2em;
+	font-size: 1.5em;
 	text-decoration: none;
 	color: #00f;
 }
