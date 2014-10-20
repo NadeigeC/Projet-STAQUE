@@ -408,6 +408,9 @@ form h3{
 **********PROFIL************************************
 ********************************************************************/
 
+
+
+
 h1{
 	font-size: 20px;
 	text-transform: uppercase;
@@ -416,3 +419,34 @@ h1{
 	color:#3e6d8e;
 
 }
+
+
+
+.profilemenu{
+	padding: 25px;
+}
+
+
+.info{
+
+padding-top: 5%;
+padding-left: 10%;
+}
+
+.info label{
+
+	padding-bottom:3%;
+	font-weight: 700;
+	color:#2980b9;
+}
+
+#profile-image{
+
+
+
+
+position: absolute;
+right: 25%;
+top: 25%;
+}
+
