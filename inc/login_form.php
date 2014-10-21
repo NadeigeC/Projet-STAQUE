@@ -43,7 +43,7 @@
 <div class="right-content">
 
 
-<h1> Nouveautées sur Staque.fr</h1>
+<h1> Nouveautés sur Staque.fr</h1>
 
 <img src="img/staque.png"/>
 
