@@ -92,11 +92,17 @@ $sql = "SELECT COUNT(*) FROM questions";
             <div id="identification">
               <a>asked by</a>
               <?php 
-              if (empty($question['name'])){
+              if (empty ($question['name'])){
                 echo "profil supprimé";
-              }else {
-                echo "<a href='profile.php'>".$question['name']."</a>";
-              }?>
+
+              }else 
+
+              {
+
+               echo "<a href='profile.php?id=".$question['idUser']."'>".$question['name']."</a>";
+
+                }?>
+
               </a>
 
             </div>
