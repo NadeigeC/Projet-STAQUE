@@ -2,7 +2,8 @@
 
 session_start();
 
-$id=$_SESSION['user']['id'];
+$id=$_GET['id'];
+
 
 
 include("db.php");
@@ -33,9 +34,17 @@ $stmt=$dbh->prepare($sql);
 
 		<div class="profilemenu">
  		<h1> Mon Profil </h1>
+
+ 		
+
+<?php 
+
+if (userIsLogged()) { ?>
+
  		<a href="edit.php">Editer mon profil</a>
  		</div>
-
+ 		
+<?php } ?>
 
 		<div class="info">
 
@@ -79,6 +88,12 @@ $stmt=$dbh->prepare($sql);
 			<?php echo date("d-m-Y à H:i",strtotime($users['dateRegistered']));?>
 			</label></br>
 
+			<label for="dateModified"> DERNIERE MISE A JOUR:
+
+              <?php echo date("d-m-Y à H:i",strtotime($users['dateModified']));?>
+
+			</label></br>
+
 
 			<label for="country"> METIER:
 
@@ -119,12 +134,9 @@ $stmt=$dbh->prepare($sql);
               <?php if($users['externallink']==""){
 				echo "http://".$users['externallink']="";
 			}
-			else echo $users['language'];
+			else echo $users['externallink'];
 
 			?>
-
-			</label></br>
-
 
 			<div id="profile-image">
 

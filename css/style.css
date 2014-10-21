@@ -254,12 +254,14 @@ form h3{
 **********contenuprincipal************************************
 ********************************************************************/
 .mainContent{
-	width: 1000px;
+	width: 60%;
 	height: 600px;
-	border: 3px solid #888;
+	border: 3px solid black;
 	position:relative;
 	/*margin:50px auto; test a remettre si pb !! */
 	margin:100px;/* modif jeremy pour placer cadre avantages inscription staque*/
+
+	box-shadow: 10px 10px 5px #656565;
 }
 
 .mainContentQuestions{
@@ -288,8 +290,8 @@ form h3{
 .maindetail{
 	clear:both;
 	float:left;
-	width: 1000px;
-	height: 90px;
+	width: 50%;
+	height: 10%;
 }
 .vote{
 	width: 50px;
@@ -482,12 +484,13 @@ top: 33%;
 .right-content{
 
 
-border: 3px solid #888;
+border: 3px solid black;
 height: 600px;
 width: 400px;
 top: 20.5%;
 left: 73%;
 position: absolute;
+box-shadow: 10px 10px 5px #656565;
 
 }
 
@@ -527,4 +530,90 @@ text-align: justify;
 **********search bar top.php**************************
 ********************************************************************/
 
+#searchbar {
+	float: right;
+	margin-top: -35px;
+}
+#searchbar a {
+	transition: background .5s;
+}
 
+#searchbar input[type=text] {
+	float: right;
+	border: 1px solid #ccc;
+	border-radius: 15px 0 0 15px;
+	box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
+	height: 28px;
+	width: 130px;
+	padding: 0 10px 0 32px;
+	outline: 0;
+	text-align: right;
+	transition: width .3s;
+}
+#searchbar input[type=text]:focus {
+	width: 140px;
+}
+#searchbar input[type=text]::-webkit-input-placeholder {
+	font-style: italic;
+}
+#searchbar input[type=text]:-ms-input-placeholder {
+	font-style: italic;
+}
+#searchbar input[type=text]:-moz-placeholder {
+	font-style: italic;
+}
+#searchbar input[type=text]::-moz-placeholder {
+	font-style: italic;
+}
+#searchbar input[type=text]:focus::-webkit-input-placeholder {
+	opacity: 0.5;
+}
+#searchbar input[type=text]:focus:-ms-input-placeholder {
+	opacity: 0.5;
+}
+#searchbar input[type=text]:focus:-moz-placeholder {
+	opacity: 0.5;
+}
+#searchbar input[type=text]:focus::-moz-placeholder {
+	opacity: 0.5;
+}
+
+#searchbar input[type=submit] {
+	background: url(../img/loupe.png) no-repeat center;
+	border: 0;
+	float: left;
+	width: 28px;
+	height: 28px;
+	position: relative;
+	left: 36px;
+	top: 2px;
+}
+
+
+
+
+
+
+
+
+/****************************************************************************
+**********EDIT PROFILE************************************
+********************************************************************/
+#edit-image{
+	top: 20%;
+position: absolute;
+left: 80%;
+overflow: hidden;
+
+}
+
+
+#edit-image a{
+	font-size:75%;
+}
+
+#edit-image img{
+
+	height:100%;
+	width:100%;
+}

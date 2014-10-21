@@ -100,11 +100,16 @@
 
 
 				 		<div id="identification">
-					 		<a>asked by</a>
-					 		<a href="profile.php"><?php echo $question['username']; ?></a>
+              <a>asked by</a>
+              <?php 
+              if (empty($question['name'])){
+                echo "profil supprimé";
+              }else {
+                echo "<a href='profile.php?id=".$question['idUser']."'>".$question['name']."</a>";
+              }?>
+              </a>
 
-				 		</div>
-
+            </div>
 			 		</div>
 
 			 	</div>

@@ -1,6 +1,10 @@
 
 <?php 
+
  session_start();
+
+
+
 
  include("inc/functions.php");
  include("db.php");
@@ -9,6 +13,8 @@
 
 
     //déclaration des variables du formulaire
+
+if (userIsLogged()){ 
     $email = $_SESSION['user']['email'];
     $username =$_SESSION['user']['username'];
     $country = $_SESSION['user']['country'];
@@ -16,8 +22,23 @@
     $job = $_SESSION['user']['job'];
     $language =$_SESSION['user']['language'];
     $externallink = "";
+
+}
+else{
+ $email = $_GET['email'];
+    $username =$_GET['username'];
+    $country = $_GET['country'];
+    $name = $_GET['name'];
+    $job = $_GET['job'];
+    $language =$_GET['language'];
+    $externallink =$_GET['externallink'];
+
+}
+
+
     
- 
+
+
 
 
 
@@ -143,6 +164,20 @@
                         <label for="externallink">Liens Externes</label>
                         <input type="text" name="externallink" id="externallink" value="<?php echo $externallink; ?>" />
                 </div>
+
+                    <div id="edit-image">
+
+                <?php if(empty ($users['avatar'])){ ?>
+                    <img src="uploads/avatar/1.jpg"/><?php
+                }
+                else{
+                 ?>
+                    <img src="uploads/avatar/<?php echo $users['avatar'];?>" />
+        <?php } ?>
+                    <a href="editimage.php">Importer une nouvelle image</a>
+
+             </div></br>
+
                 </div>
 
 
@@ -167,10 +202,14 @@
     </div>
 
 
-</form>
+
 
 
 </div>
+
+</form>
+
+
 
 
 <?php include("inc/bottom.php"); ?>

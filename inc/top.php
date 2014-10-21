@@ -24,7 +24,7 @@
 
 				<?php
 					if (userIsLogged()){
-					echo "Bonjour " .'<a href="profile.php">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
+					echo "Bonjour " .'<a href="profile.php?id='.$_SESSION['user']['id'].'">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
 					<a href="profile.php"></a> |
 					<a href="logout.php">DECONNEXION</a>
 				<?php 	}
@@ -36,9 +36,14 @@
 			</div>
 
 			<h1><a href="index.php"> <span>&lt;?= </span>STAQUE <span> <?php echo "; ?>";?> </span> </a></h1>
-			<input type="text" name="search" value="Search" placeholder="Recherche" id="search">
+					
 
 		</nav>
+					<form id="searchbar">
+						<input type="text" placeholder="Rechercher">
+						<input type="submit" value="">
+					</form>
+
 
 
 
