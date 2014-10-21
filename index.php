@@ -6,7 +6,9 @@
 	include("inc/functions.php");
 
 	//notre requête sql
-	$sql="SELECT *
+	$sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, 
+	questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5,
+	users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
 		  FROM questions
 		  LEFT JOIN users on users.id=questions.id_user
 		  ORDER BY dateCreated DESC
@@ -61,7 +63,7 @@
 
 			 	<div class="questions">
 
-				 	<a href="questionsDetail.php?id=<?php echo $question['id']; ?>"> <?php echo $question['title']; ?>
+				 	<a href="questionsDetail.php?id=<?php echo $question['questId']; ?>"> <?php echo $question['title']; ?>
 				 	</a>
 		           <div id="tag">
             <p class="keyword">

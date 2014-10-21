@@ -89,7 +89,7 @@ h1:hover span{
 }
 
 
-#head, #footer{
+#head{
 	background-color: rgba(0,0,102,0.8);
 	color:#fff;
 	width: 100%;
@@ -98,6 +98,15 @@ h1:hover span{
 	padding: 70px auto;
 	margin: auto;
 }
+
+#footer{
+	background-color: rgba(0,0,102,0.8);
+	color:#fff;
+	width: 100%;
+	position:relative; 
+	bottom:-100px;
+}
+
 
 #logo{
 	padding-top: 50px;
@@ -149,6 +158,17 @@ h1:hover span{
 	margin: auto;
 	padding: 10px;
 	text-align: center;
+}
+
+#questionDetail h3{
+	clear: both;
+	font-size: 2em;
+	font-weight: 700;
+	padding: 5px;
+}
+
+#contenu{
+	padding: 15px;
 }
 
 /****************************************************************************
