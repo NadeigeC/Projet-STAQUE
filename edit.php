@@ -1,69 +1,22 @@
 
 <?php 
  session_start();
- include("inc/functions.php");
 
+ include("inc/functions.php");
+ include("db.php");
  include("inc/top.php");
      
-// echo '<pre>';
-    // print_r($_FILES);
-    // echo '</pre>';
 
-    $imageUpload=1;
-
-if (!empty($_FILES)){
-    
-    if($_FILES['image']['error']==4){
-        $imageUpload=0;
-    }
-
-
-    if ($imageUpload==1){
-
-
-
-        $accepted = array("image/jpeg", "image/jpg", "image/gif", "image/png");
-
-        $tmp_name = $_FILES['image']['tmp_name'];
-
-        $parts = explode(".", $_FILES['image']['name']);
-        $extension = end($parts);
-        $filename = uniqid() . "." . $extension;
-        $destination = "uploads/" . $filename;
-
-        // Retourne le type mime
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mime = finfo_file($finfo, $tmp_name);
-        finfo_close($finfo);
-
-        //mime type accepté ici ???
-        if (in_array($mime, $accepted)){
-            move_uploaded_file($tmp_name, $destination);
-
-            //manipulation de l'image
-            //avec SimpleImage
-            require("SimpleImage.php");
-
-            $img = new abeautifulsite\SimpleImage($destination);
-            $img->thumbnail(300,300)->save("uploads/avatar/" . $filename);
-            // $img->desaturate()->blur()->sketch()->save("uploads/blackandwhite/" . $filename);
-            }
-        }
-
-    }
 
     //déclaration des variables du formulaire
-    $email = "";
-    $username = "";
-    $password = "";
-    $password_bis = "";
-    $country = "";
-    $name = "";
-    $job = "";
-    $language = "";
+    $email = $_SESSION['user']['email'];
+    $username =$_SESSION['user']['username'];
+    $country = $_SESSION['user']['country'];
+    $name = $_SESSION['user']['name'];
+    $job = $_SESSION['user']['job'];
+    $language =$_SESSION['user']['language'];
     $externallink = "";
-    $avatar = "";
-
+    
  
 
 
@@ -76,54 +29,35 @@ if (!empty($_FILES)){
         $email          = strip_tags($_POST['email']);
         $username       = strip_tags($_POST['username']);
         $name           = strip_tags($_POST['name']);
-        $password       = $_POST['password'];
-        $password_bis   = $_POST['password_bis'];
         $country        = $_POST['country'];
         $job            = $_POST['job'];
         $language       = $_POST['language'];
         $externallink   = $_POST['externallink'];
         $id             =$_SESSION['user']['id'];
 
-        if ($imageUpload==1){
-        $avatar = $filename;
-            }
+        
 
         $errors = array();
         //validation
 
         //email
         if (empty($email)){
-            $errors[] = "Please provide an email !";
+            $errors[] = "Merci d'inscrire un Email valide! !";
         }
-        elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $errors[] = "Your email is not valid !";
-        }
-        elseif (emailExists($email)){
-            $errors[] = "This email already exists !";
-        }
+       
 
         //username
         if (empty($username)){
-            $errors[] = "Please provide an username !";
-        }
-        //vérifie si username est présent en bdd
-        elseif (usernameExists($username)){
-            $errors[] = "This username already exists !";
+            $errors[] = "Vous n'avez pas saisi de pseudo!";
         }
 
-        //password
-        if (empty($password)){
-            $errors[] = "Please choose a password !";
+        // Nom
+
+        if(empty($name)){
+            $errors[]="vous n'avez pas saisi de nom!";
         }
-        elseif (empty($password_bis )){
-            $errors[] = "Please confirm your password !";
-        }
-        elseif ($password_bis  != $password){
-            $errors[] = "Your passwords do not match !";
-        }
-        elseif (strlen($password) < 7){
-            $errors[] = "Your password should have at least 7 characters !";
-        }
+        
+       
 
 
         //form valide ?
@@ -140,18 +74,14 @@ if (!empty($_FILES)){
             $token = randomString();
 
             //sql d'insertion de l'user
-            $sql = "UPDATE users(name, avatar, email, username, password, salt, token, dateRegistered, dateModified, job, country, language, externallink)
-                    SET (name=:name,avatar= :avatar,email= :email,username= :username,password= :password,salt= :salt,token= :token, NOW(), NOW(),job= :job,country= :country,language= :language,externallink= :externallink)
+            $sql = "UPDATE users
+                    SET name=:name,email= :email,username= :username,dateModified= NOW(),job= :job,country= :country,language= :language,externallink= :externallink
                     WHERE id=:id";
 
                     $stmt = $dbh->prepare($sql);
-                    $stmt->bindValue(":name", $email);
-                    $stmt->bindValue(":avatar", $avatar);
+                    $stmt->bindValue(":name", $name);
                     $stmt->bindValue(":email", $email);
                     $stmt->bindValue(":username", $username);
-                    $stmt->bindValue(":password", $hashedPassword);
-                    $stmt->bindValue(":salt", $salt);
-                    $stmt->bindValue(":token", $token);
                     $stmt->bindValue(":job", $job);
                     $stmt->bindValue(":country", $country);
                     $stmt->bindValue(":language", $language);
@@ -159,7 +89,7 @@ if (!empty($_FILES)){
                     $stmt->bindValue(":id",$id);
 
                     $stmt->execute();
-                    header("Location: login.php");
+                    header("Location: logout.php");
 
 
         }
@@ -175,7 +105,7 @@ if (!empty($_FILES)){
 
 <div class="mainContent">
 
-<form action="register.php" method="POST" id="register_form" enctype="multipart/form-data">
+<form action="edit.php" method="POST" id="register_form" enctype="multipart/form-data">
 
                 <h3>MODIFICATION DU COMPTE UTILISATEUR</h3>
 
@@ -192,15 +122,7 @@ if (!empty($_FILES)){
                         <label for="email">Votre email</label>
                         <input type="email" name="email" id="email" value="<?php echo $email; ?>" />
                 </div>
-                <div class="field_container">
-                        <label for="password">Mot de passe</label>
-                        <input type="password" name="password" id="password" value="<?php echo $password; ?>" />
-                </div>
-                <div class="field_container">
-                        <label for="password_bis">Retaper le mot de passe</label>
-                        <input type="password" name="password_bis" id="password_bis" value="<?php echo $password_bis; ?>" />
-                </div>
-                </div>
+                
 
 
                 <div id="colDroite">
@@ -212,10 +134,7 @@ if (!empty($_FILES)){
                         <label for="job">Metier</label>
                         <input type="text" name="job" id="job" value="<?php echo $job; ?>" />
                 </div>
-                <div class="field_container">
-                        <label for="avatar">Photo</label>
-                        <input type="file" name="image" id="image" value="<?php echo $avatar; ?>" />
-                </div>
+                
                 <div class="field_container">
                         <label for="language">Langues</label>
                         <input type="text" name="language" id="language" value="<?php echo $language; ?>" />
@@ -236,9 +155,9 @@ if (!empty($_FILES)){
             echo '</ul>';
         }
 
-        else{
+       /*else{
             echo "modifications effectuées";
-        }
+        }*/
 
 
     ?>

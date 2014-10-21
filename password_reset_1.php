@@ -57,7 +57,7 @@ include("inc/functions.php");
     $mail->isHTML(true);                                // Contenu du message au format HTML
     $mail->Subject = 'Password reset STAQUE'; //le sujet
     
-    $resetUrl = "http://localhost/stack-overflow-clone/password_reset_2.php?email="
+    $resetUrl = "http://localhost/Projet-STAQUE/password_reset_2.php?email="
              . urlencode($email) . '&token=' . urlencode($user['token']);
 
     //le message
