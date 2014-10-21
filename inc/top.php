@@ -15,6 +15,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
+
+
 </head>
 <body>
 	<div id="wrapper">

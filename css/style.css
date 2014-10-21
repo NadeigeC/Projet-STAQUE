@@ -100,10 +100,11 @@ h1:hover span{
 }
 
 #footer{
+	display: none;
 	background-color: rgba(0,0,102,0.8);
 	color:#fff;
 	width: 100%;
-	position:relative; 
+	position:relative;
 	bottom:-100px;
 }
 
@@ -511,7 +512,7 @@ text-align: justify;
 	margin-top:20px;
 	margin-left:50px;
 	margin-bottom:50px;
-	
+
 }
 
 

@@ -8,8 +8,15 @@
 
 </footer>
 
-		<script src="js/jquery.js"></script>
-        <script src="js/app.js"></script>
+
+		<script src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea"
+         });
+        </script>
+
 
 </body>
 </html>

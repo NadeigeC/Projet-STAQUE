@@ -13,16 +13,19 @@
     if (!empty($_SESSION['user']['id'])){
     $user_id = $_SESSION['user']['id'];
 	}
-    
+
     $quest_id = "";
     if (!empty($_GET['id'])){
     $quest_id = $_GET['id'];
 	}
 
+
     if(!empty($_POST)){
+
         $quest_id = $_POST['quest_id'];
-    	 include("db.php");
-    	
+
+        include("db.php");
+
 
     	$sql = "INSERT INTO answers(contenu, id_user, id_question, dateCreated, dateModified)
 	                    VALUES ( :contenu, :id_user, :id_question, NOW(), NOW())";
@@ -31,14 +34,9 @@
 	                    $stmt->bindValue(":contenu", $reponse);
 	                    $stmt->bindValue(":id_user", $user_id);
 	                    $stmt->bindValue(":id_question", $quest_id);
-	                    
 	                    $stmt->execute();
-	                    // echo "<pre>";
-	                    // print_r($sql);
-	                    // echo "</pre>";
-						header("Location: index.php");
+	                  	header("Location: questionsDetail.php?id=$quest_id");
 						die();
-
     }
 
 ?>
@@ -51,10 +49,10 @@
 
 <form action="repondre.php" method="POST">
 
-        
+
         <div class="field_container">
 
-        
+
         	<input type="hidden" name="quest_id" value="<?php echo $quest_id; ?>">
 
             <div id="reponse">
@@ -76,7 +74,7 @@
         </div>
 </form>
 
-<?php } 
+<?php }
 
 else { ?>
 	<p> MERCI DE VOUS CONNECTER OU DE VOUS INSCRIRE POUR REPONDRE A CE POST </p>

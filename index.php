@@ -6,7 +6,7 @@
 	include("inc/functions.php");
 
 	//notre requête sql
-	$sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, 
+	$sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId,
 	questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5,
 	users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
 		  FROM questions
