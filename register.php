@@ -142,7 +142,7 @@ if (!empty($_FILES)){
                     VALUES (:name, :avatar, :email, :username, :password, :salt, :token, NOW(), NOW(), :job, :country, :language, :externallink)";
 
                     $stmt = $dbh->prepare($sql);
-                    $stmt->bindValue(":name", $email);
+                    $stmt->bindValue(":name", $name);
                     $stmt->bindValue(":avatar", $avatar);
                     $stmt->bindValue(":email", $email);
                     $stmt->bindValue(":username", $username);
