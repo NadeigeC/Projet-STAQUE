@@ -1,5 +1,7 @@
 <?php
-    
+    if(!isset($_SESSION)){
+        session_start();
+    }
 
 
     $reponse = "";
@@ -9,7 +11,7 @@
 
     $user_id 	= "";
     if (!empty($_SESSION['user']['id'])){
-    $quest_id = $_SESSION['user']['id'];
+    $user_id = $_SESSION['user']['id'];
 	}
     
     $quest_id = "";
@@ -18,6 +20,7 @@
 	}
 
     if(!empty($_POST)){
+        $quest_id = $_POST['quest_id'];
     	 include("db.php");
     	
 
@@ -51,7 +54,7 @@
         
         <div class="field_container">
 
-        	<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+        
         	<input type="hidden" name="quest_id" value="<?php echo $quest_id; ?>">
 
             <div id="reponse">

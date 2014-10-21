@@ -6,17 +6,17 @@
     include("inc/functions.php");
     include("inc/top.php");
 
-
-    
-
 $id = "";
 if (!empty($_GET['id'])){
     $id = $_GET['id'];
   }
 
-$sql="SELECT *
+$sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, 
+  questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5,
+  users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
       FROM questions
-      WHERE id= :id";
+      LEFT JOIN users on users.id=questions.id_user
+      WHERE questions.id= :id";
 
     $stmt=$dbh->prepare($sql);
     $stmt ->bindValue(":id", $id);
@@ -31,7 +31,7 @@ $sql="SELECT *
 <div class="maindetail">
 
         <div id="questionDetail">
-            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['id']; ?></h3>  
+            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['username']; ?></h3>  
 
             <div id="contenu">
             <pre><?php echo $question['contenu']; ?></pre>
