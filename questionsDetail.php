@@ -110,6 +110,21 @@ foreach ($answers as $answer) {
             <h2 style="font-weight: 700">Réponse postée par  <?php echo $answer['username']; ?> le <?php echo $answer['dateCreated']; ?></h2>
             <pre><?php echo $answer['contenu']; ?></pre>
             </div>
+<<<<<<< HEAD
+            <div id="vote">
+            <form method="post" action="voter.php">
+            <label for="oui">VOTER POUR LA REPONSE :></label>
+            <input type="submit" name="oui" value="OUI !"/>
+            <input type="submit" name="non" value="NON !"/>
+            </form>
+
+
+
+            </div>
+
+<?php
+=======
+>>>>>>> d0bd4f3c871f981bfc05bc2c714ddf64cde2c3b7
 
  <?php
 

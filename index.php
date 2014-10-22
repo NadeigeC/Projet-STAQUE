@@ -14,31 +14,20 @@
 		  ORDER BY dateCreated DESC
 		  LIMIT 3";
 
-	//envoie la requête au serveur MySQL (statement) 3 prepare
 	$stmt=$dbh->prepare($sql);
-
-	//exécute la requête 4 execute
 	$stmt->execute();
-
-	//récupère les résultats
 	$questions=$stmt->fetchAll();
-	//print_r($results);
 
 
-	//notre requête sql
 	$sql="SELECT vote_type
 		  FROM votes
 		  LEFT JOIN users on users.id=votes.id_user";
 
-	//envoie la requête au serveur MySQL (statement) 3 prepare
 	$stmt=$dbh->prepare($sql);
-
-	//exécute la requête 4 execute
 	$stmt->execute();
-
-	//récupère les résultats
 	$votes=$stmt->fetchAll();
-	//print_r($results);
+
+
 ?>
 <?php include("inc/top.php"); ?>
 
