@@ -110,7 +110,7 @@ else{
                     $stmt->bindValue(":id",$id);
 
                     $stmt->execute();
-                    header("Location: logout.php");
+                    header("Location: index.php");
 
 
         }

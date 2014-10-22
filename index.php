@@ -48,7 +48,7 @@
 				<a href="questions.php">QUESTIONS</a>
 
 				<?php if (userIslogged()){ ?>
-				| <a href="askquestions.php">ASK QUESTION</a>
+				|<i class="icon-code"></i> <a href="askquestions.php">ASK QUESTION</a>
 				<?php } ?>
 
 			</div>
