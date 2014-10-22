@@ -132,11 +132,19 @@ h1:hover span{
 }
 
 #footer{
+<<<<<<< HEAD
 
 	background-color: black;
 	color:#fff;
 	width: 100%;
 	height:100px;
+=======
+	/*display: none;*/
+	background-color: rgba(0,0,102,0.8);
+	color:#fff;
+	width: 100%;
+
+>>>>>>> 5bae410beb29d4fea782c8e14b751bc64ad55127
 }
 
 #footer a{
@@ -158,6 +166,11 @@ h1:hover span{
 
 #logo{
 	padding-top: 50px;
+}
+
+#logo h3{
+	margin-left : 45%;
+	padding-bottom: 50px
 }
 
 #head h1{
@@ -316,8 +329,6 @@ form h3{
 
 .mainContentQuestions{
 	width: 1200px;
-	height: 600px;
-
 	margin:50px auto;
 }
 
@@ -339,12 +350,13 @@ form h3{
 }
 .maindetail{
 	clear:both;
-	float:left;
-	width: 50%;
-	height: 10%;
-}
-.vote{
-	width: 50px;
+
+	width: 80%;
+	}
+
+
+.vote, .score, .vue{
+	width: 80px;
 	height: 70px;
 	float: left;
 	border-top: 1px solid #ccc;

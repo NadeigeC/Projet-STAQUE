@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 
  session_start();
 
@@ -9,12 +9,12 @@
  include("inc/functions.php");
  include("db.php");
  include("inc/top.php");
-     
+
 
 
     //déclaration des variables du formulaire
 
-if (userIsLogged()){ 
+if (userIsLogged()){
     $email = $_SESSION['user']['email'];
     $username =$_SESSION['user']['username'];
     $country = $_SESSION['user']['country'];
@@ -36,7 +36,7 @@ else{
 }
 
 
-    
+
 
 
 
@@ -56,7 +56,7 @@ else{
         $externallink   = $_POST['externallink'];
         $id             =$_SESSION['user']['id'];
 
-        
+
 
         $errors = array();
         //validation
@@ -65,7 +65,7 @@ else{
         if (empty($email)){
             $errors[] = "Merci d'inscrire un Email valide! !";
         }
-       
+
 
         //username
         if (empty($username)){
@@ -77,8 +77,8 @@ else{
         if(empty($name)){
             $errors[]="vous n'avez pas saisi de nom!";
         }
-        
-       
+
+
 
 
         //form valide ?
@@ -111,12 +111,15 @@ else{
 
                     $stmt->execute();
                     header("Location: index.php");
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 5bae410beb29d4fea782c8e14b751bc64ad55127
         }
 
     }
- 
+
 
 
 
@@ -143,7 +146,7 @@ else{
                         <label for="email">Votre email</label>
                         <input type="email" name="email" id="email" value="<?php echo $email; ?>" />
                 </div>
-                
+
 
 
                 <div id="colDroite">
@@ -155,7 +158,7 @@ else{
                         <label for="job">Metier</label>
                         <input type="text" name="job" id="job" value="<?php echo $job; ?>" />
                 </div>
-                
+
                 <div class="field_container">
                         <label for="language">Langues</label>
                         <input type="text" name="language" id="language" value="<?php echo $language; ?>" />
