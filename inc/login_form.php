@@ -4,14 +4,17 @@
 
                     <h3>CONNECTEZ-VOUS !</h3>
 
-                    <div class="field_container">
-                            <label for="username">Pseudo</label>
-                            <input type="text" value="<?php echo $username; ?>" name="username" id="username" />
-                    </div>
+                    <div class="input_field">
 
-                    <div class="field_container">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" value="<?php echo $password; ?>" name="password" id="password" />
+                        <div class="field_container">
+                                <label for="username"><i class="icon-user"></i><span class="espace"></span>Pseudo</label>
+                                <input type="text" value="<?php echo $username; ?>" name="username" id="username" />
+                        </div>
+
+                        <div class="field_container">
+                                <label for="password"><i class="icon-lock"></i><span class="espace"></span>Mot de passe</label>
+                                <input type="password" value="<?php echo $password; ?>" name="password" id="password" />
+                        </div>
                     </div>
 
 
@@ -34,7 +37,7 @@
                 <?php echo "<br>"; ?>
 
     
-    <a href="password_reset_1.php" title="oubli du mot de passe" id="mdp">OUBLI DU MOT DE PASSE</a>
+    <a href="password_reset_1.php" title="oubli du mot de passe" id="mdp"><i class="icon-question-sign"></i> MOT DE PASSE OUBLIE?</a>
     </form>
 
 </div>

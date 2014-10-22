@@ -22,12 +22,12 @@
 
 		//username
 		if (empty($username)){
-			$errors[] = "Please provide an username !";
+			$errors[] = "Merci d'écrire votre pseudo!";
 		}
 
 		//password
 		if (empty($password)){
-			$errors[] = "Please choose a password !";
+			$errors[] = "Merci d'inscrire votre mot de passe !";
 		}
 
 		//form valide ?
@@ -58,6 +58,6 @@
 
 
 <?php include("inc/top.php");
-	  include("inc/login_form.php");
-		include("inc/bottom.php"); ?>
+	  include("inc/login_form.php");?>
+	
 
