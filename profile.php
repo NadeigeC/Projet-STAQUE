@@ -39,7 +39,7 @@ $stmt=$dbh->prepare($sql);
 
 <?php 
 
-if (userIsLogged()) { ?>
+if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
  		<a href="edit.php">Editer mon profil</a>
  		</div>
