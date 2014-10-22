@@ -63,10 +63,10 @@
 						header("Location: index.php");
 						die();
 
-
 					}
 
 }
+
 
 
 include("inc/askquestions_form.php") ;?>

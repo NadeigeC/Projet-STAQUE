@@ -115,7 +115,12 @@ foreach ($answers as $answer) {
             <pre><?php echo $answer['contenu']; ?></pre>
             </div>
             <div id="vote">
-            VOTER POUR LA REPONSE : <a href="">OUI</a> | <a href="">NON</a>
+            <form method="post" action="voter.php">
+            <label for="oui">VOTER POUR LA REPONSE :></label>
+            <input type="submit" name="oui" value="OUI !"/>
+            <input type="submit" name="non" value="NON !"/>
+            </form>
+
 
 
             </div>
