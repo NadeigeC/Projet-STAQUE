@@ -110,9 +110,14 @@ foreach ($answers as $answer) {
       if ($_GET['id'] == $answer['id_question']) { ?>
 
 
-            <div id="contenu">
+            <div class="maindetail">
             <h2 style="font-weight: 700">Réponse postée par  <?php echo $answer['username']; ?> le <?php echo $answer['dateCreated']; ?></h2>
             <pre><?php echo $answer['contenu']; ?></pre>
+            </div>
+            <div id="vote">
+            VOTER POUR LA REPONSE : <a href="">OUI</a> | <a href="">NON</a>
+
+
             </div>
 
 <?php
@@ -120,15 +125,9 @@ foreach ($answers as $answer) {
 
       foreach ($comments as $comment) {
 
-            if ($answer['answId'] == $comment['answId'] ) {
+            if ($answer['answId'] == $comment['answId'] ) {?>
 
-       /*   echo "<pre>";
-          print_r($comment);
-          //echo "test";
-          echo "</pre>";
-          //die();*/
-?>
-            <div id="contenu">
+            <div class="maindetail">
             <h3 style="font-weight: 700">Commentaire posté par  <?php echo $comment['username']; ?> le <?php echo $comment['dateCreated']; ?></h3>
             <pre><?php echo $comment['commContent']; ?></pre>
            <?php } ?>
@@ -145,7 +144,8 @@ foreach ($answers as $answer) {
 
   <?php include("repondre.php") ?>
 
-
+</div>
+</div>
 </div>
 </main>
 

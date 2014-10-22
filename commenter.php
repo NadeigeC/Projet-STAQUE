@@ -49,12 +49,12 @@
     }
 
 ?>
-
+<?php if (userIslogged()){ ?>
 <h4 style="font-weight: 700">Commenter la réponse</h4>
 
 </div>
 
-<?php if (userIslogged()){ ?>
+
 
 <form action="commenter.php" method="POST">
 
@@ -67,7 +67,7 @@
             <input type="hidden" name="comment_id" value="<?php echo $comment['commId']; ?>">
 
             <div id="comment">
-            
+
             <textarea value="<?php echo $commentaire; ?>" id="commentaire" cols="30" rows="5" name="commentaire">
             </textarea>
             <div>
@@ -87,9 +87,5 @@
 
 <?php }
 
-else { ?>
-    <p> MERCI DE VOUS CONNECTER OU DE VOUS INSCRIRE POUR REPONDRE A CE POST </p>
-    <a class="login" href="login.php">CONNEXION</a> |
-    <a class="signup"href="register.php">NOUVEAU COMPTE</a>
-    <?php }
+
 ?>

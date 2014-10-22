@@ -38,9 +38,17 @@
 			</div>
 
 			<h1><a href="index.php"> <span>&lt;?= </span>STAQUE <span> <?php echo "; ?>";?> </span> </a></h1>
-					
+
 
 		</nav>
+
+				<a href="questions.php">QUESTIONS</a>
+
+				<?php if (userIslogged()){ ?>
+				| <a href="askquestions.php">ASK QUESTION</a>
+				<?php } ?>
+
+
 					<form id="searchbar">
 						<input type="text" placeholder="Rechercher">
 						<input type="submit" value="">
