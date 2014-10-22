@@ -54,43 +54,62 @@ table {
 
 body{
 	font-family: 'Play', sans-serif;
+	background-color:;
+
 }
 
+#head a{
+
+	color:#c0392b;
+}
+
+#head a:hover{
+	color:#fff;
+	text-decoration: none;
+	font-weight: 700;
+
+}
 
 h1 a{
 	font-family: 'Play', sans-serif;
 	font-size: 1.5em;
 	text-decoration: none;
-	color: #fff;
+	color: #c0392b;
+	float:left;
 }
 h1:hover a{
 	font-family: 'Play', sans-serif;
 	font-size: 1.5em;
 	text-decoration: none;
-	color: #00f;
+	color: #fff;
+
 }
 
 span{
-	color: #00f;
+	color: #fff;
 	font-size: 1em;
 }
 
 h1:hover span{
-	color: #fff;
+	color:#c0392b;
 }
 
 
 
 #connexion{
-	position: absolute;
+	/*position: absolute;
 	top:20px;
 	left: 20px;
-	font-size: 1em;
+	font-size: 1em;*/
+
+	float:right;
+	padding-top:20px;
+	padding-right:20px;
 }
 
 
 #head{
-	background-color: rgba(0,0,102,0.8);
+	background-color:black;
 	color:#fff;
 	width: 100%;
 	height: 100px;
@@ -99,27 +118,50 @@ h1:hover span{
 	margin: auto;
 }
 
-#footer{
-	/*display: none;*/
-	background-color: rgba(0,0,102,0.8);
+#head a{
+
+	color:#c0392b;
+}
+
+#head a:hover{
 	color:#fff;
-	width: 100%;
+	text-decoration: none;
+	text-transform:uppercase;
+	font-weight: 700;
 
 }
 
+#footer{
+
+	background-color: black;
+	color:#fff;
+	width: 100%;
+	height:100px;
+}
+
+#footer a{
+	color:white;
+	text-decoration: none;
+	display:block;
+	float:right;
+	padding-right:10px;
+	padding-top:70px;
+
+}
+
+.socialicon{
+
+	float:left;
+	padding-top: 0px;
+	padding-left: 600px;
+}
 
 #logo{
 	padding-top: 50px;
 }
 
-#logo h3{
-	margin-left : 45%;
-	padding-bottom: 50px
-}
-
 #head h1{
 	display:inline-block;
-	margin-left: 36%;
 	margin-top: 10px;
 	font-weight: bold;
 	float: left;
@@ -175,7 +217,10 @@ h1:hover span{
 #contenu{
 	padding: 15px;
 }
+.espace{
 
+	padding-left:15px;
+}
 /****************************************************************************
 **********FORMULAIRES************************************
 ********************************************************************/
@@ -271,6 +316,8 @@ form h3{
 
 .mainContentQuestions{
 	width: 1200px;
+	height: 600px;
+
 	margin:50px auto;
 }
 
@@ -292,13 +339,12 @@ form h3{
 }
 .maindetail{
 	clear:both;
-
-	width: 80%;
-	}
-
-
-.vote, .score, .vue{
-	width: 80px;
+	float:left;
+	width: 50%;
+	height: 10%;
+}
+.vote{
+	width: 50px;
 	height: 70px;
 	float: left;
 	border-top: 1px solid #ccc;
@@ -359,6 +405,22 @@ form h3{
 	margin-left:5px;
 
 }
+
+
+/****************************************************************************
+**********TOP.PHP************************************
+********************************************************************/
+
+
+.secondcontent{
+
+	height:50px;
+	width:100%;
+	border-radius:5px;
+}
+
+
+
 /****************************************************************************
 *********************footer************************************
 ********************************************************************/
@@ -453,6 +515,7 @@ h1{
 
 
 
+
 .profilemenu{
 	padding: 25px;
 }
@@ -479,6 +542,9 @@ position:absolute;
 right: 10%;
 top: 33%;
 }
+
+
+
 
 
 /****************************************************************************
@@ -535,8 +601,9 @@ text-align: justify;
 ********************************************************************/
 
 #searchbar {
-	float: right;
-	margin-top: -35px;
+position: absolute;
+left: 16%;
+top: 6.5%;
 }
 #searchbar a {
 	transition: background .5s;
@@ -545,8 +612,6 @@ text-align: justify;
 #searchbar input[type=text] {
 	float: right;
 	border: 1px solid #ccc;
-	border-radius: 15px 0 0 15px;
-	box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
 	height: 28px;
 	width: 130px;
 	padding: 0 10px 0 32px;

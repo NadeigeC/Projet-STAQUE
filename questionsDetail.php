@@ -25,7 +25,7 @@ $sql="SELECT questions.id AS questId, questions.title, questions.contenu, questi
     $stmt->execute();
     $question=$stmt->fetch();
 
-$sql="SELECT answers.id AS answId, answers.id_question, answers.contenu, answers.id_user, answers.dateCreated, users.id, users.username
+$sql="SELECT answers.id, answers.id_question, answers.contenu, answers.id_user, answers.dateCreated, users.id, users.username
       FROM answers
       LEFT JOIN users on users.id=answers.id_user";
 
@@ -34,24 +34,20 @@ $sql="SELECT answers.id AS answId, answers.id_question, answers.contenu, answers
     $answers=$stmt->fetchAll();
 
 
-$sql="SELECT questions.id AS questId,
-            comments.id AS commId, comments.id_question, comments.contenu AS commContent, comments.id_user AS commIdUser, comments.id_answer AS commAnswId, comments.dateCreated,
-            answers.id AS answId, answers.id_question, answers.contenu AS answContent, answers.id_user AS answIdUser, users.id AS idUser, users.username
+$sql="SELECT comments.id AS commId, comments.id_question, comments.contenu AS commContent, comments.id_user, comments.id_answer AS commAnswId, comments.dateCreated,
+answers.id answId, answers.id_question, answers.contenu AS answContent, answers.id_user, users.id AS idUser, users.username
       FROM comments
-      LEFT JOIN questions on questions.id = comments.id_question
       LEFT JOIN answers on answers.id=comments.id_answer
-      LEFT JOIN users on users.id=comments.id_user";
+      LEFT JOIN users on users.id=answers.id_user";
 
     $stmt=$dbh->prepare($sql);
     $stmt->execute();
     $comments=$stmt->fetchAll();
 
-          // echo "<pre>";
-          // print_r($comments);
-          // //echo "test";
-          // echo "</pre>";
-          // die();
-
+   /* echo "<pre>";
+    print_r($comments);
+    echo "</pre>";
+    die();*/
 
 ?>
 
@@ -109,11 +105,12 @@ foreach ($answers as $answer) {
 
       if ($_GET['id'] == $answer['id_question']) { ?>
 
-
-            <div class="maindetail">
+        <div id="reponseDetail">
+            <div id="contenu">
             <h2 style="font-weight: 700">Réponse postée par  <?php echo $answer['username']; ?> le <?php echo $answer['dateCreated']; ?></h2>
             <pre><?php echo $answer['contenu']; ?></pre>
             </div>
+<<<<<<< HEAD
             <div id="vote">
             <form method="post" action="voter.php">
             <label for="oui">VOTER POUR LA REPONSE :></label>
@@ -126,18 +123,21 @@ foreach ($answers as $answer) {
             </div>
 
 <?php
+=======
+>>>>>>> d0bd4f3c871f981bfc05bc2c714ddf64cde2c3b7
 
+ <?php
 
       foreach ($comments as $comment) {
 
-            if ($answer['answId'] == $comment['answId'] ) {?>
-
-            <div class="maindetail">
+            if ($comment['commAnswId'] == $comment['answId']) { ?>
+            <div id="contenu">
             <h3 style="font-weight: 700">Commentaire posté par  <?php echo $comment['username']; ?> le <?php echo $comment['dateCreated']; ?></h3>
             <pre><?php echo $comment['commContent']; ?></pre>
            <?php } ?>
             </div>
 
+        </div>
 
       <?php  }
 
@@ -149,8 +149,7 @@ foreach ($answers as $answer) {
 
   <?php include("repondre.php") ?>
 
-</div>
-</div>
+
 </div>
 </main>
 

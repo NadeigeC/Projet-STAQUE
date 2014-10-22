@@ -21,7 +21,7 @@
 
 	$sql="SELECT vote_type
 		  FROM votes
-		  LEFT JOIN answers on answers.id=votes.id_answer";
+		  LEFT JOIN users on users.id=votes.id_user";
 
 	$stmt=$dbh->prepare($sql);
 	$stmt->execute();
@@ -33,22 +33,22 @@
 
 		<main class="mainContent">
 
+			<div class="topcontent">
+				<a href="questions.php">QUESTIONS</a>
 
+				<?php if (userIslogged()){ ?>
+				|<i class="icon-code"></i> <a href="askquestions.php">ASK QUESTION</a>
+				<?php } ?>
 
+			</div>
 			<div class="maindetail">
 				<?php
 					foreach($questions as $question):
 
 					?>
 			 	<div class="vote">
-                VOTES
+
 			 	</div>
-                <div class="score">
-                SCORE
-                </div>
-               <!--  <div class="vue">
-                VUES
-                </div> -->
 
 			 	<div class="questions">
 
@@ -90,7 +90,7 @@
 
 				 		<div id="identification">
               <a>asked by</a>
-              <?php
+              <?php 
               if (empty($question['name'])){
                 echo "profil supprimé";
               }else {

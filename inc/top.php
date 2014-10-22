@@ -14,6 +14,9 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 
 
@@ -22,13 +25,16 @@
 	<div id="wrapper">
 
 		<nav id="head">
+
+
 			<div id="connexion">
+
 
 				<?php
 					if (userIsLogged()){
 					echo "Bonjour " .'<a href="profile.php?id='.$_SESSION['user']['id'].'">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
 					<a href="profile.php"></a> |
-					<a href="logout.php">DECONNEXION</a>
+					<i class="icon-signout"></i><a href="logout.php">DECONNEXION</a>
 				<?php 	}
 				else {
 				?>
@@ -37,22 +43,28 @@
 				<?php } ?>
 			</div>
 
-			<h1><a href="index.php"> <span>&lt;?= </span>STAQUE <span> <?php echo "; ?>";?> </span> </a></h1>
-
+			<h1><a href="index.php"> <span style="color">STA</span>QUE </a></h1>
+					
 
 		</nav>
+			
+		<div class="secondcontent">
 
+			<div class="topcontent">
+			<i class="icon-comment"></i>
 				<a href="questions.php">QUESTIONS</a>
 
 				<?php if (userIslogged()){ ?>
-				| <a href="askquestions.php">ASK QUESTION</a>
+				|<i class="icon-code"></i> <a href="askquestions.php">ASK QUESTION</a>
 				<?php } ?>
 
+			</div>
 
-					<form id="searchbar">
-						<input type="text" placeholder="Rechercher">
-						<input type="submit" value="">
-					</form>
+			<form id="searchbar">
+				<input type="text" placeholder="Rechercher">
+				<input type="submit" value="">
+			</form>
+		</div>
 
 
 
