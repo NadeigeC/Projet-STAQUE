@@ -28,7 +28,7 @@
 	//notre requête sql
 	$sql="SELECT vote_type
 		  FROM votes
-		  LEFT JOIN answers on answers.id=votes.id_answer";
+		  LEFT JOIN users on users.id=votes.id_user";
 
 	//envoie la requête au serveur MySQL (statement) 3 prepare
 	$stmt=$dbh->prepare($sql);
@@ -44,28 +44,22 @@
 
 		<main class="mainContent">
 
+			<div class="topcontent">
+				<a href="questions.php">QUESTIONS</a>
 
-<<<<<<< HEAD
 				<?php if (userIslogged()){ ?>
 				|<i class="icon-code"></i> <a href="askquestions.php">ASK QUESTION</a>
 				<?php } ?>
-=======
->>>>>>> 5bae410beb29d4fea782c8e14b751bc64ad55127
 
+			</div>
 			<div class="maindetail">
 				<?php
 					foreach($questions as $question):
 
 					?>
 			 	<div class="vote">
-                VOTES
+
 			 	</div>
-                <div class="score">
-                SCORE
-                </div>
-               <!--  <div class="vue">
-                VUES
-                </div> -->
 
 			 	<div class="questions">
 
@@ -107,7 +101,7 @@
 
 				 		<div id="identification">
               <a>asked by</a>
-              <?php
+              <?php 
               if (empty($question['name'])){
                 echo "profil supprimé";
               }else {
