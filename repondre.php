@@ -28,7 +28,7 @@
 
 
     	$sql = "INSERT INTO answers(contenu, id_user, id_question, dateCreated, dateModified)
-	                    VALUES ( :contenu, :id_user, :id_question, NOW(), NOW())";
+	           VALUES ( :contenu, :id_user, :id_question, NOW(), NOW())";
 
 	                    $stmt = $dbh->prepare($sql);
 	                    $stmt->bindValue(":contenu", $reponse);

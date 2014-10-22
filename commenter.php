@@ -62,11 +62,12 @@
         <div class="field_container">
 
 
-            <input type="hidden" name="answer_id" value="<?php echo $answer['id']; ?>">
+            <input type="hidden" name="answer_id" value="<?php echo $answer['answId']; ?>">
             <input type="hidden" name="quest_id" value="<?php echo $quest_id; ?>">
+            <input type="hidden" name="comment_id" value="<?php echo $comment['commId']; ?>">
 
-            <div id="commentaire">
-            <pre><?php echo $commentaire; ?></pre>
+            <div id="comment">
+            
             <textarea value="<?php echo $commentaire; ?>" id="commentaire" cols="30" rows="5" name="commentaire">
             </textarea>
             <div>
@@ -80,7 +81,7 @@
                 }
         ?>
             <label for="quest"></label>
-            <input type="submit" value="POSTER LE COMMENTAIRE !" id="quest">
+            <input type="submit" value="POSTER LE COMMENTAIRE !">
         </div>
 </form>
 
