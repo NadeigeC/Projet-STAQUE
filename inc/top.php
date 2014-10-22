@@ -25,14 +25,13 @@
 	<div id="wrapper">
 
 		<nav id="head">
-
-
+    
 			<div id="connexion">
 
 
 				<?php
 					if (userIsLogged()){
-					echo "Bonjour " .'<a href="profile.php?id='.$_SESSION['user']['id'].'">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
+					echo "Bonjour ".'<span class="espace"></span>'.'<i class="icon-home"></i>'.'<span class="espace"></span>' .'<a href="profile.php?id='.$_SESSION['user']['id'].'">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
 					<a href="profile.php"></a> |
 					<i class="icon-signout"></i><a href="logout.php">DECONNEXION</a>
 				<?php 	}
@@ -42,29 +41,45 @@
 					<a class="signup"href="register.php">NOUVEAU COMPTE</a>
 				<?php } ?>
 			</div>
-
+			<a href="index.php">
+				<img src="img/stackthree.png" height="100" width="100" id="logostack"/>
+				</a>
+			
 			<h1><a href="index.php"> <span style="color">STA</span>QUE </a></h1>
+			
 					
 
 		</nav>
 			
+			
+
 		<div class="secondcontent">
 
-			<div class="topcontent">
-			<i class="icon-comment"></i>
-				<a href="questions.php">QUESTIONS</a>
+		
+				
+		
 
-				<?php if (userIslogged()){ ?>
-				|<i class="icon-code"></i> <a href="askquestions.php">ASK QUESTION</a>
-				<?php } ?>
+				<div class="topcontent">
+				<i class="icon-comment"></i>
+					<a href="questions.php">QUESTIONS</a>
 
-			</div>
+					<?php if (userIslogged()){ ?>
+					|<i class="icon-code"></i> <a href="askquestions.php">ASK QUESTION</a>
+					<?php } ?>
 
-			<form id="searchbar">
-				<input type="text" placeholder="Rechercher">
-				<input type="submit" value="">
-			</form>
+				</div>
+
+				<form id="searchbar">
+					<input type="text" placeholder="Rechercher">
+					<input type="submit" value="">
+				</form>
 		</div>
+
+			
+
+		</nav>
+
+				
 
 
 

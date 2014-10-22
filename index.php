@@ -34,11 +34,7 @@
 		<main class="mainContent">
 
 			<div class="topcontent">
-				<a href="questions.php">QUESTIONS</a>
-
-				<?php if (userIslogged()){ ?>
-				|<i class="icon-code"></i> <a href="askquestions.php">ASK QUESTION</a>
-				<?php } ?>
+				<h1> Dernières questions postées</h1>
 
 			</div>
 			<div class="maindetail">
