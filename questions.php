@@ -17,12 +17,14 @@
     if ($_GET['dir'] === "desc"){
       $direction = "DESC";}
 }
-$sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, 
+$sql="SELECT COUNT(answers.id) AS answCount, questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId,
   questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5,
   users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
       FROM questions
       LEFT JOIN users on users.id=questions.id_user
-          ORDER BY dateCreated DESC
+      LEFT JOIN answers on questions.id=answers.id_question
+          GROUP BY answers.id_question
+          ORDER BY questions.dateCreated DESC
           LIMIT :offset, $numPerPage";
 
     $stmt=$dbh->prepare($sql);
@@ -37,19 +39,30 @@ $sql = "SELECT COUNT(*) FROM questions";
     $totalNumber = $stmt->fetchColumn();
     $totalPages = ceil($totalNumber / $numPerPage); //arrondi par le haut
 
+
+
+
+
 ?>
 
 <?php include("inc/top.php"); ?>
 
 <main class="mainContentQuestions">
-<div class="maindetail">
+
         <?php
           foreach($questions as $question):
 
           ?>
         <div class="vote">
-
+        <?php echo "VOTES";?>
         </div>
+        <div class="answer">
+        <?php echo $question['answCount'];?>
+        <p>REPONSES</p>
+        </div>
+        <!-- <div class="vue">
+
+        </div> -->
 
         <div class="questions">
 
@@ -91,11 +104,11 @@ $sql = "SELECT COUNT(*) FROM questions";
 
             <div id="identification">
               <a>asked by</a>
-              <?php 
+              <?php
               if (empty ($question['name'])){
                 echo "profil supprimé";
 
-              }else 
+              }else
 
               {
 
@@ -132,28 +145,11 @@ $sql = "SELECT COUNT(*) FROM questions";
                       <?php if($page < $totalPages){ ?>
                             <a href="questions.php?page=<?php echo strtolower($direction); ?>&page=<?php echo $page + 1 ?>">Page suivante</a>
                       <?php } ?>
-                      </div>
 </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </main>
+</main>
 
 
 

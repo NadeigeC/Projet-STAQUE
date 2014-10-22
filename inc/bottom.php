@@ -3,12 +3,12 @@
 	<div class="socialicon">
 
     <a href="#"><i class="icon-twitter"></i></a>
-    <a href="#"><i class="icon-facebook-sign"></i> 
+    <a href="#"><i class="icon-facebook-sign"></i>
     <a href="#"> <i class="icon-google-plus"></i>
-    
+
 
     </div>
-    
+
 
 	<h3>
     <a href="index.php"><i class="icon-chevron-sign-right"></i> STA<span style="color:red">QUE</span> <?php echo date("Y"); ?> </a>

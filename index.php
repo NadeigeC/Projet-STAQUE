@@ -90,7 +90,7 @@
 
 				 		<div id="identification">
               <a>asked by</a>
-              <?php 
+              <?php
               if (empty($question['name'])){
                 echo "profil supprimé";
               }else {

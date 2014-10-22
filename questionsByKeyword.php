@@ -59,8 +59,14 @@ $sql = "SELECT COUNT(*) FROM questions";
 
           ?>
         <div class="vote">
-
+        <?php echo "VOTES";?>
         </div>
+        <div class="answer">
+        <?php echo "REPONSES";?>
+        </div>
+        <!-- <div class="vue">
+
+        </div> -->
 
         <div class="questions">
 
