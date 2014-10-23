@@ -27,6 +27,28 @@ $stmt=$dbh->prepare($sql);
 	//récupère les résultats
 	$users=$stmt->fetch();
 
+$sql="SELECT COUNT(*)
+	  FROM questions
+	  WHERE id_user= :iduser";
+
+$stmt=$dbh->prepare($sql);
+$stmt->bindValue(":iduser",$id);
+$stmt->execute();
+$questionNumber=$stmt->fetchColumn();
+ $questionNumber;
+
+
+$stmt=$dbh->prepare($sql);
+
+	//exécute la requête 4 execute
+
+	$stmt ->bindValue(":id", $id);
+	$stmt->execute();
+
+	//récupère les résultats
+	$users=$stmt->fetch();
+	
+
 ?>
 
 
@@ -34,9 +56,10 @@ $stmt=$dbh->prepare($sql);
 
  <main class="mainContent">
 
+	<div id="fiche">
 
-		<div class="profilemenu">
- 		<h1> Mon Profil </h1>
+	<div class="profilemenu">
+ 			<h1> Mon Profil </h1>
 
  		
 
@@ -50,6 +73,8 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 <?php } ?>
 
 		<div class="info">
+
+				<h1> Profil de <?php echo $users['username']; ?></h1>
 
 			<label for="nom"> NOM:
 
@@ -141,6 +166,48 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 			?>
 
+			<div id="activity">
+
+				<h1> STATISTIQUES UTILISATEUR</h1>
+
+			<label for="questions"> NOMBRE DE QUESTIONS POSEES:
+			<?php if($users['language']==""){
+				echo $users['language']="NON RENSEIGNEE ";
+			}
+			else echo $users['language']; ?>
+
+			</label> <br/>
+
+			<label for="answer"> NOMBRE DE QUESTIONS RESOLUES:
+			<?php if($users['language']==""){
+				echo $users['language']="NON RENSEIGNEE ";
+			}
+			else echo $users['language']; ?>
+			</label> <br/>
+
+
+			<label for="answer"> SCORE: 
+			<?php if($users['language']==""){
+				echo $users['language']="NON RENSEIGNEE ";
+			}
+			else echo $users['language']; ?>
+			</label> <br/>
+
+
+			<label for="question"> DERNIERE QUESTION POSEE:
+
+			<?php if($users['language']==""){
+				echo $users['language']="NON RENSEIGNEE ";
+			}
+			else echo $users['language']; ?>
+			</label> <br/>
+
+
+
+
+
+			</div>
+
 			<div id="profile-image">
 
 				<?php if(empty ($users['avatar'])){ ?>
@@ -153,15 +220,9 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
  			 </div></br>
 
-			</div>
+				</div>
 
-
-
-
-
-
-
-
+					</div>
 
 
  </main>
