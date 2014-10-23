@@ -48,6 +48,8 @@
 
         <h1> Dernières questions postées</h1>
 
+        <div class="contentindex">
+
 				<?php
 					foreach($questions as $question):
 
@@ -102,7 +104,7 @@
 
 
 				 		<div id="identification">
-              <a>postée par</a>
+              <a id="post">postée par</a>
               <?php
               if (empty($question['name'])){
                 echo "profil supprimé";
@@ -117,6 +119,10 @@
 			 	</div>
  				<?php endforeach; ?>
 			</div>
+
+      </div>
+
+      </div>
 		</main>
 
 

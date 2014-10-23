@@ -32,9 +32,9 @@
 				<?php
 
 					if (userIsLogged()){ ?>
-					<div id="connect"> <?php echo "Bonjour ".'<span class="espace"></span>'.'<i class="icon-home"></i>'.'<span class="espace"></span>' .'<a href="profile.php?id='.$_SESSION['user']['id'].'">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
+					<div id="connect"> <?php echo "Bonjour ".'<span class="espace"></span>'.'<i class="icon-home"></i>'.'<span class="espace"></span>' .'<a class="logged" href="profile.php?id='.$_SESSION['user']['id'].'">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
 					<!-- <a href="profile.php"></a>  -->
-					<i class="icon-signout"></i><a href="logout.php">DECONNEXION</a> 
+					<i class="icon-signout"></i><a class="logged" href="logout.php">DECONNEXION</a> 
 
 			</div>
 
