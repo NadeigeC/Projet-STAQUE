@@ -18,8 +18,7 @@ if (!empty($_GET['recherche'])){
         WHERE questions.contenu LIKE :recherche
             OR questions.title LIKE :recherche
         GROUP BY answers.id_question
-        ORDER BY questions.dateCreated DESC
-                ";
+        ORDER BY questions.dateCreated DESC";
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(":recherche", "%" . $search . "%");
         $stmt->execute();
@@ -59,10 +58,14 @@ else {
 			<div class="topcontent">
 
 			</div>
+
+			<main class="main_index_questions">
+
             <div>
 			<main class="mainContentQuestions">
 
-        <h1> Dernières questions postées</h1>
+
+        <h1> Dernières questions postées...</h1>
 
 				<?php
 					foreach($questions as $question):

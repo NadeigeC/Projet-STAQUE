@@ -1,20 +1,3 @@
-<?php
-
-$search = "";
-if (!empty($_GET['recherche'])){
-    $search = $_GET['recherche'];
-}
-
-
-$sql = "SELECT * FROM questions
-                WHERE contenu LIKE :recherche
-                OR title LIKE :recherche";
-        $stmt = $dbh->prepare($sql);
-        $stmt->bindValue(":recherche", "%" . $search . "%");
-        $stmt->execute();
-        $results = $stmt -> fetchAll();
-
-?>
 
 
 <!DOCTYPE html>
@@ -27,6 +10,7 @@ $sql = "SELECT * FROM questions
 	<link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
 	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<link href="css/style2.css" type="text/css" rel="stylesheet" />
 
@@ -43,9 +27,13 @@ $sql = "SELECT * FROM questions
 				<?php
 
 					if (userIsLogged()){ ?>
-					<div id="connect"> <?php echo "Bonjour ".'<span class="espace"></span>'.'<i class="icon-home"></i>'.'<span class="espace"></span>' .'<a href="profile.php?id='.$_SESSION['user']['id'].'">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
+					<div id="connect"> <?php echo "Bonjour ".'<span class="espace"></span>'.'<i class="fa fa-user"></i>'.'<span class="espace"></span>' .'<a class="log" href="profile.php?id='.$_SESSION['user']['id'].'">'.$_SESSION['user']['username'] . " !".'</a>'; ?>
 					<!-- <a href="profile.php"></a>  -->
-					<i class="icon-signout"></i><a href="logout.php">DECONNEXION</a>
+
+
+
+					<i class="icon-signout"></i><a class="log" href="logout.php">DECONNEXION</a>
+
 
 			</div>
 
@@ -57,7 +45,7 @@ $sql = "SELECT * FROM questions
 				<?php } ?>
 			</div>
 			<a href="index.php">
-				<img src="img/stackthree.png" height="100" width="100" id="logostack"/>
+				<img id="logostaque"src="img/stackthree.png" height="100" width="100" id="logostack"/>
 			</a>
 
 			<h1><a href="index.php"> <span style="color">STA</span>QUE </a></h1>
@@ -72,15 +60,16 @@ $sql = "SELECT * FROM questions
 
 
 
-					<a href="questions.php"><i class="icon-comment"></i>QUESTIONS</a>
+					<a href="questions.php"><i class="icon-comment"></i>QUESTIONS POSEES</a>
 
 					<?php if (userIslogged()){ ?>
 
-					<a href="askquestions.php"><i class="icon-code"></i>ASK QUESTION</a>
+					<a href="askquestions.php"><i class="fa fa-code"></i>POSER UNE QUESTION</a>
 					<?php } ?>
 
 
-					<a href="questions.php"><i class="icon-tags"></i>TAGS</a>
+					<a href="questions.php"><i class="icon-tags"></i>MOTS CLES</a>
+
 
 
 

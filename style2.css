@@ -120,17 +120,6 @@ h1:hover span{
 	padding-top:40px;
 	padding-right:20px;
 }
-#connexion a.log{
-	color:red;
-	background-color:black;
-	
-
-}
-
-#connexion a.log:hover{
-	color:#fff;
-	background-color:black;
-}
 
 #connexion a{
 	background-color: #c0392b;
@@ -138,12 +127,6 @@ h1:hover span{
 	padding: 10px;
 	text-decoration: none;
 	margin-right: 10px;
-}
-
-
-
-#logostaque{
-	float:left;
 }
 
 #connexion a:hover{
@@ -157,11 +140,10 @@ h1:hover span{
 #footer{
 
 	background-color: black;
-	color:#fff;
-	width: 100%;
-	height:80px;
-	position:absolute;
-	bottom:0;
+color: #fff;
+width: 100%;
+position: absolute;
+bottom: 0;
 }
 
 #footer a{
@@ -173,27 +155,11 @@ h1:hover span{
 	padding-top:70px;
 }
 
-footer h3{
-	float:left;
-	margin-left:500px;
-	margin-top:-10px;
-
-}
-
-.links{
-	float:left;
-	padding-left:25px;
-	margin-top:-50px;
-}
-
 .socialicon{
 
-	
-float: right;
-padding-top: -10px;
-margin-top: -10px;
-padding-left: 800px;
-}
+	float:left;
+	padding-top: 0px;
+	padding-left: 600px;
 }
 
 #logostack{
@@ -213,11 +179,10 @@ padding-left: 800px;
 .secondcontent{
 /*	background-color:rgba(5,5,5,0.5); */
 	height:50px;
-	width:1000px;
+	/*width:100%;*/
 	margin:auto;
 	text-align: center;
-	padding: 10px;
-
+	
 }
 
 .secondcontent i{
@@ -323,36 +288,37 @@ top: 12%;
 
 /************  CONTENU PRINCIPAL ************/
 
-.main_index_questions{
-	
-	width: 1000px;
-	margin:auto;
-	margin-top: 30px;
-	margin-bottom: 50px;
-
-}
-.main_index_questions h1{
-
-	font-size: 1.5em;
-	text-transform: uppercase;
-	
-}
-
-
 
 .mainContentQuestions{
-	clear: float;
-	width: 1200px;
-	margin-top: 30px;
-	margin-left:25%;
-	margin-bottom: 50px;
-
+background-color: #fff;
+margin-left: 25%;
+padding-top: -50px;
+margin-top: -200px;
+width: 900px;
+height:450px;
 }
 
 .mainContentQuestions h1{
 	font-size: 1.5em;
 	text-transform: uppercase;
-	margin-left: -50px;
+	text-align:center;
+	
+}
+
+
+#connexion a.logged{
+	color:red;
+	background-color:black;
+}
+
+#connexion a:hover{
+	color:#fff;
+}
+
+.contentindex{
+
+margin-top: 50px;
+margin-left: 25px;
 }
 
 .maindetail{
@@ -461,6 +427,9 @@ top: 12%;
 	padding: 15px;
 }
 
+
+
+
 .contenu h2{
 	clear: both;
 	padding: 30px;
@@ -468,13 +437,16 @@ top: 12%;
 
 #identification {
 
-	float: right;
+
+padding-left:15px;
+	
 }
 
 #titreQuest{
 	font-weight: 700;
 	color: #444;
 	text-decoration: none;
+	margin-left:200px;
 }
 
 #titreQuest:hover{
@@ -605,13 +577,13 @@ overflow: hidden;
 
 .info{
 
-padding-top: 5%;
+
 padding-left: 10%;
 }
 
 .info label{
 
-	padding-bottom:3%;
+	
 	font-weight: 700;
 	color:#2980b9;
 }
@@ -625,7 +597,12 @@ right: 10%;
 top: 33%;
 }
 
+.secondcontent{
 
+margin-top: 5%;
+margin-left:25%;
+
+}
 
 
 
