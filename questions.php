@@ -3,6 +3,11 @@
   include("db.php");
   include("inc/functions.php");
 
+$id = "";
+if (!empty($_GET['id'])){
+    $id = $_GET['id'];
+  }
+
   $numPerPage = 6;
   $page = 1;
 
@@ -17,7 +22,8 @@
     if ($_GET['dir'] === "desc"){
       $direction = "DESC";}
 }
-$sql="SELECT COUNT(answers.id) AS answCount, questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated,
+
+$sql="SELECT COUNT(answers.id) AS answCount, questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated, questions.vues,
   questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5,
   users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
       FROM questions
@@ -40,9 +46,6 @@ $sql = "SELECT COUNT(*) FROM questions";
     $totalPages = ceil($totalNumber / $numPerPage); //arrondi par le haut
 
 
-
-
-
 ?>
 
 <?php include("inc/top.php"); ?>
@@ -61,7 +64,8 @@ $sql = "SELECT COUNT(*) FROM questions";
         <p>REPONSES</p>
         </div>
         <div class="vue">
-        <?php echo "VUES";?>
+        <?php echo $question['vues'];?>
+        <p>VUES</p>
         </div>
 
         <div class="questions">
