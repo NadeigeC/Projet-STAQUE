@@ -6,11 +6,8 @@
 	include("inc/functions.php");
 
 
-
-
-
 	//notre requête sql
-	$sql="SELECT COUNT(answers.id) AS answCount, questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated,
+	$sql="SELECT COUNT(answers.id) AS answCount, questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated, questions.vues,
   questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5,
   users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
       FROM questions
@@ -44,6 +41,7 @@
 			<div class="topcontent">
 
 			</div>
+            <div>
 			<main class="mainContentQuestions">
 
         <h1> Dernières questions postées</h1>
@@ -60,7 +58,8 @@
         <p>REPONSES</p>
         </div>
         <div class="vue">
-        <?php echo "VUES";?>
+        <?php echo $question['vues'];?>
+        <p>VUES</p>
         </div>
 
 			 	<div class="questions">
@@ -118,7 +117,7 @@
  				<?php endforeach; ?>
 			</div>
 		</main>
-
+</div>
 
 
 <?php include("inc/bottom.php"); ?>

@@ -11,6 +11,13 @@ if (!empty($_GET['id'])){
     $id = $_GET['id'];
   }
 
+$sql = "UPDATE questions
+       SET vues=vues+1
+       WHERE id= :id";
+    $stmt = $dbh->prepare($sql);
+    $stmt ->bindValue(":id", $id);
+    $stmt->execute();
+
 
 $sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated,
   questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5, questions.dateCreated,
