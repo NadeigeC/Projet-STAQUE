@@ -12,7 +12,7 @@ if (!empty($_GET['id'])){
   }
 
 
-$sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated
+$sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated,
   questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5, questions.dateCreated,
   users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
       FROM questions
@@ -53,13 +53,13 @@ $sql="SELECT questions.id AS questId,
 
 ?>
 
-<main class="mainContentQuestions">
 
+<div id="questionDetail">
+            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['username']; ?>le <?php echo $question['dateCreated']; ?></h3>
 
-        <div id="questionDetail">
-            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['username']; ?></h3><?php echo $question['dateCreated']; ?>
+        <?php echo "SCORE AUTEUR" ?>
 
-            <div id="contenu">
+            <div class="contenu">
             <pre><?php echo $question['contenu']; ?></pre>
             <div>
         <div id="tag">
@@ -95,11 +95,10 @@ $sql="SELECT questions.id AS questId,
               </p>
             <?php }?>
 
-</div>
-</div>SCORE AUTEUR</div>
+          </div>
 
 
-      </div>
+
 
 <?php
 
@@ -145,8 +144,6 @@ foreach ($answers as $answer) {
 
   <?php include("repondre.php") ?>
 
-</main>
-
-
+</div>
 
 <?php include("inc/bottom.php"); ?>

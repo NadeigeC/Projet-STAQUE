@@ -305,6 +305,12 @@ top: 12%;
 	margin-left: -50px;
 }
 
+.maindetail{
+	clear:both;
+	float:left;
+	width: 50%;
+	height: 10%;
+}
 
 .topcontent{
 	width: 1000px;
@@ -388,6 +394,12 @@ top: 12%;
 	text-decoration: none;
 }
 
+#questionDetail {
+	width:1000px;
+	margin-left:0;
+}
+
+
 #questionDetail h3{
 	clear: both;
 	font-size: 2em;
@@ -395,8 +407,13 @@ top: 12%;
 	padding: 5px;
 }
 
-#contenu{
+.contenu{
 	padding: 15px;
+}
+
+.contenu h2{
+	clear: both;
+	padding: 30px;
 }
 
 #identification {
@@ -457,7 +474,9 @@ padding-top: 25px;
     width: 50%;
 }
 
-input[type=submit]{
+#login_form input[type=submit],
+#register_form input[type=submit],
+#askQuestions_form input[type=submit]{
 	background-color: #c0392b;
 	color: #fff;
 	padding: 10px;
