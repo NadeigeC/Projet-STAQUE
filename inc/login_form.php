@@ -1,4 +1,5 @@
 <div class="mainContent">
+    <div class="loginContent">
 
     <form action="login.php" method="POST" id="login_form">
 
@@ -15,6 +16,7 @@
                                 <label for="password"><i class="icon-lock"></i><span class="espace"></span>Mot de passe</label>
                                 <input type="password" value="<?php echo $password; ?>" name="password" id="password" />
                         </div>
+                            </div>
                     </div>
 
 
