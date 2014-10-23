@@ -78,7 +78,7 @@
 
 
 
-<div class="right-content">
+<!-- <div class="right-content">
 
 
 <h1> Pourquoi s'inscrire sur Staque.fr? </h1>
@@ -92,7 +92,7 @@
 </ul>
 
 
-</div>
+</div> -->
 
 
 

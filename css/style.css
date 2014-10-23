@@ -54,7 +54,7 @@ table {
 
 body{
 	font-family: 'Play', sans-serif;
-	background-color:;
+	background-color:rgba(0,0,0,0.1);
 
 }
 
@@ -97,11 +97,7 @@ h1:hover span{
 
 
 #connexion{
-	/*position: absolute;
-	top:20px;
-	left: 20px;
-	font-size: 1em;*/
-
+	
 	float:right;
 	padding-top:20px;
 	padding-right:20px;
@@ -184,7 +180,7 @@ padding-left: 155px;
 	float: left;
 	font-size: 40px;
 }
-.login a{
+/*#head .login a{
 	margin-left: 2%;
 	margin-top: 20px;
 	display:inline-block;
@@ -193,8 +189,9 @@ padding-left: 155px;
 	border-radius: 5px 5px 5px 5px;
 	padding: 5px;
 	color:#000;
+	text-decoration: none;
 }
-.signup a{
+#head .signup a{
 	margin-left: 1%;
 	margin-top: 20px;
 	display:inline-block;
@@ -203,7 +200,8 @@ padding-left: 155px;
 	border-radius: 5px 5px 5px 5px;
 	padding: 5px;
 	color:#000;
-}
+	text-decoration: none;
+}*/
 #head input{
 	margin-left: 24%;
 	margin-top: 20px;
@@ -329,17 +327,17 @@ padding-top: 25px;
 /****************************************************************************
 **********contenuprincipal************************************
 ********************************************************************/
-.mainContent{
+/*.mainContent{
 	border-radius:25px;
 	width: 40%;
 	height: 600px;
 	border: 3px solid black;
 	position:relative;
-	/*margin:50px auto; test a remettre si pb !! */
+	margin:50px auto; test a remettre si pb !! 
 	margin:100px;/* modif jeremy pour placer cadre avantages inscription staque*/
 
-	box-shadow: 10px 10px 5px #656565;
-}
+	/*box-shadow: 10px 10px 5px #656565;
+}*/
 
 .mainContentQuestions{
 	width: 1200px;
@@ -360,12 +358,9 @@ border-radius: 8px;
 background-color: #c0392b;
 }
 
-.mainContent a{
-	margin-left:40%;
-}
+
 
 .topcontent{
-	float: left;
 	width: 1000px;
 	height: 100px;
 	margin: 20px auto auto 20px;
@@ -386,8 +381,8 @@ background-color: #c0392b;
 	width: 50%;
 	height: 10%;
 }
-.vote{
-	width: 50px;
+.vote, .reponse, .vue{
+	width: 100px;
 	height: 70px;
 	float: left;
 	border-top: 1px solid #ccc;
@@ -414,13 +409,11 @@ background-color: #c0392b;
 	border-top: 1px solid #ccc;
 
 }
-.questions a{
+.questions p a{
 	text-decoration: none;
 	color: #6495ED;
 	font-weight: bold;
-	margin-left: 35px;
-
-
+	
 }
 #tag {
 	margin-top: 25px;
@@ -436,6 +429,8 @@ background-color: #c0392b;
 	margin-left: 9px;
 	padding: 4px;
 	background-color: #e0eaf1;
+	text-align: center;
+	text-transform: uppercase;
 }
 #tag p:visited{
 	color:#4a6b82 ;

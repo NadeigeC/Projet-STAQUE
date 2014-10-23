@@ -12,7 +12,7 @@ if (!empty($_GET['id'])){
   }
 
 
-$sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId,
+$sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated
   questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5, questions.dateCreated,
   users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
       FROM questions
@@ -57,12 +57,12 @@ $sql="SELECT questions.id AS questId,
 
 
         <div id="questionDetail">
-            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['username']; ?></h3>
+            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['username']; ?></h3><?php echo $question['dateCreated']; ?>
 
             <div id="contenu">
             <pre><?php echo $question['contenu']; ?></pre>
             <div>
-<div id="tag">
+        <div id="tag">
             <p class="keyword">
               <?php echo $question['keyword1']; ?>
             </p>
