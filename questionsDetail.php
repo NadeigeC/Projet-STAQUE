@@ -21,7 +21,7 @@ $sql = "UPDATE questions
 
 $sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated,
   questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5, questions.dateCreated,
-  users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
+  users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink, users.score
       FROM questions
       LEFT JOIN users on users.id=questions.id_user
       WHERE questions.id= :id";
@@ -30,6 +30,7 @@ $sql="SELECT questions.id AS questId, questions.title, questions.contenu, questi
     $stmt ->bindValue(":id", $id);
     $stmt->execute();
     $question=$stmt->fetch();
+
 
 $sql="SELECT answers.id AS answId, answers.id_question, answers.contenu, answers.id_user, answers.dateCreated, users.id, users.username
       FROM answers
@@ -52,19 +53,17 @@ $sql="SELECT questions.id AS questId,
     $stmt->execute();
     $comments=$stmt->fetchAll();
 
-          // echo "<pre>";
-          // print_r($comments);
-          // //echo "test";
-          // echo "</pre>";
-          // die();
-
 ?>
 
 
 <div id="questionDetail">
-            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['username']; ?>le <?php echo $question['dateCreated']; ?></h3>
+            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['username']; ?> </a>le <?php
+              $unix = strtotime($question['dateCreated']);
+                        echo date("d-m-Y", $unix); ?></h3>
 
-        <?php echo "SCORE AUTEUR" ?>
+        <div class="vue">
+        <p>SCORE</p>
+        <?php echo $question['score'] ?></div>
 
             <div class="contenu">
             <pre><?php echo $question['contenu']; ?></pre>
@@ -116,7 +115,9 @@ foreach ($answers as $answer) {
 
 
             <div id="contenu">
-            <h2 style="font-weight: 700">Réponse postée par  <?php echo $answer['username']; ?> le <?php echo $answer['dateCreated']; ?></h2>
+            <h2 style="font-weight: 700">Réponse postée par  <?php echo $answer['username']; ?> le </a>le <?php
+              $unix = strtotime($question['dateCreated']);
+                        echo date("d-m-Y", $unix); ?></h2>
             <pre><?php echo $answer['contenu']; ?></pre>
             </div>
 
@@ -135,7 +136,9 @@ foreach ($answers as $answer) {
 
 ?>
             <div id="contenu">
-            <h3 style="font-weight: 700">Commentaire posté par  <?php echo $comment['username']; ?> le <?php echo $comment['dateCreated']; ?></h3>
+            <h3 style="font-weight: 700">Commentaire posté par  <?php echo $comment['username']; ?> le </a>le <?php
+              $unix = strtotime($question['dateCreated']);
+                        echo date("d-m-Y", $unix); ?></h3>
             <pre><?php echo $comment['commContent']; ?></pre>
            <?php } ?>
             </div>

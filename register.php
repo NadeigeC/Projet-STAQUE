@@ -11,7 +11,7 @@
  	$imageUpload=1;
 
 if (!empty($_FILES)){
-	
+
 	if($_FILES['image']['error']==4){
 		$imageUpload=0;
 	}
@@ -45,7 +45,7 @@ if (!empty($_FILES)){
 
             $img = new abeautifulsite\SimpleImage($destination);
             $img->thumbnail(300,300)->save("uploads/avatar/" . $filename);
-            // $img->desaturate()->blur()->sketch()->save("uploads/blackandwhite/" . $filename);
+            $img->thumbnail(50,50)->save("uploads/miniature/" . $filename);
             }
         }
 
@@ -138,8 +138,8 @@ if (!empty($_FILES)){
 			$token = randomString();
 
 			//sql d'insertion de l'user
-			$sql = "INSERT INTO users(name, avatar, email, username, password, salt, token, dateRegistered, dateModified, job, country, language, externallink)
-                    VALUES (:name, :avatar, :email, :username, :password, :salt, :token, NOW(), NOW(), :job, :country, :language, :externallink)";
+			$sql = "INSERT INTO users(name, avatar, email, username, password, salt, token, dateRegistered, dateModified, job, country, language, externallink, score)
+                    VALUES (:name, :avatar, :email, :username, :password, :salt, :token, NOW(), NOW(), :job, :country, :language, :externallink, 5)";
 
                     $stmt = $dbh->prepare($sql);
                     $stmt->bindValue(":name", $name);

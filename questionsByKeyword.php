@@ -125,7 +125,9 @@ $sql = "SELECT COUNT(*) FROM questions";
 
                 }?>
 
-              </a>
+              </a>le <?php
+              $unix = strtotime($question['dateCreated']);
+                        echo date("d-m-Y", $unix); ?>
 
             </div>
           </div>
