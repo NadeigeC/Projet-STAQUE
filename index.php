@@ -44,11 +44,9 @@
 			<div class="topcontent">
 
 			</div>
-			<main class="mainContentQuestions">
+			<main class="main_index_questions">
 
-        <h1> Dernières questions postées</h1>
-
-        <div class="contentindex">
+        <h1> Dernières questions postées...</h1>
 
 				<?php
 					foreach($questions as $question):
@@ -104,7 +102,7 @@
 
 
 				 		<div id="identification">
-              <a id="post">postée par</a>
+              <a>postée par</a>
               <?php
               if (empty($question['name'])){
                 echo "profil supprimé";
@@ -119,10 +117,6 @@
 			 	</div>
  				<?php endforeach; ?>
 			</div>
-
-      </div>
-
-      </div>
 		</main>
 
 

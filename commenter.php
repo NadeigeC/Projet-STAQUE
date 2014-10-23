@@ -65,9 +65,9 @@
             <input type="hidden" name="quest_id" value="<?php echo $quest_id; ?>">
             <input type="hidden" name="comment_id" value="<?php echo $comment['commId']; ?>">
 
-            <div id="comment">
+            <div class="comment">
 
-            <textarea value="<?php echo $commentaire; ?>" id="commentaire" cols="30" rows="5" name="commentaire">
+            <textarea class="commentaire" cols="50" rows="5" name="commentaire"><?php echo $commentaire; ?>
             </textarea>
             <div>
 <?php

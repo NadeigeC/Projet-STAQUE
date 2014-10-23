@@ -55,9 +55,9 @@
 
         	<input type="hidden" name="quest_id" value="<?php echo $quest_id; ?>">
 
-            <div id="reponse">
-            <pre><?php echo $reponse; ?></pre>
-            <textarea value="<?php echo $reponse; ?>" id="reponse" cols="87" rows="10" name="reponse">
+            <div class="reponse">
+
+            <textarea class="reponse" cols="87" rows="10" name="reponse"><?php echo $reponse; ?>
           </textarea>
             <div>
 <?php
