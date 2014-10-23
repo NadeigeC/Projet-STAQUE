@@ -45,7 +45,7 @@
 </div>
 
 
-<div class="right-content">
+<!-- <div class="right-content">
 
 
 <h1> Nouveautés sur Staque.fr</h1>
@@ -61,6 +61,6 @@
 
 
 
-</div>
+</div> -->
 
 <?php include("inc/bottom.php"); ?>

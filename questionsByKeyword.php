@@ -26,15 +26,19 @@
     if ($_GET['dir'] === "desc"){
       $direction = "DESC";}
 }
-$sql="SELECT *
+$sql="SELECT COUNT(answers.id) AS answCount, questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated,
+  questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5,
+  users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
           FROM questions
+          LEFT JOIN answers on questions.id=answers.id_question
           LEFT JOIN users on users.id=questions.id_user
           WHERE keyword1 = :keyword
           OR keyword2 = :keyword
           OR keyword3 = :keyword
           OR keyword4 = :keyword
           OR keyword5 = :keyword
-          ORDER BY dateCreated DESC
+          GROUP BY answers.id_question
+          ORDER BY questions.dateCreated DESC
           LIMIT :offset, $numPerPage";
 
     $stmt=$dbh->prepare($sql);
@@ -53,18 +57,25 @@ $sql = "SELECT COUNT(*) FROM questions";
 ?>
 
 <main class="mainContentQuestions">
-<div class="maindetail">
+
         <?php
           foreach($questions as $question):
 
           ?>
-        <div class="vote">
-
+       <div class="vote">
+        <?php echo "VOTES";?>
+        </div>
+        <div class="answer">
+        <?php echo $question['answCount'];?>
+        <p>REPONSES</p>
+        </div>
+        <div class="vue">
+        <?php echo "VUES";?>
         </div>
 
         <div class="questions">
 
-          <a href="questionsDetail.php?id=<?php echo $question['id']; ?>"> <?php echo $question['title']; ?>
+          <a href="questionsDetail.php?id=<?php echo $question['id']; ?>" id="titreQuest"> <?php echo $question['title']; ?>
           </a>
                   <div id="tag">
             <p class="keyword">
@@ -101,11 +112,22 @@ $sql = "SELECT COUNT(*) FROM questions";
 
 
             <div id="identification">
-              <a>asked by</a>
-              <a href=""><?php echo $question['username']; ?></a>
+              <a>postée par<span class="espace"></span></a>
+              <?php
+              if (empty ($question['name'])){
+                echo "profil supprimé";
+
+              }else
+
+              {
+
+               echo "<a href='profile.php?id=".$question['idUser']."'>".$question['name']."</a>";
+
+                }?>
+
+              </a>
 
             </div>
-
           </div>
 
         </div>

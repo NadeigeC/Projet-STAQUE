@@ -1,5 +1,5 @@
 
-<form action="askquestions.php" id="askQuestions" method="POST" >
+<form action="askquestions.php" id="askQuestions_form" method="POST" >
 
             <h3>POSEZ VOTRE QUESTION</h3>
 
