@@ -11,6 +11,20 @@ include("inc/functions.php");
 include("inc/top.php");
 
 
+// Requete pour afficher la derniere maj (derniere date question posee)
+
+$sql= "SELECT dateModified 
+	   FROM questions 
+	   WHERE id_user= :iduser
+	   ORDER BY dateModified
+	   LIMIT 1";
+	   $stmt=$dbh->prepare($sql);
+ $stmt->bindValue(":iduser",$id);
+ $stmt ->execute();
+ $lastUpdate=$stmt->fetchColumn();
+ 
+
+
 // Requete pour afficher le nombre  de question posées par l'user
 $sql="SELECT COUNT(*)
 	  FROM questions
@@ -64,7 +78,7 @@ $sql="SELECT title
 
 
 
-// Requete pour faire apparaitre l'ensemble des colonne de la table users
+// Requete pour faire apparaitre l'ensemble des colonnes de la table users
 
 
 $sql="SELECT *
@@ -83,19 +97,22 @@ $stmt=$dbh->prepare($sql);
 	$users=$stmt->fetch();
 
 
+	// Requete pour afficher le score de l'utilisateur:
+
+
+
+
 ?>
+
+
 
 
 
 
  <main class="mainContent">
 
-	<div class="">
 
-	
- 			<h1> Mon Profil </h1>
-
- 		
+		<div id="edit">		
 
 <?php 
 
@@ -150,9 +167,9 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 			<?php echo date("d-m-Y à H:i",strtotime($users['dateRegistered']));?>
 			</p></br>
 
-			<p> DERNIERE MISE A JOUR:
+			<p> DERNIERE CONTRIBUTION:
 
-              <?php echo date("d-m-Y à H:i",strtotime($users['dateModified']));?>
+              <?php echo date("d-m-Y à H:i",strtotime($lastUpdate));?>
 
 			</p></br>
 
@@ -204,7 +221,9 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 				<h1> STATISTIQUES UTILISATEUR</h1>
 
-			<p> NOMBRE DE QUESTIONS POSEES:
+					<div class="stats">
+
+			<p class="answer"> NOMBRE DE QUESTIONS POSEES:
 			<?php if(empty($questionNumber)){
 				echo "Pas de question posée";
 			}
@@ -212,7 +231,7 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 			</p> <br/>
 
-			<p> NOMBRE DE REPONSES:
+			<p class="vue"> NOMBRE DE REPONSES:
 			<?php if(empty($answerNumber)){
 
 				echo "0";
@@ -221,14 +240,14 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 			</label> <br/>
 
 
-			<p> SCORE: 
-			<?php echo 5+($questionNumber*2)+($answerNumber*4);
+			<p class="vote"> SCORE: 
+			<?php echo $users['score'];
 		
 			 ?>
 			</p> <br/>
 
 
-			<p> DERNIERE QUESTION POSEE:
+			<p class="" style="clear:both"> DERNIERE QUESTION POSEE:
 
 			<?php if(empty($lastQuestion)){
 
@@ -248,7 +267,7 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 			} ?>
 
 			</p>
-
+		    </div>
 
 
 
@@ -270,8 +289,9 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 				
 
 					</div>
+					<div class="space"></div>
 
-
+						
  </main>
 
 

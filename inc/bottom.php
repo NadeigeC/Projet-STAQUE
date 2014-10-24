@@ -10,7 +10,7 @@
 
 
     <h3>
-    <a href="index.php"><i class="fa fa-copyright"></i> STA<span style="color:red">QUE</span> &copy; <?php echo date("Y"); ?> </a>
+    <a href="index.php"><i class="fa fa-copyright"></i> STA<span style="color:red">QUE</span> <?php echo date("Y"); ?> </a>
     </h3>
 
 	<div class="socialicon">

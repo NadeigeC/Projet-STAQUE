@@ -10,6 +10,24 @@
  include("db.php");
  include("inc/top.php");
 
+ $id=$_SESSION['user']['id'];
+
+ // requete pour definir $users
+
+$sql="SELECT *
+      FROM users
+      WHERE id= :id";
+
+
+$stmt=$dbh->prepare($sql);
+
+    //exécute la requête 4 execute
+
+    $stmt ->bindValue(":id", $id);
+    $stmt->execute();
+
+    //récupère les résultats
+    $users=$stmt->fetch();
 
 
     //déclaration des variables du formulaire
@@ -165,9 +183,11 @@ else{
                         <input type="text" name="externallink" id="externallink" value="<?php echo $externallink; ?>" />
                 </div>
 
-                    <div id="edit-image">
+                <div id= "edit-image">
 
-                <?php if(empty ($users['avatar'])){ ?>
+                <?php
+                
+                 if(empty ($users['avatar'])){ ?>
                     <img src="uploads/avatar/1.jpg"/><?php
                 }
                 else{
@@ -178,7 +198,7 @@ else{
 
              </div></br>
 
-                </div>
+             
 
 
     <?php
