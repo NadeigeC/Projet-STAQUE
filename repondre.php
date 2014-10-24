@@ -35,9 +35,6 @@
 	                    $stmt->bindValue(":id_user", $user_id);
 	                    $stmt->bindValue(":id_question", $quest_id);
 	                    $stmt->execute();
-	                  	header("Location: questionsDetail.php?id=$quest_id");
-						die();
-    
 
         $sql = "UPDATE users
                        SET score=score+4
@@ -47,6 +44,11 @@
                         $stmt->execute();
 
 
+	                  	header("Location: questionsDetail.php?id=$quest_id");
+						die();
+    
+
+       
 }
 
 
@@ -64,7 +66,7 @@
 
             <div class="field_container">
 
-            <textarea class="reponse" cols="150" rows="10" name="reponse"><?php echo $reponse; ?>
+            <textarea class="reponse" name="reponse"><?php echo $reponse; ?>
             </textarea>
             <div>
 <?php

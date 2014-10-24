@@ -11,6 +11,7 @@ if (!empty($_GET['id'])){
     $id = $_GET['id'];
   }
 
+//Requete nb de vues par questionq
 $sql = "UPDATE questions
        SET vues=vues+1
        WHERE id= :id";
@@ -18,7 +19,7 @@ $sql = "UPDATE questions
     $stmt ->bindValue(":id", $id);
     $stmt->execute();
 
-
+//Requete qui affiche le détail des questions
 $sql="SELECT questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated,
   questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5, questions.dateCreated,
   users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink, users.score
@@ -61,7 +62,7 @@ $sql="SELECT questions.id AS questId,
               
             <h3>postée par  <?php echo $question['username']; ?> 
               </a>le <?php $unix = strtotime($question['dateCreated']);
-                        echo date("d-m-Y", $unix); ?></h3>
+                        echo date("d-m-Y à H:i", $unix); ?></h3>
 
               <div class="score">
               <p>SCORE</p>

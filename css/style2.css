@@ -52,6 +52,7 @@ table {
 /*************************************************/
 
 
+
 body{
 	font-family: 'Play', sans-serif;
 	background-color:rgba(0,0,0,0.1);
@@ -621,6 +622,12 @@ padding-top: 25px;
     height: 40px;
     line-height: 30px;
     width: 20%;
+}
+
+textarea{
+	height: 135px;
+	width: 70%;
+	
 }
 
 #askQuestions .field_container label{
