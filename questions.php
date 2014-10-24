@@ -123,7 +123,7 @@ $sql = "SELECT COUNT(*) FROM questions";
 
               </a>le <?php
               $unix = strtotime($question['dateCreated']);
-                        echo date("d-m-Y", $unix); ?>
+                        echo date("d-m-Y à H:i", $unix); ?>
 
 
             </div>

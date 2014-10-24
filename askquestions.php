@@ -66,6 +66,14 @@
 	                    $stmt->bindValue(":key5", $keyword5);
 
 	                    $stmt->execute();
+
+				$sql = "UPDATE users
+							       SET score=score+2
+							       WHERE id= :id";
+							    $stmt = $dbh->prepare($sql);
+							    $stmt ->bindValue(":id", $user_id);
+							    $stmt->execute();
+
 						header("Location: index.php");
 						die();
 
@@ -73,13 +81,7 @@
 
 
 
-				$sql = "UPDATE users
-			       SET score=score+2
-			       WHERE id= :id";
-			    $stmt = $dbh->prepare($sql);
-			    $stmt ->bindValue(":id", $user_id);
-			    $stmt->execute();
-
+				
 }
 
 

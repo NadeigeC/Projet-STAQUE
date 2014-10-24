@@ -37,7 +37,7 @@ $sql="SELECT COUNT(answers.id) AS answCount, questions.id AS questId, questions.
           OR keyword3 = :keyword
           OR keyword4 = :keyword
           OR keyword5 = :keyword
-          GROUP BY answers.id_question
+          GROUP BY questions.id
           ORDER BY questions.dateCreated DESC
           LIMIT :offset, $numPerPage";
 
@@ -129,7 +129,7 @@ $sql = "SELECT COUNT(*) FROM questions";
 
               </a>le <?php
               $unix = strtotime($question['dateCreated']);
-                        echo date("d-m-Y", $unix); ?>
+                        echo date("d-m-Y à H:i", $unix); ?>
 
             </div>
           </div>
