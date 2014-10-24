@@ -140,10 +140,10 @@ $sql = "SELECT COUNT(*) FROM questions";
 
 <div id="pagination">
                       <?php if($page >= 2){ ?>
-                            <a href="questionsByKeyword.php?page=<?php echo strtolower($direction); ?>&<?php echo $_SERVER['QUERY_STRING']; ?>&page=<?php echo $page - 1 ?>">Page précédente</a>
+                            <a href="questionsByKeyword.php?page=<?php echo strtolower($direction); ?>&keyword=<?php echo $key; ?>&page=<?php echo $page - 1 ?>">Page précédente</a>
                       <?php } ?>
 
-                                    <a href="questionsByKeyword.php?dir=<?php echo strtolower($direction); ?>&<?php echo $_SERVER['QUERY_STRING']; ?>&page=1"><<</a>
+                                    <a href="questionsByKeyword.php?dir=<?php echo strtolower($direction); ?>&keyword=<?php echo $key; ?>&page=1"><<</a>
                       <?php
                           for($i= ($page-2); $i < ($page+2); $i++){
                             if($i <1 || $i > $totalPages){continue;}
@@ -151,10 +151,10 @@ $sql = "SELECT COUNT(*) FROM questions";
 
                         }
                         ?>
-                            <a href="questionsByKeyword.php?dir=<?php echo strtolower($direction); ?>&<?php echo $_SERVER['QUERY_STRING']; ?>&page=<?php echo $totalPages; ?>">>></a>
+                            <a href="questionsByKeyword.php?dir=<?php echo strtolower($direction); ?>&keyword=<?php echo $key; ?>&page=<?php echo $totalPages; ?>">>></a>
 
                       <?php if($page < $totalPages){ ?>
-                            <a href="questionsByKeyword.php?page=<?php echo strtolower($direction); ?>&<?php echo $_SERVER['QUERY_STRING']; ?>&page=<?php echo $page + 1 ?>">Page suivante</a>
+                            <a href="questionsByKeyword.php?page=<?php echo strtolower($direction); ?>&keyword=<?php echo $key; ?>&page=<?php echo $page + 1 ?>">Page suivante</a>
                       <?php } ?>
                       </div>
 </div>
