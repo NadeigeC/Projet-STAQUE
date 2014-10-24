@@ -646,9 +646,9 @@ textarea{
 
 /*******************  EDIT PROFILE  ******************************/
 #edit-image{
-	top: 35%;
+	top:20%;
 position: absolute;
-left: 75%;
+left: 68%;
 overflow: hidden;
 
 }
@@ -731,7 +731,7 @@ width: 400px;
 
 
 
-.mainContent{
+.mainContentProfile{
 	margin-top:50px;
 padding-left: 15px;
 padding-right: 125px;
@@ -752,3 +752,12 @@ background-color: #fff;
 }
 
 
+.vote p:nth-child(2){
+	margin-top:5px;
+}
+
+
+.mainContent{
+
+	position:relative;
+}

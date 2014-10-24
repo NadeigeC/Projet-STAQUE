@@ -109,7 +109,7 @@ $stmt=$dbh->prepare($sql);
 
 
 
- <main class="mainContent">
+ <main class="mainContentProfile">
 
 
 		<div id="edit">		
@@ -221,33 +221,28 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 				<h1> STATISTIQUES UTILISATEUR</h1>
 
-					<div class="stats">
 
-			<p class="answer"> NOMBRE DE QUESTIONS POSEES:
-			<?php if(empty($questionNumber)){
-				echo "Pas de question posée";
-			}
-			else echo $questionNumber; ?>
+		<div class="vote">
+        
+        <p><?php echo $questionNumber;?></p>
+        <p> QUESTION </p>
+        </div>
+        <div class="answer">
+        <p><?php echo $answerNumber;?></p>
+        <p>REPONSES</p>
+        </div>
+        <div class="vue">
+        <p><?php echo $users['score'];?></p>
+        <p>VUES</p>
+        </div>
 
-			</p> <br/>
-
-			<p class="vue"> NOMBRE DE REPONSES:
-			<?php if(empty($answerNumber)){
-
-				echo "0";
-			}
-			else echo $answerNumber ; ?>
-			</label> <br/>
-
-
-			<p class="vote"> SCORE: 
-			<?php echo $users['score'];
-		
-			 ?>
-			</p> <br/>
+					
 
 
-			<p class="" style="clear:both"> DERNIERE QUESTION POSEE:
+	
+
+
+			<p class="" style="clear:both;padding-top:25px"> DERNIERE QUESTION POSEE:
 
 			<?php if(empty($lastQuestion)){
 
@@ -288,8 +283,7 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 				
 
-					</div>
-					<div class="space"></div>
+				
 
 						
  </main>
