@@ -11,6 +11,61 @@ include("inc/functions.php");
 include("inc/top.php");
 
 
+// Requete pour afficher le nombre  de question posées par l'user
+$sql="SELECT COUNT(*)
+	  FROM questions
+	  WHERE id_user= :iduser";
+
+$stmt=$dbh->prepare($sql);
+$stmt->bindValue(":iduser",$id);
+$stmt->execute();
+$questionNumber=$stmt->fetchColumn();
+
+
+// requete pour affiche rle nombre de réponses données par l'user
+ 
+$sql="SELECT COUNT(*)
+	  FROM answers
+	  WHERE id_user= :iduser";
+
+$stmt=$dbh->prepare($sql);
+$stmt->bindValue(":iduser",$id);
+$stmt->execute();
+$answerNumber=$stmt->fetchColumn();
+
+
+// Requete pour afficher la derniere question posée
+ 
+$sql="SELECT title
+      FROM questions 
+      WHERE id_user=:iduser
+      ORDER BY dateCreated DESC
+      LIMIT 1 ";
+
+ $stmt=$dbh->prepare($sql);
+ $stmt->bindValue(":iduser",$id);
+ $stmt ->execute();
+ $lastQuestion=$stmt->fetchColumn();
+
+ // Requete pour afficher la derniere réponse postée
+
+
+ $sql="SELECT contenu
+      FROM answers
+      WHERE id_user=:iduser
+      ORDER BY dateCreated DESC
+      LIMIT 1 ";
+
+ $stmt=$dbh->prepare($sql);
+ $stmt->bindValue(":iduser",$id);
+ $stmt ->execute();
+ $lastAnswer=$stmt->fetchColumn();
+ 
+
+
+
+// Requete pour faire apparaitre l'ensemble des colonne de la table users
+
 
 $sql="SELECT *
 	  FROM users
@@ -27,27 +82,6 @@ $stmt=$dbh->prepare($sql);
 	//récupère les résultats
 	$users=$stmt->fetch();
 
-$sql="SELECT COUNT(*)
-	  FROM questions
-	  WHERE id_user= :iduser";
-
-$stmt=$dbh->prepare($sql);
-$stmt->bindValue(":iduser",$id);
-$stmt->execute();
-$questionNumber=$stmt->fetchColumn();
- $questionNumber;
-
-
-$stmt=$dbh->prepare($sql);
-
-	//exécute la requête 4 execute
-
-	$stmt ->bindValue(":id", $id);
-	$stmt->execute();
-
-	//récupère les résultats
-	$users=$stmt->fetch();
-	
 
 ?>
 
@@ -56,9 +90,9 @@ $stmt=$dbh->prepare($sql);
 
  <main class="mainContent">
 
-	<div id="fiche">
+	<div class="">
 
-	<div class="profilemenu">
+	
  			<h1> Mon Profil </h1>
 
  		
@@ -76,7 +110,7 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 				<h1> Profil de <?php echo $users['username']; ?></h1>
 
-			<label for="nom"> NOM:
+			<p> NOM:
 
 			<?php if($users['name']==""){
 				echo $users['name']=" NON RENSEIGNE";
@@ -85,10 +119,10 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 			?>
 
-			</label></br>
+			</p></br>
 
 
- 			<label for="pseudo"> PSEUDO:
+ 			<p> PSEUDO:
 
  			<?php if($users['username']==""){
 				echo $users['username']=" NON RENSEIGNE";
@@ -97,9 +131,9 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 			?>
 
- 			 </label></br>
+ 			 </p></br>
 
- 			<label for="email"> EMAIL:
+ 			<p> EMAIL:
 
 
  			<?php if($users['email']==""){
@@ -109,21 +143,21 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 			?>
 
-			</label></br>
+			</p></br>
 
-			<label for="date">DATE D'INSCRIPTION:
+			<p>DATE D'INSCRIPTION:
 
 			<?php echo date("d-m-Y à H:i",strtotime($users['dateRegistered']));?>
-			</label></br>
+			</p></br>
 
-			<label for="dateModified"> DERNIERE MISE A JOUR:
+			<p> DERNIERE MISE A JOUR:
 
               <?php echo date("d-m-Y à H:i",strtotime($users['dateModified']));?>
 
-			</label></br>
+			</p></br>
 
 
-			<label for="country"> METIER:
+			<p> METIER:
 
               <?php if($users['job']==""){
 				echo $users['job']=" NON RENSEIGNE";
@@ -132,10 +166,10 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 			?>
 
-			</label></br>
+			</p></br>
 
 
-			<label for="Job"> PAYS:
+			<p> PAYS:
 
               <?php if($users['country']==""){
 				echo $users['country']=" NON RENSEIGNE";
@@ -144,9 +178,9 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 			?>
 
-			</label></br>
+			</p></br>
 
-			<label for="language"> LANGUE:
+			<p> LANGUE:
 
               <?php if($users['language']==""){
 				echo $users['language']="NON RENSEIGNEE ";
@@ -155,52 +189,65 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
 			?>
 
-			</label></br>
+			</p></br>
 
-			<label for="external link"> SITE WEB:
+			<p> SITE WEB:
 
               <?php if($users['externallink']==""){
 				echo "http://".$users['externallink']="";
 			}
 			else echo $users['externallink'];
 
-			?>
+			?></p><br/>
 
 			<div id="activity">
 
 				<h1> STATISTIQUES UTILISATEUR</h1>
 
-			<label for="questions"> NOMBRE DE QUESTIONS POSEES:
-			<?php if($users['language']==""){
-				echo $users['language']="NON RENSEIGNEE ";
+			<p> NOMBRE DE QUESTIONS POSEES:
+			<?php if(empty($questionNumber)){
+				echo "Pas de question posée";
 			}
-			else echo $users['language']; ?>
+			else echo $questionNumber; ?>
 
-			</label> <br/>
+			</p> <br/>
 
-			<label for="answer"> NOMBRE DE QUESTIONS RESOLUES:
-			<?php if($users['language']==""){
-				echo $users['language']="NON RENSEIGNEE ";
+			<p> NOMBRE DE REPONSES:
+			<?php if(empty($answerNumber)){
+
+				echo "0";
 			}
-			else echo $users['language']; ?>
-			</label> <br/>
-
-
-			<label for="answer"> SCORE: 
-			<?php if($users['language']==""){
-				echo $users['language']="NON RENSEIGNEE ";
-			}
-			else echo $users['language']; ?>
+			else echo $answerNumber ; ?>
 			</label> <br/>
 
 
-			<label for="question"> DERNIERE QUESTION POSEE:
+			<p> SCORE: 
+			<?php echo 5+($questionNumber*2)+($answerNumber*4);
+		
+			 ?>
+			</p> <br/>
 
-			<?php if($users['language']==""){
-				echo $users['language']="NON RENSEIGNEE ";
+
+			<p> DERNIERE QUESTION POSEE:
+
+			<?php if(empty($lastQuestion)){
+
+				echo "PAS DE CONTRIBUTION";}
+
+				else{
+			echo $lastQuestion; } ?>
+			</p> <br/>
+
+			<p> DERNIERE REPONSE APPORTEE:
+
+			<?php if(empty($lastAnswer)){
+				echo "PAS DE CONTRIBUTION";
 			}
-			else echo $users['language']; ?>
-			</label> <br/>
+			else{
+				echo $lastAnswer;
+			} ?>
+
+			</p>
 
 
 
@@ -220,7 +267,7 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
  			 </div></br>
 
-				</div>
+				
 
 					</div>
 
