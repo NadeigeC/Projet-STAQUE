@@ -17,7 +17,7 @@ if (!empty($_GET['recherche'])){
       LEFT JOIN answers on questions.id=answers.id_question
         WHERE questions.contenu LIKE :recherche
             OR questions.title LIKE :recherche
-        GROUP BY answers.id_question
+        GROUP BY questions.id
         ORDER BY questions.dateCreated DESC";
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(":recherche", "%" . $search . "%");
@@ -34,7 +34,7 @@ else {
       FROM questions
       LEFT JOIN users on users.id=questions.id_user
       LEFT JOIN answers on questions.id=answers.id_question
-          GROUP BY answers.id_question
+          GROUP BY questions.id
           ORDER BY questions.dateCreated DESC
 		      LIMIT 3";
 

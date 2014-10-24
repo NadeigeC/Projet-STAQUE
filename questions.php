@@ -29,7 +29,7 @@ $sql="SELECT COUNT(answers.id) AS answCount, questions.id AS questId, questions.
       FROM questions
       LEFT JOIN users on users.id=questions.id_user
       LEFT JOIN answers on questions.id=answers.id_question
-          GROUP BY answers.id_question
+          GROUP BY questions.id
           ORDER BY questions.dateCreated DESC
           LIMIT :offset, $numPerPage";
 
