@@ -5,6 +5,7 @@
 
 
         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+        <input type="hidden" name="score" value="<?php echo $score; ?>">
 
 
         <div class="field_container">
@@ -33,40 +34,25 @@
             <div class="field_container" class="keywords">
             <label for="keyword2">MOT-CLEF 2</label>
             <input type="text" id="keyword2" name="keyword2" value="<?php echo $keyword2; ?>">
-                <!-- <select id="keyword2" name="keyword2">
-                              <option value="">Mot-clef 2</option>
-                              <option value=""><?php  $keyword2; ?></option>
-                </select> -->
+                
             </div>
 
             <div class="field_container" class="keywords">
             <label for="keyword3">MOT-CLEF 3</label>
             <input type="text" id="keyword3" name="keyword3" value="<?php echo $keyword3; ?>">
-                <!-- <select id="keyword3" name="keyword3">
-                              <option value="">Mot-clef 3</option>
-                              <option value=""><?php  $keyword3; ?></option>
-                </select> -->
-
+                
             </div>
 
             <div class="field_container" class="keywords">
             <label for="keyword4">MOT-CLEF 4</label>
             <input type="text" id="keyword4" name="keyword4" value="<?php echo $keyword4; ?>">
-                <!-- <select id="keyword4" name="keyword4">
-                              <option value="">Mot-clef 4</option>
-                              <option value=""><?php insertKeyword($keyword4); ?></option>
-                </select> -->
-
+                
             </div>
 
             <div class="field_container" class="keywords">
             <label for="keyword5">MOT-CLEF 5</label>
             <input type="text" id="keyword5" name="keyword5" value="<?php echo $keyword5; ?>">
-                <!-- <select id="keyword5" name="keyword5">
-                              <option value="">Mot-clef 5</option>
-                              <option value=""><?php echo $keyword5; ?></option>
-                </select> -->
-
+                
             </div>
 
 

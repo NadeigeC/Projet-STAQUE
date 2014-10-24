@@ -54,16 +54,19 @@ $sql="SELECT questions.id AS questId,
     $comments=$stmt->fetchAll();
 
 ?>
+<main class="mainContentQuestions">
 
-
-<div id="questionDetail">
-            <h3><?php echo $question['title']; ?> postée par  <?php echo $question['username']; ?> </a>le <?php
-              $unix = strtotime($question['dateCreated']);
+<div class="questionDetail">
+            <h3><?php echo $question['title']; ?></h3> 
+              
+            <h3>postée par  <?php echo $question['username']; ?> 
+              </a>le <?php $unix = strtotime($question['dateCreated']);
                         echo date("d-m-Y", $unix); ?></h3>
 
-        <div class="vue">
-        <p>SCORE</p>
-        <?php echo $question['score'] ?></div>
+              <div class="score">
+              <p>SCORE</p>
+              <?php echo $question['score'] ?>
+              </div>
 
             <div class="contenu">
             <pre><?php echo $question['contenu']; ?></pre>
@@ -102,10 +105,8 @@ $sql="SELECT questions.id AS questId,
             <?php }?>
 
           </div>
-
-
-
-
+</div>
+<div class="reponseDetail">
 <?php
 
 
@@ -114,19 +115,27 @@ foreach ($answers as $answer) {
       if ($_GET['id'] == $answer['id_question']) { ?>
 
 
-            <div id="contenu">
+            <div class="contenu">
             <h2 style="font-weight: 700">Réponse postée par  <?php echo $answer['username']; ?> le </a>le <?php
               $unix = strtotime($question['dateCreated']);
                         echo date("d-m-Y", $unix); ?></h2>
             <pre><?php echo $answer['contenu']; ?></pre>
             </div>
 
+<?php
 
-            <form method="POST" action="voter.php">
-            VOTER FAVORABLEMENT POUR CETTE REPONSE :
+          if (userIsLogged()){ ?>
+
+            <form method="POST" action="voter.php" id="voter">
+            VOTER FAVORABLEMENT POUR CETTE REPONSE 
             <input type="submit" name="oui" value="OUI">
             <input type="submit" name="non" value="NON">
             </form>
+         <?php } ?>
+
+</div>
+<div class="commentaireDetail">
+
 <?php
 
 
@@ -135,10 +144,10 @@ foreach ($answers as $answer) {
             if ($answer['answId'] == $comment['answId'] ) {
 
 ?>
-            <div id="contenu">
-            <h3 style="font-weight: 700">Commentaire posté par  <?php echo $comment['username']; ?> le </a>le <?php
+            <div class="contenu">
+            <h2 style="font-weight: 700">Commentaire posté par  <?php echo $comment['username']; ?> le </a>le <?php
               $unix = strtotime($question['dateCreated']);
-                        echo date("d-m-Y", $unix); ?></h3>
+                        echo date("d-m-Y", $unix); ?></h2>
             <pre><?php echo $comment['commContent']; ?></pre>
            <?php } ?>
             </div>
@@ -150,10 +159,11 @@ foreach ($answers as $answer) {
 
       }
 
-}?>
+}?></div>
 
   <?php include("repondre.php") ?>
 
-</div>
+
+</main>
 
 <?php include("inc/bottom.php"); ?>

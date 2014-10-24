@@ -6,6 +6,9 @@
 	include("inc/functions.php");
 	include("inc/top.php");
 
+
+
+
 //récupère nos données depuis la bdd
 	$title 		= "";
 	$contenu 	= "";
@@ -15,6 +18,7 @@
 	$keyword4 	= "";
 	$keyword5 	= "";
 	$user_id 	= "";
+
 
 	include("db.php");
 
@@ -28,6 +32,8 @@
 		$keyword4 	= $_POST['keyword4'];
 		$keyword5 	= $_POST['keyword5'];
 		$user_id	= $_SESSION['user']['id'];
+
+
 
 		$errors = array();
 
@@ -65,8 +71,16 @@
 
 					}
 
-}
 
+
+				$sql = "UPDATE users
+			       SET score=score+2
+			       WHERE id= :id";
+			    $stmt = $dbh->prepare($sql);
+			    $stmt ->bindValue(":id", $user_id);
+			    $stmt->execute();
+
+}
 
 
 include("inc/askquestions_form.php") ;?>

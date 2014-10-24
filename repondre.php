@@ -37,28 +37,35 @@
 	                    $stmt->execute();
 	                  	header("Location: questionsDetail.php?id=$quest_id");
 						die();
-    }
+    
+
+        $sql = "UPDATE users
+                       SET score=score+4
+                       WHERE id= :id";
+                        $stmt = $dbh->prepare($sql);
+                        $stmt ->bindValue(":id", $user_id);
+                        $stmt->execute();
+
+
+}
+
 
 ?>
-
-<h3>Répondre à ce post</h3>
-
-</div>
+<div class="reponseDetail">
 
 <?php if (userIslogged()){ ?>
 
+<h3>Répondre à ce post</h3>
+
 <form action="repondre.php" method="POST">
 
-
-        <div class="field_container">
-
-
+  
         	<input type="hidden" name="quest_id" value="<?php echo $quest_id; ?>">
 
-            <div class="reponse">
+            <div class="field_container">
 
-            <textarea class="reponse" cols="87" rows="10" name="reponse"><?php echo $reponse; ?>
-          </textarea>
+            <textarea class="reponse" cols="150" rows="10" name="reponse"><?php echo $reponse; ?>
+            </textarea>
             <div>
 <?php
                 if (!empty($errors)){
@@ -69,17 +76,18 @@
                     echo '</ul>';
                 }
         ?>
+        <div class="field_container">
             <label for="quest"></label>
             <input type="submit" value="POSTER LA REPONSE !" id="quest">
         </div>
 </form>
 
-
+</div>
 <?php }
 
 else { ?>
-	<p> MERCI DE VOUS CONNECTER OU DE VOUS INSCRIRE POUR REPONDRE A CE POST </p>
-	<a class="login" href="login.php">CONNEXION</a> |
-	<a class="signup"href="register.php">NOUVEAU COMPTE</a>
+	<p class="horsConnect"> MERCI DE VOUS CONNECTER OU DE VOUS INSCRIRE POUR REPONDRE A CE POST !</p>
+	<!-- <a class="login" href="login.php">CONNEXION</a>
+    <a class="signup" href="register.php">INSCRIPTION</a> -->
 	<?php }
 ?>

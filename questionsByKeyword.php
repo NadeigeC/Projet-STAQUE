@@ -27,7 +27,7 @@
       $direction = "DESC";}
 }
 $sql="SELECT COUNT(answers.id) AS answCount, questions.id AS questId, questions.title, questions.contenu, questions.id_user AS userId, questions.dateCreated,
-  questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5,
+  questions.keyword1, questions.keyword2, questions.keyword3, questions.keyword4, questions.keyword5, questions.vues,
   users.id AS idUser, users.name, users.avatar, users.email, users.username, users.password, users.job, users.country, users.language, users.externallink
           FROM questions
           LEFT JOIN answers on questions.id=answers.id_question
@@ -62,20 +62,22 @@ $sql = "SELECT COUNT(*) FROM questions";
           foreach($questions as $question):
 
           ?>
-       <div class="vote">
-        <?php echo "VOTES";?>
+        <div class="vote">
+        <p></p>
+        <p><?php echo "VOTES";?></p>
         </div>
         <div class="answer">
-        <?php echo $question['answCount'];?>
+        <p><?php echo $question['answCount'];?></p>
         <p>REPONSES</p>
         </div>
         <div class="vue">
-        <?php echo "VUES";?>
+        <p><?php echo $question['vues'];?></p>
+        <p>VUES</p>
         </div>
 
         <div class="questions">
 
-          <a href="questionsDetail.php?id=<?php echo $question['id']; ?>" id="titreQuest"> <?php echo $question['title']; ?>
+          <a href="questionsDetail.php?id=<?php echo $question['questId']; ?>" id="titreQuest"> <?php echo $question['title']; ?>
           </a>
                   <div id="tag">
             <p class="keyword">

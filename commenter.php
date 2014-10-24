@@ -48,29 +48,28 @@
 ?>
 <?php if (userIslogged()){ ?>
 
+<div class="commentaireDetail">
 
-<h4 style="font-weight: 700">Commenter la réponse</h4>
-
-</div>
-
+<h4>Commenter la réponse</h4>
 
 
 <form action="commenter.php" method="POST">
 
 
-        <div class="field_container">
+       
 
 
             <input type="hidden" name="answer_id" value="<?php echo $answer['answId']; ?>">
             <input type="hidden" name="quest_id" value="<?php echo $quest_id; ?>">
             <input type="hidden" name="comment_id" value="<?php echo $comment['commId']; ?>">
 
-            <div class="comment">
+             <div class="field_container">
 
-            <textarea class="commentaire" cols="50" rows="5" name="commentaire"><?php echo $commentaire; ?>
+            <textarea class="commentaire" cols="150" rows="5" name="commentaire"><?php echo $commentaire; ?>
             </textarea>
             <div>
-<?php
+
+       <?php
                 if (!empty($errors)){
                     echo '<ul class="errors">';
                     foreach($errors as $error){
@@ -79,14 +78,16 @@
                     echo '</ul>';
                 }
         ?>
+            <div class="field_container">
             <label for="quest"></label>
             <input type="submit" value="POSTER LE COMMENTAIRE !">
-        </div>
+            </div>
 
-        </div>
-        </div>
+        
 
 </form>
+
+</div>
 
 <?php }
 

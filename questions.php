@@ -57,14 +57,15 @@ $sql = "SELECT COUNT(*) FROM questions";
           ?>
 
         <div class="vote">
-        <?php echo "VOTES";?>
+        <p></p>
+        <p><?php echo "VOTES";?></p>
         </div>
         <div class="answer">
-        <?php echo $question['answCount'];?>
+        <p><?php echo $question['answCount'];?></p>
         <p>REPONSES</p>
         </div>
         <div class="vue">
-        <?php echo $question['vues'];?>
+        <p><?php echo $question['vues'];?></p>
         <p>VUES</p>
         </div>
 

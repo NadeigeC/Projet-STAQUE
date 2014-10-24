@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<title>Base</title>
 	<meta name="description" content="">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
 	<link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
 	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -74,8 +74,9 @@
 
 
 				<form id="searchbar" method="GET" action="index.php">
-					<input type="text" placeholder="Rechercher" name="recherche">
 					<input type="submit" value="">
+					<input type="text" placeholder="Rechercher" name="recherche">
+
 				</form>
 		</div>
 

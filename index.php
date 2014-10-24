@@ -36,7 +36,7 @@ else {
       LEFT JOIN answers on questions.id=answers.id_question
           GROUP BY answers.id_question
           ORDER BY questions.dateCreated DESC
-		  LIMIT 3";
+		      LIMIT 3";
 
 	$stmt=$dbh->prepare($sql);
 	$stmt->execute();
@@ -71,15 +71,16 @@ else {
 					foreach($questions as $question):
 
 					?>
-			 	 <div class="vote">
-        <?php echo "VOTES";?>
+			 	<div class="vote">
+        <p></p>
+        <p><?php echo "VOTES";?></p>
         </div>
         <div class="answer">
-        <?php echo $question['answCount'];?>
+        <p><?php echo $question['answCount'];?></p>
         <p>REPONSES</p>
         </div>
         <div class="vue">
-        <?php echo $question['vues'];?>
+        <p><?php echo $question['vues'];?></p>
         <p>VUES</p>
         </div>
 
@@ -127,7 +128,7 @@ else {
               if (empty($question['name'])){
                 echo "profil supprimé";
               }else {
-                echo "<a href='profile.php?id=".$question['idUser']."'>".$question['name']."</a>";
+                echo "<a href='profile.php?id=".$question['idUser']."'>".$question['username']."</a>";
               }?>
               </a>le <?php
               $unix = strtotime($question['dateCreated']);

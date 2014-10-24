@@ -45,7 +45,7 @@ if (!empty($_FILES)){
 
             $img = new abeautifulsite\SimpleImage($destination);
             $img->thumbnail(300,300)->save("uploads/avatar/" . $filename);
-            $img->thumbnail(50,50)->save("uploads/miniature/" . $filename);
+            // $img->thumbnail(50,50)->save("uploads/miniature/" . $filename);
             }
         }
 

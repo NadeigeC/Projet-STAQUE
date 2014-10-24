@@ -34,7 +34,13 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">$(document).ready(function() { $('#body').removeAttr('visibility'); });</script> 
+        <script type="text/javascript">
+        /*tinymce.init({
+            selector: "textarea"
+        });*/
 
+        </script>
 
 
 
