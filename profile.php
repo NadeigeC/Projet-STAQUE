@@ -112,13 +112,16 @@ $stmt=$dbh->prepare($sql);
  <main class="mainContentProfile">
 
 
-		<div id="edit">		
+		<div id="edit">	
+
+	
+
 
 <?php 
 
 if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 
- 		<a href="edit.php">Editer mon profil</a>
+ 		<a href="edit.php"><i class="fa fa-pencil-square-o"></i><span class="espace"></span>Editer mon profil</a>
  		</div>
  		
 <?php } ?>
