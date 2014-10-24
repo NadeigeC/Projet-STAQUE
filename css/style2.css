@@ -310,7 +310,7 @@ margin-top: -10px;
 }
 
 .mainContentQuestions{
-	clear: float;
+	/* clear: float; */
 	width: 1000px;
 	margin-top: 30px;
 	margin-left:auto;
