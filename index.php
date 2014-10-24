@@ -72,7 +72,7 @@ else {
 
 					?>
 			 	<div class="vote">
-        <p></p>
+        <p><?php echo rand(-5, 15);?></p>
         <p><?php echo "VOTES";?></p>
         </div>
         <div class="answer">
