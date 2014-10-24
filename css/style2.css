@@ -776,3 +776,27 @@ background-color: #fff;
 
 	position:relative;
 }
+
+
+#edit a{
+
+background-color: #2980b9;
+color: white;
+display: block;
+width: 190px;
+height: 30px;
+text-align: center;
+padding-top: 10px;
+font-size:16px;
+border:1px solid #fff;
+text-indent: 5px;
+}
+
+#edit a:hover{
+
+	color:#fff;
+	font-size:17px;
+	font-weight:700;
+	text-decoration:none;
+
+	;
