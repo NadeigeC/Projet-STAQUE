@@ -56,6 +56,22 @@ else {
 
 
 			<div class="topcontent">
+     <?php if (userIsLogged()){ ?>
+
+
+         <h1>BIENVENUE SUR STAQUE !</h1>
+<?php } 
+
+          else { ?>
+        <h1 style="font-weight:700; font-size:1.5em; margin-bottom:20px"> Pourquoi s'inscrire sur Staque.fr? </h1>
+<ul>
+    <li>" Devenir membre sur Staque, c'est la possibilité de pouvoir échanger avec la communauté. De poser de nouvelles questions, de répondre aux différents sujets et de commenter les réponses déja données.</li>
+
+    <li>La création d'un compte sur Staque est totalement gratuite! Rejoignez dès maintenant la première plateforme francophone dédiée au développement web! "</li>
+</ul> 
+          
+
+          <?php } ?>
 
 			</div>
 

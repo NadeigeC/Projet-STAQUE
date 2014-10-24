@@ -334,11 +334,26 @@ margin-top: -10px;
 }
 
 .topcontent{
-	width: 1000px;
+	text-align: justify;
+	width: 600px;
 	height: 250px;
-	margin-left:50px;
-	padding-top: 15px;
+	margin:auto;
+	padding-top: 30px;
+	font-weight: 700;
+	line-height: 30px;
+	font-size: 1em;
+	padding: 20px;
 }
+
+.topcontent h1:first-child{
+	margin :auto;
+	padding-top: 50px;
+	border:none;
+	font-size: 2em;
+	font-weight: 700;
+}
+
+
 .vote, .answer, .vue{
 	width: 70px;
 	height: 70px;
