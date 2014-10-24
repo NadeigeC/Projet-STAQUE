@@ -225,7 +225,7 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 		<div class="vote">
         
         <p><?php echo $questionNumber;?></p>
-        <p> QUESTION </p>
+        <p> QUESTIONS </p>
         </div>
         <div class="answer">
         <p><?php echo $answerNumber;?></p>
