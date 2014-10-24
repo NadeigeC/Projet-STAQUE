@@ -54,7 +54,7 @@ $sql="SELECT questions.id AS questId,
     $comments=$stmt->fetchAll();
 
 ?>
-<div class="mainContentQuestions">
+<main class="mainContentQuestions">
 
 <div class="questionDetail">
             <h3><?php echo $question['title']; ?></h3> 
@@ -164,6 +164,6 @@ foreach ($answers as $answer) {
   <?php include("repondre.php") ?>
 
 
-</div>
+</main>
 
 <?php include("inc/bottom.php"); ?>
