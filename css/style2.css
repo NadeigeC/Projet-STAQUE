@@ -351,6 +351,7 @@ margin-top: -10px;
 	border:none;
 	font-size: 2em;
 	font-weight: 700;
+	padding-left:10px;
 }
 
 
@@ -801,3 +802,12 @@ text-indent: 5px;
 	text-decoration:none;
 
 	;
+
+}
+
+.color{
+
+	color: #c0392b;
+}
+
+

@@ -59,15 +59,15 @@ else {
      <?php if (userIsLogged()){ ?>
 
 
-         <h1>BIENVENUE SUR STAQUE !</h1>
+         <h1><i class="fa fa-stack-overflow"><span class="espace"></span></i>BIENVENUE SUR STAQUE !</h1>
 <?php } 
 
           else { ?>
         <h1 style="font-weight:700; font-size:1.5em; margin-bottom:20px"> Pourquoi s'inscrire sur Staque.fr? </h1>
 <ul>
-    <li>" Devenir membre sur Staque, c'est la possibilité de pouvoir échanger avec la communauté. De poser de nouvelles questions, de répondre aux différents sujets et de commenter les réponses déja données.</li>
+    <li>"<span class="espace"></span><i class="fa fa-check-square-o"></i><span class="espace"></span>Devenir membre sur Staque, c'est la possibilité de pouvoir <span class="color">échanger</span> avec la communauté. De poser de nouvelles questions, de <span class="color">répondre</span> aux différents sujets et de <span class="color">commenter</span> les réponses déja données.</li>
 
-    <li>La création d'un compte sur Staque est totalement gratuite! Rejoignez dès maintenant la première plateforme francophone dédiée au développement web! "</li>
+    <li><i class="fa fa-check-square-o"></i><span class="espace"></span>La création d'un compte sur Staque est totalement gratuite! <span class="color">Rejoignez </span>dès maintenant la <span class="color">première plateforme francophone</span> dédiée au développement web! "</li>
 </ul> 
           
 
