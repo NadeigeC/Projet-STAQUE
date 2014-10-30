@@ -34,7 +34,7 @@ $sql = "SELECT *
           ?>
 <div class="users">
 
-      <a href="profile.php?id='.$user['id'].'"><img src="uploads/avatar/<?php echo $user['avatar'];?>" width=60px height=60px/></a>
+      <a href="profile.php?id=<?php echo $user['id']; ?>"><img src="uploads/avatar/<?php echo $user['avatar'];?>" width=60px height=60px/></a>
       <p><?php echo $user['username']; ?></p>
       <p>membre depuis le <?php
               $unix = strtotime($user['dateRegistered']);
