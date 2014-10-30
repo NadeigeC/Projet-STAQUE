@@ -162,7 +162,6 @@ h1:hover span{
 	color:#fff;
 	width: 100%;
 	height:80px;
-	bottom:0;
 }
 
 #footer a{
@@ -206,6 +205,10 @@ margin-top: -10px;
 	padding-left:5px;
 }
 
+
+.clearboth{
+	clear: both;
+}
 
 /************  NAVIGATION ************/
 
@@ -293,6 +296,12 @@ margin-top: -10px;
 
 /************  CONTENU PRINCIPAL ************/
 
+
+#wrapper{
+
+	margin-bottom: 150px
+}
+
 .main_index_questions{
 
 	width: 1000px;
@@ -316,7 +325,7 @@ margin-top: -10px;
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom: 50px;
-	min-height: 600px;
+	height: auto;
 
 }
 
@@ -416,15 +425,16 @@ margin-top: -10px;
 .keywords{
 	width: 100px;
 	float: left;
+	margin-bottom: 20px;
 }
 
 .questions{
 	display: block;
 	width: 1000px;
 	height: 100px;
-	padding-top: 20px;
-	padding-left: 50px;
-	/*border-bottom: 1px solid #ccc;*/
+	padding: 20px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
 
 }
 .questions p a{
@@ -449,6 +459,8 @@ margin-top: -10px;
 	background-color: #e0eaf1;
 	text-align: center;
 	text-transform: uppercase;
+	margin-top: 15px;
+
 }
 
 #pagination{
@@ -463,35 +475,24 @@ margin-top: -10px;
 }
 
 .questionDetail, .reponseDetail, .commentaireDetail {
-	width:1000px;
-	margin-left:0;
-	padding-bottom: 30px;
+	width:100%;
+	
 }
 
 .reponseDetail h3{
+	margin-top: 50px;
 	text-transform: uppercase;
 	color: rgba(0,0,0,0.8);
-	font-size: 0.5em;
+	text-align: left;
+	background: none;
 } 
-
-/*.questionDetail h3{
-	background-color: rgba(102,255,204,0.4);
-}
-
-.reponseDetail h4{
-	background-color: rgba(102,51,153,0.4);
-} 
-
-.commentaireDetail h5 {
-	background-color: rgba(153,51,153,0.4);
-} */
 
 .questionDetail h3{
 	clear: both;
 	font-size: 2em;
 	font-weight: 700;
 	padding: 5px;
-	
+	margin-bottom: -10px;	
 }
 
 .questionDetail h4{
@@ -518,13 +519,30 @@ margin-top: -10px;
 }
 
 
-.contenu{
-	padding: 15px;
+.questionDetail .contenu{
+	margin-bottom: 15px;
+	padding-top: 50px;
+	
 }
+
+.reponseDetail .contenu, .commentaireDetail .contenu{
+	padding: 15px;
+	border: 1px solid #ccc;
+}
+
+
+#reponse{
+	background-color: rgba(204,153,102,0.2);
+} 
+#commentaire{
+	background-color: rgba(153,204,55,0.2);
+}
+
+
 
 .contenu h2{
 	clear: both;
-	padding: 25px 0;
+	padding: 5px 0 25px 0;
 }
 
 #identification {
@@ -548,6 +566,24 @@ margin-top: -10px;
 	color: #c0392b;
 	margin: 50px 0;
 
+}
+
+.users{
+	float: left;
+	border: 1px solid #ccc;
+	padding: 15px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	font-size:0.8em;
+	width: 200px;
+}
+
+.users p{
+	font-weight: 700;
+}
+
+.ckeditor {
+	position: relative;
 }
 
 
@@ -603,6 +639,13 @@ padding-top: 25px;
     width: 50%;
 }
 
+#comment_form input[type=submit],
+#answer_form input[type=submit]{
+position: relative;
+top: -275px;
+right: -520px;
+}
+
 #login_form input[type=submit],
 #register_form input[type=submit],
 #askQuestions_form input[type=submit]{
@@ -642,11 +685,7 @@ padding-top: 25px;
     width: 20%;
 }
 
-textarea{
-	height: 135px;
-	width: 70%;
-	
-}
+
 
 #askQuestions .field_container label{
 	display: inline-block;

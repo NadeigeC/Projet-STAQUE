@@ -13,6 +13,7 @@
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<link href="css/style2.css" type="text/css" rel="stylesheet" />
+	
 
 
 </head>
@@ -67,8 +68,8 @@
 					<a href="askquestions.php"><i class="fa fa-code"></i>POSER UNE QUESTION</a>
 					<?php } ?>
 
-
-					<a href="questions.php"><i class="icon-tags"></i>MOTS CLES</a>
+					<a href="users.php"><i class="fa fa-users"></i>UTILISATEURS</a>
+					<a href="keywords.php"><i class="icon-tags"></i>MOTS CLES</a>
 
 
 

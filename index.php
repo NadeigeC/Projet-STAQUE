@@ -62,7 +62,7 @@ else {
          <h1><i class="fa fa-stack-overflow"><span class="espace"></span></i>BIENVENUE SUR STAQUE !</h1>
 <?php } 
 
-          else { ?>
+          /*else { ?>
         <h1 style="font-weight:700; font-size:1.5em; margin-bottom:20px"> Pourquoi s'inscrire sur Staque.fr? </h1>
 <ul>
     <li>"<span class="espace"></span><i class="fa fa-check-square-o"></i><span class="espace"></span>Devenir membre sur Staque, c'est la possibilité de pouvoir <span class="color">échanger</span> avec la communauté. De poser de nouvelles questions, de <span class="color">répondre</span> aux différents sujets et de <span class="color">commenter</span> les réponses déja données.</li>
@@ -71,13 +71,13 @@ else {
 </ul> 
           
 
-          <?php } ?>
+          <?php } */?>
 
 			</div>
 
-			<main class="main_index_questions">
+			<!-- <main class="main_index_questions">
 
-            <div>
+            <div> -->
 			<main class="mainContentQuestions">
 
 
@@ -157,7 +157,7 @@ else {
  				<?php endforeach; ?>
 			</div>
 		</main>
-</div>
+
 
 
 <?php include("inc/bottom.php"); ?>

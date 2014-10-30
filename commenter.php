@@ -53,7 +53,7 @@
 <h4>Commenter la réponse</h4>
 
 
-<form action="commenter.php" method="POST">
+<form action="commenter.php" method="POST" id="comment_form">
 
 
        
@@ -65,7 +65,7 @@
 
              <div class="field_container">
 
-            <textarea class="commentaire" cols="150" rows="5" name="commentaire"><?php echo $commentaire; ?>
+            <textarea class="ckeditor" name="commentaire"><?php echo $commentaire; ?>
             </textarea>
             <div>
 

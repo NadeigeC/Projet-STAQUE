@@ -4,13 +4,13 @@
  session_start();
 
 
-
+ //print_r($_FILES);
 
  include("inc/functions.php");
  include("db.php");
  include("inc/top.php");
 
- $id=$_SESSION['user']['id'];
+$id=$_SESSION['user']['id'];
 
  // requete pour definir $users
 
@@ -40,10 +40,10 @@ if (userIsLogged()){
     $job = $_SESSION['user']['job'];
     $language =$_SESSION['user']['language'];
     $externallink = "";
-
+    
 }
 else{
- $email = $_GET['email'];
+    $email = $_GET['email'];
     $username =$_GET['username'];
     $country = $_GET['country'];
     $name = $_GET['name'];
@@ -53,15 +53,8 @@ else{
 
 }
 
-
-
-
-
-
-
-
     //formulaire soumis ?
-    if (!empty($_POST)){
+    if (!empty($_POST) || !empty($_FILES['image'])){
         //on écrase les valeurs définies ci-dessus, tout en se protegeant
         //pas de strip tags sur la password par contre (si la personne veut mettre des balises dans son pw, c'est son affaire, et on le hache anyway)
 
@@ -73,7 +66,36 @@ else{
         $language       = $_POST['language'];
         $externallink   = $_POST['externallink'];
         $id             =$_SESSION['user']['id'];
+        
+        if (!empty($_FILES['image'])) {
+                    $accepted = array("image/jpeg", "image/jpg", "image/gif", "image/png");
 
+                    $tmp_name = $_FILES['image']['tmp_name'];
+
+                    $parts = explode(".", $_FILES['image']['name']);
+                    $extension = end($parts);
+                    $filename = uniqid() . "." .$extension;
+                    $destination = "uploads/" . $filename;
+
+                    // Retourne le type mime
+                    $finfo = finfo_open(FILEINFO_MIME_TYPE); 
+                    $mime = finfo_file($finfo, $tmp_name);
+                    finfo_close($finfo);
+
+                    //mime type accepté ici ???
+                    if (in_array($mime, $accepted)){
+                        move_uploaded_file($tmp_name, $destination);
+
+                        //manipulation de l'image
+                        //avec SimpleImage
+                        require("SimpleImage.php");
+
+                        $img = new abeautifulsite\SimpleImage($destination);
+                        //$img->thumbnail(150,150)->save("uploads/thumbs/" . $filename);
+                        $img->thumbnail(40,40)->save("uploads/avatar/" . $filename);
+
+                    }
+                }
 
 
         $errors = array();
@@ -114,11 +136,12 @@ else{
 
             //sql d'insertion de l'user
             $sql = "UPDATE users
-                    SET name=:name,email= :email,username= :username,dateModified= NOW(),job= :job,country= :country,language= :language,externallink= :externallink
+                    SET name=:name, filename=:filename, email= :email,username= :username,dateModified= NOW(),job= :job,country= :country,language= :language,externallink= :externallink
                     WHERE id=:id";
 
                     $stmt = $dbh->prepare($sql);
                     $stmt->bindValue(":name", $name);
+                    $stmt->bindValue(":filename", $filename);
                     $stmt->bindValue(":email", $email);
                     $stmt->bindValue(":username", $username);
                     $stmt->bindValue(":job", $job);
@@ -172,6 +195,11 @@ else{
                 <div class="field_container">
                         <label for="job">Metier</label>
                         <input type="text" name="job" id="job" value="<?php echo $job; ?>" />
+                </div>
+
+                <div class="field_container">
+                        <label for="avatar">Photo</label>
+                        <input type="file" name="image" id="image" value="<?php echo $avatar; ?>" />
                 </div>
 
                 <div class="field_container">

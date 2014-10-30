@@ -16,7 +16,7 @@
 
         <div class="field_container">
         <label for="contenu">VOTRE CONTENU</label>
-        	<textarea value="<?php echo $contenu; ?>" id="contenu" cols="100" rows="10" name="contenu">
+        	<textarea value="<?php echo $contenu; ?>" class="ckeditor" name="contenu">
          	</textarea>
 
         </div>

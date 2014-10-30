@@ -57,20 +57,12 @@ $sql="SELECT questions.id AS questId,
 <main class="mainContentQuestions">
 
 <div class="questionDetail">
-            <h3><?php echo $question['title']; ?></h3> 
-              
-            <h3>postée par  <?php echo $question['username']; ?> 
+          <h3><?php echo '" '. $question['title'] .' "'; ?></h3>
+
+          <h3>postée par  <?php echo $question['username']; ?> 
               </a>le <?php $unix = strtotime($question['dateCreated']);
                         echo date("d-m-Y", $unix); ?></h3>
 
-              <div class="score">
-              <p>SCORE</p>
-              <?php echo $question['score'] ?>
-              </div>
-
-            <div class="contenu">
-            <pre><?php echo $question['contenu']; ?></pre>
-            <div>
         <div id="tag">
             <p class="keyword">
               <?php echo $question['keyword1']; ?>
@@ -103,10 +95,23 @@ $sql="SELECT questions.id AS questId,
                 </a>
               </p>
             <?php }?>
+          <div>
+              
+            
 
-          </div>
+              <div class="score">
+              <p>SCORE</p>
+              <?php echo $question['score'] ?>
+              </div>
+
+      <div class="contenu">
+            <pre><?php echo $question['contenu']; ?></pre>
+            
+        
+
+      </div>
 </div>
-<div class="reponseDetail">
+
 <?php
 
 
@@ -114,37 +119,40 @@ foreach ($answers as $answer) {
 
       if ($_GET['id'] == $answer['id_question']) { ?>
 
-
-            <div class="contenu">
+<div class="reponseDetail">
+            <div class="contenu" id="reponse">
             <h2 style="font-weight: 700">Réponse postée par  <?php echo $answer['username']; ?> le </a>le <?php
               $unix = strtotime($question['dateCreated']);
                         echo date("d-m-Y", $unix); ?></h2>
             <pre><?php echo $answer['contenu']; ?></pre>
             </div>
-
+</div>
 <?php
 
           if (userIsLogged()){ ?>
 
             <form method="POST" action="voter.php" id="voter">
             VOTER FAVORABLEMENT POUR CETTE REPONSE 
-            <input type="submit" name="oui" value="OUI">
-            <input type="submit" name="non" value="NON">
+            <button type="submit" name="oui">OUI</button>
+            <button type="submit" name="oui">NON</button>
             </form>
+        
+
          <?php } ?>
 
-</div>
-<div class="commentaireDetail">
+
 
 <?php
+      foreach ($comments as $comment) { ?> 
 
 
-      foreach ($comments as $comment) {
+            <div class="commentaireDetail"> <?php
+
 
             if ($answer['answId'] == $comment['answId'] ) {
 
 ?>
-            <div class="contenu">
+            <div class="contenu" id="commentaire">
             <h2 style="font-weight: 700">Commentaire posté par  <?php echo $comment['username']; ?> le </a>le <?php
               $unix = strtotime($question['dateCreated']);
                         echo date("d-m-Y", $unix); ?></h2>

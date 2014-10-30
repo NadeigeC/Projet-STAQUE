@@ -46,9 +46,7 @@
 
 	                  	header("Location: questionsDetail.php?id=$quest_id");
 						die();
-    
-
-       
+          
 }
 
 
@@ -59,14 +57,14 @@
 
 <h3>Répondre à ce post</h3>
 
-<form action="repondre.php" method="POST">
+<form action="repondre.php" method="POST" id="answer_form">
 
   
         	<input type="hidden" name="quest_id" value="<?php echo $quest_id; ?>">
 
             <div class="field_container">
 
-            <textarea class="reponse" name="reponse"><?php echo $reponse; ?>
+            <textarea class="ckeditor" name="reponse"><?php echo $reponse; ?>
             </textarea>
             <div>
 <?php

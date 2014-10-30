@@ -225,18 +225,18 @@ if (userIsLogged() && $_SESSION['user']['id']==$_GET['id']) { ?>
 				<h1> STATISTIQUES UTILISATEUR</h1>
 
 
-		<div class="vote">
-        
-        <p><?php echo $questionNumber;?></p>
-        <p> QUESTIONS </p>
-        </div>
+		
         <div class="answer">
         <p><?php echo $answerNumber;?></p>
         <p>REPONSES</p>
         </div>
-        <div class="vue">
-        <p><?php echo $users['score'];?></p>
-        <p>VUES</p>
+		<div class="vue">
+        <p><?php echo $questionNumber;?></p>
+        <p> QUESTIONS </p>
+        </div>
+        <div class="vote">
+        <p>SCORE</p>
+        <p style="font-size:1.5em"><?php echo $users['score'];?></p>
         </div>
 
 					

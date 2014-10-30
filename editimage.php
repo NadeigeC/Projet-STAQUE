@@ -3,6 +3,7 @@
 
 	include("db.php");
 	include("inc/functions.php");
+    include("inc/top.php");
 
 	// echo '<pre>';
  	// print_r($_FILES);
@@ -50,3 +51,23 @@ if (!empty($_FILES)){
         }
 
 	}
+
+      
+?>
+
+ 
+    <form action="edit.php" method="POST" id="register_form" enctype="multipart/form-data">
+
+
+    <div class="field_container">
+        <label for="avatar">Photo</label>
+        <input type="file" name="image" id="image" value="<?php echo $avatar; ?>" />
+    </div>
+
+    <div class="field_container">
+        <label for="sauvegarde"></label>
+        <input type="submit" value="SAUVEGARDER !" class="submit" id="sauvegarde"/>
+    </div>
+</form>
+
+<?php include("inc/bottom.php"); ?>
